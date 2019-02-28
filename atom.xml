@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://imjunjie.github.io/"/>
-  <updated>2019-02-27T16:35:59.276Z</updated>
+  <updated>2019-02-28T13:29:06.430Z</updated>
   <id>http://imjunjie.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>使用Github与Hexo搭建个人博客</title>
-    <link href="http://imjunjie.github.io/2019/02/27/shi-yong-github-yu-hexo-da-jian-ge-ren-bo-ke/"/>
-    <id>http://imjunjie.github.io/2019/02/27/shi-yong-github-yu-hexo-da-jian-ge-ren-bo-ke/</id>
-    <published>2019-02-27T15:54:40.000Z</published>
-    <updated>2019-02-27T16:35:59.276Z</updated>
+    <title>Markdown语法</title>
+    <link href="http://imjunjie.github.io/2019/02/28/markdown-yu-fa/"/>
+    <id>http://imjunjie.github.io/2019/02/28/markdown-yu-fa/</id>
+    <published>2019-02-28T10:37:12.000Z</published>
+    <updated>2019-02-28T13:29:06.430Z</updated>
     
     <summary type="html">
     
@@ -29,8 +29,55 @@
       
         
         
-          &lt;p&gt;摘要：这是一篇有关如何使用Github Pages和Hexo搭建自己独立博客的详尽教程，里面介绍了如何使用和配置Hexo框架，如何将Hexo部署到自己的Github项目中，域名注册，以及域名的绑定，还有我在搭建自己博客过程中所遇到的各种困难。&lt;/p&gt;
-&lt;h2
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Makrdown" scheme="http://imjunjie.github.io/tags/Makrdown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo中插入图片的方法</title>
+    <link href="http://imjunjie.github.io/2019/02/28/hexo-zhong-cha-ru-tu-pian-de-fang-fa/"/>
+    <id>http://imjunjie.github.io/2019/02/28/hexo-zhong-cha-ru-tu-pian-de-fang-fa/</id>
+    <published>2019-02-28T07:44:38.000Z</published>
+    <updated>2019-02-28T10:30:45.454Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="http://imjunjie.github.io/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用Github与Hexo搭建个人博客</title>
+    <link href="http://imjunjie.github.io/2019/02/27/shi-yong-github-yu-hexo-da-jian-ge-ren-bo-ke/"/>
+    <id>http://imjunjie.github.io/2019/02/27/shi-yong-github-yu-hexo-da-jian-ge-ren-bo-ke/</id>
+    <published>2019-02-27T15:54:40.000Z</published>
+    <updated>2019-02-28T06:07:32.416Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
         
       
     
@@ -52,7 +99,7 @@
       
         
         
-          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
         
       
     
