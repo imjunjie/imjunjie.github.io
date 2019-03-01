@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://imjunjie.github.io/"/>
-  <updated>2019-02-28T13:29:06.430Z</updated>
+  <updated>2019-03-01T01:34:58.543Z</updated>
   <id>http://imjunjie.github.io/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>Markdown语法</title>
-    <link href="http://imjunjie.github.io/2019/02/28/markdown-yu-fa/"/>
-    <id>http://imjunjie.github.io/2019/02/28/markdown-yu-fa/</id>
+    <link href="http://imjunjie.github.io/markdown-yu-fa.html"/>
+    <id>http://imjunjie.github.io/markdown-yu-fa.html</id>
     <published>2019-02-28T10:37:12.000Z</published>
-    <updated>2019-02-28T13:29:06.430Z</updated>
+    <updated>2019-03-01T01:34:58.543Z</updated>
     
     <summary type="html">
     
@@ -35,17 +35,19 @@
     
     </summary>
     
+      <category term="Markdown" scheme="http://imjunjie.github.io/categories/Markdown/"/>
     
-      <category term="Makrdown" scheme="http://imjunjie.github.io/tags/Makrdown/"/>
+    
+      <category term="Markdown" scheme="http://imjunjie.github.io/tags/Markdown/"/>
     
   </entry>
   
   <entry>
     <title>Hexo中插入图片的方法</title>
-    <link href="http://imjunjie.github.io/2019/02/28/hexo-zhong-cha-ru-tu-pian-de-fang-fa/"/>
-    <id>http://imjunjie.github.io/2019/02/28/hexo-zhong-cha-ru-tu-pian-de-fang-fa/</id>
+    <link href="http://imjunjie.github.io/hexo-zhong-cha-ru-tu-pian-de-fang-fa.html"/>
+    <id>http://imjunjie.github.io/hexo-zhong-cha-ru-tu-pian-de-fang-fa.html</id>
     <published>2019-02-28T07:44:38.000Z</published>
-    <updated>2019-02-28T10:30:45.454Z</updated>
+    <updated>2019-03-01T01:33:31.423Z</updated>
     
     <summary type="html">
     
@@ -59,15 +61,19 @@
     
     </summary>
     
+      <category term="Hexo" scheme="http://imjunjie.github.io/categories/Hexo/"/>
+    
     
       <category term="Hexo" scheme="http://imjunjie.github.io/tags/Hexo/"/>
+    
+      <category term="Git" scheme="http://imjunjie.github.io/tags/Git/"/>
     
   </entry>
   
   <entry>
     <title>使用Github与Hexo搭建个人博客</title>
-    <link href="http://imjunjie.github.io/2019/02/27/shi-yong-github-yu-hexo-da-jian-ge-ren-bo-ke/"/>
-    <id>http://imjunjie.github.io/2019/02/27/shi-yong-github-yu-hexo-da-jian-ge-ren-bo-ke/</id>
+    <link href="http://imjunjie.github.io/shi-yong-github-yu-hexo-da-jian-ge-ren-bo-ke.html"/>
+    <id>http://imjunjie.github.io/shi-yong-github-yu-hexo-da-jian-ge-ren-bo-ke.html</id>
     <published>2019-02-27T15:54:40.000Z</published>
     <updated>2019-02-28T15:57:40.000Z</updated>
     
@@ -83,15 +89,21 @@
     
     </summary>
     
+      <category term="Hexo" scheme="http://imjunjie.github.io/categories/Hexo/"/>
     
-      <category term="hexo; Github; Markdown" scheme="http://imjunjie.github.io/tags/hexo-Github-Markdown/"/>
+    
+      <category term="Hexo" scheme="http://imjunjie.github.io/tags/Hexo/"/>
+    
+      <category term="Markdown" scheme="http://imjunjie.github.io/tags/Markdown/"/>
+    
+      <category term="Github" scheme="http://imjunjie.github.io/tags/Github/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="http://imjunjie.github.io/2019/02/27/hello-world/"/>
-    <id>http://imjunjie.github.io/2019/02/27/hello-world/</id>
+    <link href="http://imjunjie.github.io/hello-world.html"/>
+    <id>http://imjunjie.github.io/hello-world.html</id>
     <published>2019-02-27T08:15:19.039Z</published>
     <updated>2017-10-28T00:39:58.000Z</updated>
     
