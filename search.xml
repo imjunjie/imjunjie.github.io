@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[解决Chrome浏览器中Flash Player无法播放问题]]></title>
+    <url>%2Fjie-jue-chrome-liu-lan-qi-zhong-flash-player-wu-fa-bo-fang-wen-ti.html</url>
+    <content type="text"><![CDATA[问题原因：因为Flash相对于HTML5，有着运算效率低、资源占用大、安全性不高等缺点，随着HTML5越来越普及，Adobe已宣布2020年正式停止支持Flash这项技术。 但Adobe公司为了利益最大化，从Flash Player 30开始，就与国内某公司合作，推出中国特供版Flash Player，根据特供版用户协议，Flash Player将捆绑应用、广告等推广业务，同时会获取用户信息并披露给第三方，用户不能追究数据泄漏的法律责任，相当霸王的条款。如果中国大陆用户安装的是国际版的Flash Player，那打开Flash时会提示“此Flash Player与您的地区不相容，请重新安装Flash”并拒绝播放Flash，一定要下载并安装特供版才予以正常播放（不知这是否是侵犯消费者的权益）。 解决办法： 卸载本机所有Flash Player 29.0.0.171及之后的版本，推荐使用“uninstall_flash_player”一次性搞定； 安装Flash Player 29.0.0.140（安装时记得断网，不然还是会自动跳转到最新版的下载地址，真是无。。。！不同浏览器安装包不同，如果网上找不到请联系KP君获取全浏览器版） 在安装最后一个界面，选择“从不检查更新”，或是在“控制面板”-“Flash Player 设备管理器”－“更新”页面，选择“从不检查更新”。 特别值得一提的是，Flash Player 29.0.0.171安装过程已取消最后一个界面，当全部更新为29.0.0.171后，“更新”页面也消失了，可理解为Flash Player 29.0.0.171屏蔽了用户对更新的选择权，不再有“从不检查更新”了，也就是可能会强制更新到特供版。 本以为这样安装完后就可以顺利使用，结果还是提示错误，差点吐血，只好再找找攻略，还好有发现： Chrome地址栏输入：chrome://version/，可以看到Flash的信息 1Flash 32.0.0.114 C:\Users\KPlayer\AppData\Local\Google\Chrome\User Data\PepperFlash\32.0.0.114\pepflashplayer.dll 找到之前安装的29版本的pepflashplayer.dll文件，通常在： 1C:\Windows\System32\Macromed\Flash\pepflashplayer64_29_0_0_140.dll 关闭Chrome，将pepflashplayer64_29_0_0_140.dll替换之前的pepflashplayer.dll，并重命名 重新打开Chrome，即可正常浏览Flash。 结论：Flash Player 29.0.0.140百度网盘下载链接:https://pan.baidu.com/s/1WKYEUemCfRP_b1KPcXohag 密码: r4i5 这或许是我们还会安装的最后一个版本！期待早日告别Flash这项落后的技术，期待Flash Player不尊重消费者的行为早点被唾弃！ 附录：V30前最后的几个版本号（发布日期：2018/5/8）Flash Player 29.0.0.171 (422 MB)（发布日期：2018/4/10）Flash Player 29.0.0.140 (422 MB)（发布日期：2018/3/13）Flash Player 29.0.0.113 (405 MB)（发布日期：2018/2/6）Flash Player 28.0.0.161 (408 MB)（发布日期：2018/1/9）Flash Player 28.0.0.137 (406 MB)（发布日期：2017/12/12）Flash Player 28.0.0.126 (405 MB)（发布日期：2017/11/14）Flash Player 27.0.0.187 (403 MB)（发布日期：2017/10/25）Flash Player 27.0.0.183 (404 MB)（发布日期：2017/10/16）Flash Player 27.0.0.170 (404 MB)（发布日期：2017/10/10）Flash Player 27.0.0.159 (405 MB)（发布日期：2017/9/12）Flash Player 27.0.0.130 (405 MB)（发布日期：2017/8/8）Flash Player 26.0.0.151 (404 MB)（发布日期：2017/7/11）Flash Player 26.0.0.137 (404 MB)（发布日期：2017/6/16）Flash Player 26.0.0.131 (404 MB)（发布日期：2017/6/13）Flash Player 26.0.0.126 (404 MB) 参考地址： 【教程】解决Chrome浏览器“此Flash Player与您的地区不相容，请重新安装Flash”报错 提示“此Flash Player与您的地区不相容，请重新安装Flash”的解决办法]]></content>
+      <categories>
+        <category>Chrome</category>
+      </categories>
+      <tags>
+        <tag>Chrome</tag>
+        <tag>Flash Player</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hexo添加字数统计、阅读时长]]></title>
     <url>%2Fhexo-tian-jia-zi-shu-tong-ji-yue-du-shi-chang.html</url>
     <content type="text"><![CDATA[打开hexo目录，运行git bush，安装插件 1$ npm install hexo-symbols-count-time --save 修改博客网站配置文件，添加以下代码 12345symbols_count_time: symbols: true time: true total_symbols: true total_time: true 修改主题配置文件，搜索symbols_count_time，快速定位，修改成以下代码 123456symbols_count_time: separated_meta: true item_text_post: true item_text_total: false awl: 4 wpm: 275 重启服务 123hexo cleanhexo ghexo s]]></content>

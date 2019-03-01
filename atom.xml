@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://imjunjie.github.io/"/>
-  <updated>2019-03-01T06:31:36.820Z</updated>
+  <updated>2019-03-01T16:33:46.422Z</updated>
   <id>http://imjunjie.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>解决Chrome浏览器中Flash Player无法播放问题</title>
+    <link href="http://imjunjie.github.io/jie-jue-chrome-liu-lan-qi-zhong-flash-player-wu-fa-bo-fang-wen-ti.html"/>
+    <id>http://imjunjie.github.io/jie-jue-chrome-liu-lan-qi-zhong-flash-player-wu-fa-bo-fang-wen-ti.html</id>
+    <published>2019-03-01T16:11:27.000Z</published>
+    <updated>2019-03-01T16:33:46.422Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Chrome" scheme="http://imjunjie.github.io/categories/Chrome/"/>
+    
+    
+      <category term="Chrome" scheme="http://imjunjie.github.io/tags/Chrome/"/>
+    
+      <category term="Flash Player" scheme="http://imjunjie.github.io/tags/Flash-Player/"/>
+    
+  </entry>
   
   <entry>
     <title>Hexo添加字数统计、阅读时长</title>
