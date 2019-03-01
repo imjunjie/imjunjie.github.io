@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://imjunjie.github.io/"/>
-  <updated>2019-03-01T01:34:58.543Z</updated>
+  <updated>2019-03-01T06:31:36.820Z</updated>
   <id>http://imjunjie.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo添加字数统计、阅读时长</title>
+    <link href="http://imjunjie.github.io/hexo-tian-jia-zi-shu-tong-ji-yue-du-shi-chang.html"/>
+    <id>http://imjunjie.github.io/hexo-tian-jia-zi-shu-tong-ji-yue-du-shi-chang.html</id>
+    <published>2019-03-01T06:23:16.000Z</published>
+    <updated>2019-03-01T06:31:36.820Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Hexo" scheme="http://imjunjie.github.io/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="http://imjunjie.github.io/tags/Hexo/"/>
+    
+  </entry>
   
   <entry>
     <title>Markdown语法</title>
