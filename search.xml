@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Latex安装教程]]></title>
+    <url>%2Flatex-an-zhuang-jiao-cheng.html</url>
+    <content type="text"><![CDATA[前言毕业论文中需要使用Ctex来写，但是之前完全没有接触过这个软件，所以就打算记录一下自己的学习过程。本来打算自己写一下相关的一些东西，但是发现大佬们已经写得特别棒了，就把一些大佬写得东西的链接写出来，希望能帮到有需要的小伙伴们。 关于LaTeX和CTeXLaTeX是一种基于ΤΕΧ的排版系统，由美国计算机学家莱斯利·兰伯特（Leslie Lamport）在20世纪80年代初期开发，利用这种格式，即使使用者没有排版和程序设计的知识也可以充分发挥由TeX所提供的强大功能，能在几天，甚至几小时内生成很多具有书籍质量的印刷品。对于生成复杂表格和数学公式，这一点表现得尤为突出。因此它非常适用于生成高印刷质量的科技和数学类文档。这个系统同样适用于生成从简单的信件到完整书籍的所有其他种类的文档。 CTeX是TEX中的一个版本，CTeX 指的是CTEX 中文套装的简称。TEX 在不同的硬件和操作系统上有不同的实现版本。这就像C 语言，在不同的操作系统中有不同的编译系统，例如Linux 下的gcc，Windows 下的Visual C++等。有时，一种操作系统里也会有好几种的TEX 系统。常见的Unix/Linux 下的TEX 系统是teTEX，Windows 下则有MiKTEX 和fpTEX。CTeX 指的是CTeX 中文套装的简称，是把MiKTEX 和一些常用的相关工具，如GSview，WinEdt 等包装在一起制作的一个简易安装程序，并对其中的中文支持部分进行了配置，使得安装后马上就可以使用中文。 LaTeX官方网站：https://www.latex-project.org/ CTeX官方网站：http://www.ctex.org/HomePage 下载LaTex软件 点击TeXLive (Unix/Linux/Windows)，选择”download on DVD” 选择“downloading the Tex live ISO image and burning your own DVD” 选择”downloaded form nearby CTAN mirror” 选择”texlive2018.iso” 注意：可以直接单击，如下网址进行下载http://mirrors-wan.geekpie.club/CTAN/systems/texlive/Images/ 安装LaTex软件 管理员权限打开”install-tl-advanced” 选择需要安装的组件 参考文献 LaTeX的下载安装及简易使用_20180515 latex安装教程_20190114]]></content>
+      <categories>
+        <category>LaTex</category>
+      </categories>
+      <tags>
+        <tag>LaTex</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[hexo文章中图片点击全屏查看]]></title>
     <url>%2Fhexo-wen-zhang-zhong-tu-pian-dian-ji-quan-ping-cha-kan.html</url>
     <content type="text"><![CDATA[hexo中实现类似于微信公众号中，点击图片方法全屏查看，再点击后回到原来的状态。 效果如下,点击下图的图片放大查看。123|1|2|3||--|--|--||![](http://qnfile.devzhao.com/blog/2018-10-16-155439.png)|![](http://qnfile.devzhao.com/blog/2018-10-16-155529.png)|![](http://qnfile.devzhao.com/blog/2018-10-16-155650.jpg)| 实现的效果如下： 1 2 3 1.修改 post-details.js 文件 文件目录：123devzhao.com/themes/next/source/js/src/post-details.jsdevzhao.com是我的站点根目录。 在文件最后添加：123456789101112131415161718192021222324252627//----自定义js----------------function createImgEventFullScreen() &#123; var imgs = $(".post-body").find("img"); console.log(imgs); for(var i = 0;i &lt; imgs.length;i++) &#123; // $(imgs[i]).click(createCover(imgs[i])); imgs[i].onclick= function(e) &#123; var src = e.srcElement.currentSrc; createCover(src) &#125; &#125; function createCover (src) &#123; console.log(src); var cover = $("&lt;div id='fullScreenCover' class='zhao-cover-img-container'&gt;&lt;img class='zhao-cover-img' src='"+src+"'/&gt;&lt;/div&gt;"); $("#fullScreenCover").remove(); $("body").append(cover); $("body").addClass("zhao-no-scroll"); $("#fullScreenCover").click(function()&#123; $("#fullScreenCover").remove(); $("body").removeClass("zhao-no-scroll"); &#125;) &#125;&#125;setTimeout(function()&#123; createImgEventFullScreen();&#125;,1000) 2.修改custom.styl文件 文件目录： 1devzhao.com/themes/next/source/css/_custom/custom.styl 在最后添加 1234567891011121314151617181920212223.zhao-cover-img-container&#123; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: 10002; text-align: center; background-color: #000; overflow-y: scroll;&#125;.zhao-cover-img&#123; width: 100%; position: absolute; top: 0; bottom: 0;&#125;.zhao-no-scroll&#123; width: 100%; height: 100vh; overflow: hidden;&#125; 3.修改blog-encrypt.js文件 如果你安装了hexo-blog-encrypt插件，需要做这一步。 文件目录：1devzhao.com/node_modules/hexo-blog-encrypt/lib/blog-encrypt.js 找到如下代码1$('#encrypt-blog').html(content); 在后面加上这行代码：1createImgEventFullScreen(); 如下图: 上面代码还有些问题： 还有点小问题，比如第三个图片，电脑上打开，头顶上和底部有一些显示不全。 在微信中打开第二个图，向上滑的时候，底下的层会跟着滑动（好像在微信里面，禁用滑动，没生效），手机Safari中也没有生效 参考文献 hexo文章中图片点击全屏查看]]></content>
@@ -59,8 +70,8 @@
         <category>Markdown</category>
       </categories>
       <tags>
-        <tag>Markdown</tag>
         <tag>LaTex</tag>
+        <tag>Markdown</tag>
       </tags>
   </entry>
   <entry>

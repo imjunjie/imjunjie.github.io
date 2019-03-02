@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://imjunjie.github.io/"/>
-  <updated>2019-03-02T05:27:40.336Z</updated>
+  <updated>2019-03-02T07:37:29.621Z</updated>
   <id>http://imjunjie.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Latex安装教程</title>
+    <link href="http://imjunjie.github.io/latex-an-zhuang-jiao-cheng.html"/>
+    <id>http://imjunjie.github.io/latex-an-zhuang-jiao-cheng.html</id>
+    <published>2019-03-02T06:51:40.000Z</published>
+    <updated>2019-03-02T07:37:29.621Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="LaTex" scheme="http://imjunjie.github.io/categories/LaTex/"/>
+    
+    
+      <category term="LaTex" scheme="http://imjunjie.github.io/tags/LaTex/"/>
+    
+  </entry>
   
   <entry>
     <title>hexo文章中图片点击全屏查看</title>
@@ -168,9 +194,9 @@
       <category term="Markdown" scheme="http://imjunjie.github.io/categories/Markdown/"/>
     
     
-      <category term="Markdown" scheme="http://imjunjie.github.io/tags/Markdown/"/>
-    
       <category term="LaTex" scheme="http://imjunjie.github.io/tags/LaTex/"/>
+    
+      <category term="Markdown" scheme="http://imjunjie.github.io/tags/Markdown/"/>
     
   </entry>
   
