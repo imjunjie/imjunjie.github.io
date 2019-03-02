@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://imjunjie.github.io/"/>
-  <updated>2019-03-01T16:33:46.422Z</updated>
+  <updated>2019-03-02T05:27:40.336Z</updated>
   <id>http://imjunjie.github.io/</id>
   
   <author>
@@ -17,11 +17,195 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>hexo文章中图片点击全屏查看</title>
+    <link href="http://imjunjie.github.io/hexo-wen-zhang-zhong-tu-pian-dian-ji-quan-ping-cha-kan.html"/>
+    <id>http://imjunjie.github.io/hexo-wen-zhang-zhong-tu-pian-dian-ji-quan-ping-cha-kan.html</id>
+    <published>2019-03-02T05:05:41.000Z</published>
+    <updated>2019-03-02T05:27:40.336Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Hexo" scheme="http://imjunjie.github.io/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="http://imjunjie.github.io/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo 添加背景图片并自适应</title>
+    <link href="http://imjunjie.github.io/hexo-tian-jia-bei-jing-tu-pian-bing-zi-gua-ying.html"/>
+    <id>http://imjunjie.github.io/hexo-tian-jia-bei-jing-tu-pian-bing-zi-gua-ying.html</id>
+    <published>2019-03-02T04:57:21.000Z</published>
+    <updated>2019-03-02T05:03:07.088Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Hexo" scheme="http://imjunjie.github.io/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="http://imjunjie.github.io/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo里面Markdown对图片进行居中、设置大小</title>
+    <link href="http://imjunjie.github.io/hexo-li-mian-markdown-dui-tu-pian-jin-xing-ju-zhong-she-zhi-da-xiao.html"/>
+    <id>http://imjunjie.github.io/hexo-li-mian-markdown-dui-tu-pian-jin-xing-ju-zhong-she-zhi-da-xiao.html</id>
+    <published>2019-03-02T04:29:20.000Z</published>
+    <updated>2019-03-02T04:58:14.596Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Hexo" scheme="http://imjunjie.github.io/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="http://imjunjie.github.io/tags/Hexo/"/>
+    
+      <category term="Markdown" scheme="http://imjunjie.github.io/tags/Markdown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo-Next搭建个人博客（代码块复制功能）</title>
+    <link href="http://imjunjie.github.io/hexo-next-da-jian-ge-ren-bo-ke-dai-ma-kuai-fu-zhi-gong-neng.html"/>
+    <id>http://imjunjie.github.io/hexo-next-da-jian-ge-ren-bo-ke-dai-ma-kuai-fu-zhi-gong-neng.html</id>
+    <published>2019-03-02T03:48:24.000Z</published>
+    <updated>2019-03-02T04:03:24.451Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Hexo" scheme="http://imjunjie.github.io/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="http://imjunjie.github.io/tags/Hexo/"/>
+    
+      <category term="Next" scheme="http://imjunjie.github.io/tags/Next/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>字数统计和阅读时长(网站底部/文章内)</title>
+    <link href="http://imjunjie.github.io/zi-shu-tong-ji-he-yue-du-shi-chang-wang-zhan-di-bu-wen-zhang-nei.html"/>
+    <id>http://imjunjie.github.io/zi-shu-tong-ji-he-yue-du-shi-chang-wang-zhan-di-bu-wen-zhang-nei.html</id>
+    <published>2019-03-02T02:25:24.000Z</published>
+    <updated>2019-03-02T02:35:36.475Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>在Hexo中添加LaTex公式</title>
+    <link href="http://imjunjie.github.io/zai-hexo-zhong-tian-jia-latex-gong-shi.html"/>
+    <id>http://imjunjie.github.io/zai-hexo-zhong-tian-jia-latex-gong-shi.html</id>
+    <published>2019-03-02T01:05:23.000Z</published>
+    <updated>2019-03-02T02:44:43.836Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Markdown" scheme="http://imjunjie.github.io/categories/Markdown/"/>
+    
+    
+      <category term="Markdown" scheme="http://imjunjie.github.io/tags/Markdown/"/>
+    
+      <category term="LaTex" scheme="http://imjunjie.github.io/tags/LaTex/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在markdown中插入数学公式</title>
+    <link href="http://imjunjie.github.io/zai-markdown-zhong-cha-ru-shu-xue-gong-shi.html"/>
+    <id>http://imjunjie.github.io/zai-markdown-zhong-cha-ru-shu-xue-gong-shi.html</id>
+    <published>2019-03-02T00:46:03.000Z</published>
+    <updated>2019-03-02T02:05:12.680Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Markdown" scheme="http://imjunjie.github.io/categories/Markdown/"/>
+    
+    
+      <category term="Markdown" scheme="http://imjunjie.github.io/tags/Markdown/"/>
+    
+  </entry>
+  
+  <entry>
     <title>解决Chrome浏览器中Flash Player无法播放问题</title>
     <link href="http://imjunjie.github.io/jie-jue-chrome-liu-lan-qi-zhong-flash-player-wu-fa-bo-fang-wen-ti.html"/>
     <id>http://imjunjie.github.io/jie-jue-chrome-liu-lan-qi-zhong-flash-player-wu-fa-bo-fang-wen-ti.html</id>
     <published>2019-03-01T16:11:27.000Z</published>
-    <updated>2019-03-01T16:33:46.422Z</updated>
+    <updated>2019-03-02T05:53:23.009Z</updated>
     
     <summary type="html">
     
@@ -75,7 +259,7 @@
     <link href="http://imjunjie.github.io/markdown-yu-fa.html"/>
     <id>http://imjunjie.github.io/markdown-yu-fa.html</id>
     <published>2019-02-28T10:37:12.000Z</published>
-    <updated>2019-03-01T01:34:58.543Z</updated>
+    <updated>2019-03-02T05:23:41.648Z</updated>
     
     <summary type="html">
     
