@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="https://fonts.cat.net/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false,"dimmer":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="你是否经常对百度网盘非VIP的几十K下载速度而痛恨不已？没错，百度就是无赖，VIP会员下载速度可以达到2MB/s，甚至更高，普通用户不加速也就算了，还限速！不能忍！其实，我个人对于百度的产品是十分抗拒的，因此平时基本不用百度的产品，但是也有例外的时候，比如百度网盘。因为对电影的画质要求比较高，所以一些1080P的电影动辄6、7个G，所以普通的网络下载是特别慢的，而且这些资源往往以种子的形式存在，于">
+<meta name="keywords" content="电脑;百度网盘;BaiduPCS-Go">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BaiduPCS-Go的安装及使用[CMD]">
+<meta property="og:url" content="http://imjunjie.github.io/baidupcs-go-de-an-zhuang-ji-shi-yong.html">
+<meta property="og:site_name" content="Imjunjie">
+<meta property="og:description" content="你是否经常对百度网盘非VIP的几十K下载速度而痛恨不已？没错，百度就是无赖，VIP会员下载速度可以达到2MB/s，甚至更高，普通用户不加速也就算了，还限速！不能忍！其实，我个人对于百度的产品是十分抗拒的，因此平时基本不用百度的产品，但是也有例外的时候，比如百度网盘。因为对电影的画质要求比较高，所以一些1080P的电影动辄6、7个G，所以普通的网络下载是特别慢的，而且这些资源往往以种子的形式存在，于">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://imjunjie.github.io/images/BaiduPCS-Go的安装及使用/img1-1.png">
+<meta property="og:image" content="http://imjunjie.github.io/images/BaiduPCS-Go的安装及使用/img1-2.png">
+<meta property="og:image" content="http://imjunjie.github.io/images/BaiduPCS-Go的安装及使用/img1-3.png">
+<meta property="og:image" content="http://imjunjie.github.io/images/BaiduPCS-Go的安装及使用/img1-4.png">
+<meta property="og:image" content="http://imjunjie.github.io/images/BaiduPCS-Go的安装及使用/img1-5.png">
+<meta property="og:image" content="http://imjunjie.github.io/images/BaiduPCS-Go的安装及使用/img1-6.png">
+<meta property="og:image" content="http://imjunjie.github.io/images/BaiduPCS-Go的安装及使用/img1-7.png">
+<meta property="og:image" content="http://imjunjie.github.io/images/BaiduPCS-Go的安装及使用/img1-7.png">
+<meta property="og:updated_time" content="2019-03-18T13:31:09.580Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BaiduPCS-Go的安装及使用[CMD]">
+<meta name="twitter:description" content="你是否经常对百度网盘非VIP的几十K下载速度而痛恨不已？没错，百度就是无赖，VIP会员下载速度可以达到2MB/s，甚至更高，普通用户不加速也就算了，还限速！不能忍！其实，我个人对于百度的产品是十分抗拒的，因此平时基本不用百度的产品，但是也有例外的时候，比如百度网盘。因为对电影的画质要求比较高，所以一些1080P的电影动辄6、7个G，所以普通的网络下载是特别慢的，而且这些资源往往以种子的形式存在，于">
+<meta name="twitter:image" content="http://imjunjie.github.io/images/BaiduPCS-Go的安装及使用/img1-1.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Imjunjie" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://imjunjie.github.io/baidupcs-go-de-an-zhuang-ji-shi-yong.html">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>BaiduPCS-Go的安装及使用[CMD] | Imjunjie</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Imjunjie</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">蜻蜓雨荷</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://imjunjie.github.io/baidupcs-go-de-an-zhuang-ji-shi-yong.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Junjie Jia">
+      <meta itemprop="description" content="生命中的每一步都必须认真对待，把握今天，成就明天！">
+      <meta itemprop="image" content="http://image.xcar.com.cn/attachments/a/day_130416/2013041610_b3e94dab51a2253bd17dxx64sn6s0q2H.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Imjunjie">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">BaiduPCS-Go的安装及使用[CMD]
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-18 20:08:12 / 修改时间：21:31:09" itemprop="dateCreated datePublished" datetime="2019-03-18T20:08:12+08:00">2019-03-18</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/电脑/" itemprop="url" rel="index"><span itemprop="name">电脑</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/电脑/百度云下载/" itemprop="url" rel="index"><span itemprop="name">百度云下载</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/电脑/百度云下载/BaiduPCS-Go-CMD/" itemprop="url" rel="index"><span itemprop="name">BaiduPCS-Go[CMD]</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">4.1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">4 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>你是否经常对百度网盘非VIP的几十K下载速度而痛恨不已？没错，百度就是无赖，VIP会员下载速度可以达到2MB/s，甚至更高，普通用户不加速也就算了，还限速！不能忍！其实，我个人对于百度的产品是十分抗拒的，因此平时基本不用百度的产品，但是也有例外的时候，比如百度网盘。因为对电影的画质要求比较高，所以一些1080P的电影动辄6、7个G，所以普通的网络下载是特别慢的，而且这些资源往往以种子的形式存在，于是经过摸索终于找到一个下载很快的方法，这里推荐给大家。当然，这个方法不仅适用于下载电影，任何保存于百度网盘的文件使用这种方法都可以达到不亚于VIP的速度，甚至顶速（具体情况取决于你使用的网络速度），关键是免费！</p>
+<p>注：这个教程里会涉及到一些非常简单的命令行操作，但是非程序员请不要抵触或者害怕，毕竟带来的便利是可观的，来个效果图感受一下：</p>
+<p><img src="/images/BaiduPCS-Go的安装及使用/img1-1.png" alt></p>
+<p>BaiduPCS-Go是用Go语言写的一个开源的小工具，专门用于突破百度对于非VIP用户对百度网盘下载速度的限制。其项目源码地址如下：<a href="https://github.com/iikira/BaiduPCS-Go" target="_blank" rel="noopener">https://github.com/iikira/BaiduPCS-Go</a> 。在其readme文件中，对于软件的使用做了很详细的介绍，有兴趣的人可以阅读一下，我这里只介绍最基本的安装和使用方法。</p>
+<h1 id="特色"><a href="#特色" class="headerlink" title="特色"></a>特色</h1><p> 这是一个仿Linux命令行的百度网盘客户端。（是的，不限速）</p>
+<p>注意：<br>    文件名和目录名可用通配符<em>补全(使用</em>代替n个字符，n&gt;=0)。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 示例：</span><br><span class="line">d /a_directory/b_directory/c_file.txt =</span><br><span class="line">d /a*/b*/c*</span><br></pre></td></tr></table></figure></p>
+<p>特点： </p>
+<ul>
+<li>跨平台（Windows，macOS，Android等） </li>
+<li>支持多账户。 </li>
+<li>网盘内列出文件和目录, 支持通配符匹配路径; </li>
+<li>下载网盘内文件, 支持网盘内目录 (文件夹) 下载, 支持多个文件或目录下载, 支持断点续传和高并发高速下载。 </li>
+<li>离线下载，支持http/https/ftp/电驴/磁力链协议。 </li>
+<li>好玩，不过没有一点Linux基础，就不怎么好玩了。</li>
+</ul>
+<h1 id="软件下载及安装"><a href="#软件下载及安装" class="headerlink" title="软件下载及安装"></a>软件下载及安装</h1><p>项目地址: <a href="https://github.com/iikira/BaiduPCS-Go" target="_blank" rel="noopener">iikira/BaiduPCS-Go</a><br>下载地址: <a href="https://github.com/iikira/BaiduPCS-Go/releases" target="_blank" rel="noopener">iikira/BaiduPCS-Go releases</a></p>
+<h2 id="a-Android-macOS"><a href="#a-Android-macOS" class="headerlink" title="a. Android/macOS"></a>a. Android/macOS</h2><p>Android：需要用到 Termux 或 NeoTerm 类软件。这里只提一下。<br>macOS：没有macOS的设备，这里属于凑字数。</p>
+<h2 id="b-Windows"><a href="#b-Windows" class="headerlink" title="b. Windows"></a>b. Windows</h2><h3 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址:"></a>下载地址:</h3><ul>
+<li>64位系统：<a href="https://github.com/iikira/BaiduPCS-Go/releases/download/v3.3.3/BaiduPCS-Go-v3.3.3-windows-x64.zip" target="_blank" rel="noopener">BaiduPCS-Go-v3.3.3-windows-x64.zip </a></li>
+<li>32位系统：<a href="https://github.com/iikira/BaiduPCS-Go/releases/download/v3.3.3/BaiduPCS-Go-v3.3.3-windows-x86.zip" target="_blank" rel="noopener">BaiduPCS-Go-v3.3.3-windows-x86.zip</a></li>
+<li>GitHub地址： <a href="https://github.com/iikira/BaiduPCS-Go/releases" target="_blank" rel="noopener">https://github.com/iikira/BaiduPCS-Go/releases</a></li>
+</ul>
+<h3 id="下载说明："><a href="#下载说明：" class="headerlink" title="下载说明："></a>下载说明：</h3><p><img src="/images/BaiduPCS-Go的安装及使用/img1-2.png" alt></p>
+<p>请按照上述说明下载对应的版本，我只测试了windows和linux的机器，其他系统暂时没有测试。</p>
+<p><code>对于windows系统，确认系统类型的方法：右键点击“我的电脑” -&gt; “属性” -&gt; “系统类型”</code></p>
+<p><img src="/images/BaiduPCS-Go的安装及使用/img1-3.png" alt></p>
+<p>该软件是绿色软件，下载完成后请直接解压到你的自己的软件目录即可。</p>
+<h1 id="软件的使用"><a href="#软件的使用" class="headerlink" title="软件的使用"></a>软件的使用</h1><p>该软件的使用方法也很简单，在Linux下和Windows下的方法一模一样，只不过程序的名字有一点差异（Windows下，软件的名字叫做“BaiduPCS-Go.exe”，Linux下，软件的名字叫做“BaiduPCS-Go”）。以下以Windows系统为例讲解软件的使用。</p>
+<h2 id="程序运行"><a href="#程序运行" class="headerlink" title="程序运行"></a>程序运行</h2><p>下载后解压缩，双击 BaiduPCS-Go.exe。<br>界面如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">----</span><br><span class="line">BaiduPCS-Go - 百度网盘客户端 for windows/amd64</span><br><span class="line">  .......</span><br><span class="line">  .......</span><br><span class="line">  .......</span><br><span class="line">BaiduPCS-Go &gt;</span><br></pre></td></tr></table></figure></p>
+<p>界面很长，这里用省略号代替。</p>
+<h2 id="登录-退出-切换"><a href="#登录-退出-切换" class="headerlink" title="登录/退出/切换"></a>登录/退出/切换</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">login     # 登录</span><br><span class="line">logout    # 退出当前账户</span><br><span class="line">su/chuser # 切换账户</span><br></pre></td></tr></table></figure>
+<p>在命令行窗口中输入 login ，再根据提示输入账号和密码，即可登录百度账号。</p>
+<p>还有其他登录方式，如 login -bduss=<bduss>。(获取bduss)</bduss></p>
+<p>logout 和 su / chuser 的用法也比较简单。</p>
+<p>在使用前，我们首先要登录百度账号，只要不手动退出账号，以后可以直接使用，而不必每次都登录。<br>首先，打开命令行，打开命令行的方式有两种：</p>
+<ul>
+<li><p>菜单打开<br>屏幕左下角“开始” -&gt; “所有程序” -&gt; “附件” -&gt; “命令提示符”</p>
+</li>
+<li><p>快捷键打开<br>按下键盘上的Win（显示微软图标的那个键）+R， 在弹出的窗口输入”cmd”，然后按下回车<br><img src="/images/BaiduPCS-Go的安装及使用/img1-4.png" alt></p>
+</li>
+</ul>
+<p>接下来我们需要进入刚才解压好的软件目录，比如我的路径为：<code>C:\Users\User\Downloads\BaiduPCS-Go-v3.5.6-windows-x64</code>，那么在刚弹出的窗口中输入，并按下回车：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd C:\Users\User\Downloads\BaiduPCS-Go-v3.5.6-windows-x64</span><br></pre></td></tr></table></figure></p>
+<p>然后开始输入命令登录百度账户，在窗口中输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go.exe login</span><br></pre></td></tr></table></figure></p>
+<p>然后按照下图操作即可登录：<br><img src="/images/BaiduPCS-Go的安装及使用/img1-5.png" alt></p>
+<p>在显示成功登陆后，我们就可以关掉这个窗口了。然后双击BaiduPCS-Go.exe这个文件就可以进行下一步的操作了。<br>如果要退出账号，只需要在这个窗口中输入logout即可。</p>
+<h3 id="切换目录"><a href="#切换目录" class="headerlink" title="切换目录"></a>切换目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd -l /Path/To/File</span><br><span class="line"></span><br><span class="line"># cd = change directory = 切换目录。</span><br><span class="line"># /Path/To/File = 文件路径，绝对路径或相对路径。</span><br><span class="line"># -l: 显示目标目录下的子文件及子目录。</span><br></pre></td></tr></table></figure>
+<p>例：cd /a/b/c/d </p>
+<h2 id="查看当前账户及已登录账户"><a href="#查看当前账户及已登录账户" class="headerlink" title="查看当前账户及已登录账户"></a>查看当前账户及已登录账户</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loglist</span><br></pre></td></tr></table></figure>
+<h2 id="查看文件"><a href="#查看文件" class="headerlink" title="查看文件"></a>查看文件</h2><ul>
+<li><p>查看文件命令ls (list)<br><img src="/images/BaiduPCS-Go的安装及使用/img1-6.png" alt></p>
+</li>
+<li><p>切换目录<br>默认情况下，打开之后执行ls看到的文件就是你百度网盘最顶层目录，如果想切换目录的话，执行以下命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd xxx</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>其中xxx是你想切换的文件夹名。</p>
+<ul>
+<li>切换到上一级目录<br>使用下面的命令可以切换到上一级目录：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ..</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="下载文件"><a href="#下载文件" class="headerlink" title="下载文件"></a>下载文件</h2><p>下载文件的命令如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">download -p 1000 xxx</span><br></pre></td></tr></table></figure></p>
+<p>其中xxx是你要下载的文件名，如下图所示:<br><img src="/images/BaiduPCS-Go的安装及使用/img1-7.png" alt></p>
+<h2 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h2><p>上传文件时，需要打开命令行来操作。上传文件的命令如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go upload xxx yyy</span><br></pre></td></tr></table></figure></p>
+<p>其中xxx是你要上传的本地文件名，yyy是你百度网盘下的目录名，比如我要把我本地放在C:\Users\User\Downloads下的一个叫做Git-2.18.0-64-bit.exe的文件传到百度网盘的/Softwares/Tools目录下。命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go.exe upload C:\Users\User\Downloads\Git-2.18.0-64-bit.exe /Softwares/Tools</span><br></pre></td></tr></table></figure>
+<p>然后，我们就能看到如下的结果：<br><img src="/images/BaiduPCS-Go的安装及使用/img1-7.png" alt><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这里要注意的是，windows系统下，本地文件的路径名书写要用\，而百度网盘路径名书写要用/.</span><br></pre></td></tr></table></figure></p>
+<h2 id="web功能"><a href="#web功能" class="headerlink" title="web功能"></a>web功能</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">web #启用web功能</span><br></pre></td></tr></table></figure>
+<p>输入上述命令后，在浏览器栏输入localhost:8080，就可以在本地查看你的网盘目录。</p>
+<p>很不错的功能。</p>
+<h1 id="帮助菜单"><a href="#帮助菜单" class="headerlink" title="帮助菜单"></a>帮助菜单</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">h</span><br></pre></td></tr></table></figure>
+<p>输入 h ，可以看到帮助菜单。这里做成表格，以便观看<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">用法：输入 h ，可以看到帮助菜单。这里做成表格，以便观看</span><br></pre></td></tr></table></figure></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>COMMANDS</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tool</td>
+<td style="text-align:left">工具箱</td>
+</tr>
+<tr>
+<td>help / h</td>
+<td style="text-align:left">Shows a list of commands or help for one command</td>
+</tr>
+<tr>
+<td>其他：</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>run</td>
+<td style="text-align:left">执行系统命令</td>
+</tr>
+<tr>
+<td>sumfile / sf</td>
+<td style="text-align:left">获取文件的秒传信息</td>
+</tr>
+<tr>
+<td>web</td>
+<td style="text-align:left">启用 web 客户端 (测试中)</td>
+</tr>
+<tr>
+<td>百度账号：</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>login</td>
+<td style="text-align:left">登录百度账号</td>
+</tr>
+<tr>
+<td>loglist</td>
+<td style="text-align:left">获取当前帐号, 和所有已登录的百度帐号</td>
+</tr>
+<tr>
+<td>logout</td>
+<td style="text-align:left">退出当前登录的百度帐号</td>
+</tr>
+<tr>
+<td>su / chuser</td>
+<td style="text-align:left">切换已登录的百度帐号</td>
+</tr>
+<tr>
+<td>百度网盘：</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>cd</td>
+<td style="text-align:left">切换工作目录</td>
+</tr>
+<tr>
+<td>cp</td>
+<td style="text-align:left">拷贝(复制) 文件/目录</td>
+</tr>
+<tr>
+<td>download / d</td>
+<td style="text-align:left">下载文件或目录</td>
+</tr>
+<tr>
+<td>ls / l / ll</td>
+<td style="text-align:left">列出当前工作目录内的文件和目录 或 指定目录内的文件和目录</td>
+</tr>
+<tr>
+<td>meta</td>
+<td style="text-align:left">获取单个文件/目录的元信息 (详细信息)</td>
+</tr>
+<tr>
+<td>mkdir</td>
+<td style="text-align:left">创建目录</td>
+</tr>
+<tr>
+<td>mv</td>
+<td style="text-align:left">移动/重命名 文件/目录 </td>
+</tr>
+<tr>
+<td>offlinedl/clouddl / od</td>
+<td style="text-align:left">离线下载 </td>
+</tr>
+<tr>
+<td>pwd</td>
+<td style="text-align:left">输出当前所在目录 (工作目录) </td>
+</tr>
+<tr>
+<td>quota</td>
+<td style="text-align:left">获取配额, 即获取网盘的总储存空间, 和已使用的储存空间</td>
+</tr>
+<tr>
+<td>rapidupload / ru</td>
+<td style="text-align:left">手动秒传文件</td>
+</tr>
+<tr>
+<td>rm</td>
+<td style="text-align:left">删除 单个/多个 文件/目录 </td>
+</tr>
+<tr>
+<td>upload / u</td>
+<td style="text-align:left">上传文件或目录 </td>
+</tr>
+<tr>
+<td>配置:</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>config</td>
+<td style="text-align:left">显示和修改程序配置项</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>GLOBAL OPTIONS:</th>
+<th style="text-align:left">全局选项</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–verbose</td>
+<td style="text-align:left">启用调试 [%BAIDUPCS_GO_VERBOSE%]</td>
+</tr>
+<tr>
+<td>–help / -h</td>
+<td style="text-align:left">查看帮助 </td>
+</tr>
+<tr>
+<td>–version / -v</td>
+<td style="text-align:left">查看版本号</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h1><ul>
+<li>关于BaiduPCS-Go不能用问题解决，报错【获取目录下的文件列表 遇到错误, 远端服务器返回错误】<br>BaiduPCS-Go不能使用报错：获取目录下的文件列表 遇到错误, 远端服务器返回错误, 代码: 4, 消息: No permissionto do this operation, 路径: /<br>设置新的appid!：<br>目前已知可用APP id：266719</li>
+</ul>
+<p>在软件输入 config set -appid=266719。</p>
+<ul>
+<li>注意以下问题：错误代码403/31066  造成无法下载问题</li>
+</ul>
+<ol>
+<li>下载路径和文件命名不带空格符号。</li>
+<li>检查文件路径是否过于复杂(如果实在不行就直接下载整个文件夹)</li>
+<li>如果还是不行，那就换别的账号登录吧</li>
+</ol>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><ul>
+<li><a href="https://blog.csdn.net/qq_39355782/article/details/80091071" target="_blank" rel="noopener">[教程]BaiduPCS-Go</a></li>
+<li><a href="https://luomuxiaoxiao.com/?p=102" target="_blank" rel="noopener">BaiduPCS-Go的安装及使用</a></li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">------------------------ The End ------------------------</div>
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/电脑-百度网盘-BaiduPCS-Go/" rel="tag"># 电脑;百度网盘;BaiduPCS-Go</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/ji-yu-baidupcs-go-da-zao-de-web-jie-mian.html" rel="next" title="基于BaiduPCS-Go打造的Web界面">
+                <i class="fa fa-chevron-left"></i> 基于BaiduPCS-Go打造的Web界面
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://image.xcar.com.cn/attachments/a/day_130416/2013041610_b3e94dab51a2253bd17dxx64sn6s0q2H.gif" alt="Junjie Jia">
+            
+              <p class="site-author-name" itemprop="name">Junjie Jia</p>
+              <p class="site-description motion-element" itemprop="description">生命中的每一步都必须认真对待，把握今天，成就明天！</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/imjunjie" title="GitHub &rarr; https://github.com/imjunjie" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="mailto:junjie017@gmail.com" title="E-Mail &rarr; mailto:junjie017@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#特色"><span class="nav-number">1.</span> <span class="nav-text">特色</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#软件下载及安装"><span class="nav-number">2.</span> <span class="nav-text">软件下载及安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#a-Android-macOS"><span class="nav-number">2.1.</span> <span class="nav-text">a. Android/macOS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#b-Windows"><span class="nav-number">2.2.</span> <span class="nav-text">b. Windows</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载地址"><span class="nav-number">2.2.1.</span> <span class="nav-text">下载地址:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下载说明："><span class="nav-number">2.2.2.</span> <span class="nav-text">下载说明：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#软件的使用"><span class="nav-number">3.</span> <span class="nav-text">软件的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#程序运行"><span class="nav-number">3.1.</span> <span class="nav-text">程序运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#登录-退出-切换"><span class="nav-number">3.2.</span> <span class="nav-text">登录/退出/切换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#切换目录"><span class="nav-number">3.2.1.</span> <span class="nav-text">切换目录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看当前账户及已登录账户"><span class="nav-number">3.3.</span> <span class="nav-text">查看当前账户及已登录账户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看文件"><span class="nav-number">3.4.</span> <span class="nav-text">查看文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载文件"><span class="nav-number">3.5.</span> <span class="nav-text">下载文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#上传文件"><span class="nav-number">3.6.</span> <span class="nav-text">上传文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web功能"><span class="nav-number">3.7.</span> <span class="nav-text">web功能</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#帮助菜单"><span class="nav-number">4.</span> <span class="nav-text">帮助菜单</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常见问题"><span class="nav-number">5.</span> <span class="nav-text">常见问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">6.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Junjie Jia</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">84k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">1:17</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.0.0</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+  
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <!-- 代码块复制功能 -->
+<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+
+</body>
+</html>
