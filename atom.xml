@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://imjunjie.github.io/"/>
-  <updated>2019-03-20T11:41:54.239Z</updated>
+  <updated>2019-04-09T05:39:59.829Z</updated>
   <id>http://imjunjie.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>基于Python的校园网自动登录</title>
+    <link href="http://imjunjie.github.io/ji-yu-python-de-xiao-yuan-wang-zi-dong-deng-lu.html"/>
+    <id>http://imjunjie.github.io/ji-yu-python-de-xiao-yuan-wang-zi-dong-deng-lu.html</id>
+    <published>2019-04-09T04:25:57.000Z</published>
+    <updated>2019-04-09T05:39:59.829Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>证件之星软件个人加密狗完美破解心得</title>
@@ -545,32 +567,6 @@
     
     
       <category term="Hexo" scheme="http://imjunjie.github.io/tags/Hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Latex安装教程</title>
-    <link href="http://imjunjie.github.io/latex-an-zhuang-jiao-cheng.html"/>
-    <id>http://imjunjie.github.io/latex-an-zhuang-jiao-cheng.html</id>
-    <published>2019-03-02T06:51:40.000Z</published>
-    <updated>2019-03-02T07:37:29.621Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="LaTex" scheme="http://imjunjie.github.io/categories/LaTex/"/>
-    
-    
-      <category term="LaTex" scheme="http://imjunjie.github.io/tags/LaTex/"/>
     
   </entry>
   

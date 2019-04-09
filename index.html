@@ -383,6 +383,195 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://imjunjie.github.io/ji-yu-python-de-xiao-yuan-wang-zi-dong-deng-lu.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Junjie Jia">
+      <meta itemprop="description" content="生命中的每一步都必须认真对待，把握今天，成就明天！">
+      <meta itemprop="image" content="http://image.xcar.com.cn/attachments/a/day_130416/2013041610_b3e94dab51a2253bd17dxx64sn6s0q2H.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Imjunjie">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/ji-yu-python-de-xiao-yuan-wang-zi-dong-deng-lu.html" class="post-title-link" itemprop="url">基于Python的校园网自动登录</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-09 12:25:57 / 修改时间：13:39:59" itemprop="dateCreated datePublished" datetime="2019-04-09T12:25:57+08:00">2019-04-09</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">3.4k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">3 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>搞了几天终于把这个搞出来了，代码不到50行，要是别的网站很好模拟，但是这个稍微有点麻烦，抓包工具用了很多，httpfox没有抓全，wireshark抓的又太多不好分析，最后还是使用神器fiddle才把它搞出来。</p>
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><ul>
+<li>火狐浏览器+firedebug插件，debug插件可在浏览器附加组件中添加，其他浏览器也可以，只要有可以监控浏览器的网络行为插件即可。（<font color="red">notes:这里没有使用到firedebug，而是使用火狐浏览器自带的审查工具</font>）</li>
+<li>Python+requests包</li>
+</ul>
+<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><p>打开火狐浏览器，输入网址”<code>http://211.85.192.115/srun_portal_pc.php?ac_id=1&amp;</code>“，打开校园网登录页面，如下：<br><img src="/images/基于Python的校园网自动登录/img1-1.png" alt><br>登录账号和密码，显示登录成功<br><img src="/images/基于Python的校园网自动登录/img1-2.png" alt><br>右键单击【审查元素】-【网络】<br><img src="/images/基于Python的校园网自动登录/img1-3.png" alt><br>构造请求头<br><img src="/images/基于Python的校园网自动登录/img1-4.png" alt><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"># 构造头部信息 注意Cookie可能十分重要，而且Cookie会有过期时间（我们学校过期时间是1个月），过期之后，可能需要复制新的Cookie替换。</span><br><span class="line">post_header = &#123;</span><br><span class="line">   #'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',</span><br><span class="line">   'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:66.0) Gecko/20100101 Firefox/66.0',</span><br><span class="line">   'Accept': '*/*',</span><br><span class="line">   #'Accept-Language': 'zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3',</span><br><span class="line">   'Accept-Language': 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',</span><br><span class="line">   'Accept-Encoding': 'gzip, deflate',</span><br><span class="line">   #'Content-Type': 'application/x-www-form-urlencoded',</span><br><span class="line">   'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',</span><br><span class="line">   'X-Requested-With': 'XMLHttpRequest',</span><br><span class="line"></span><br><span class="line">   #'Origin': 'http://wlrz.fudan.edu.cn',</span><br><span class="line">   'Referer': 'http://211.85.192.115/srun_portal_pc.php?ac_id=1&amp;',</span><br><span class="line">   #'Content-Length': '112',</span><br><span class="line">   'Content-Length': '104',</span><br><span class="line">   #'Cookie': 'login=YUtl4F5w2GWDfWUA8O0nj3eCm7TrrFp%252FtbchCKzbO84IQczKx%252Fyc5mYGG7s6FQxsyiZbjwUIcJ2ECcqXWO%252BzwX85KrsMq0MDW7tX1eoOzS00eusx19E0245ORqeeZHVwBzEd1DGI%253D',</span><br><span class="line">   'Cookie': 'login=请自己获得，这里不提供',</span><br><span class="line">   #'Host': 'wlrz.fudan.edu.cn',</span><br><span class="line">   'Host': '211.85.192.115',</span><br><span class="line">   'Connection': 'keep-alive',</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>构造发送数据<br><img src="/images/基于Python的校园网自动登录/img1-5.png" alt><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#此处根据自己校园网Form Data中发送的数据进行更改</span><br><span class="line">action = 'login'</span><br><span class="line">username = '学号'</span><br><span class="line">#password = '加密的密码'</span><br><span class="line">password = '密码xxx'</span><br><span class="line">ac_id = '1'</span><br><span class="line">save_me = '0'</span><br><span class="line">ajax = '1'</span><br><span class="line">#user_ip = '127.131.1.1'</span><br><span class="line"></span><br><span class="line">post_data = &#123;</span><br><span class="line">   'action': action,</span><br><span class="line">   'username': username,</span><br><span class="line">   'password': password,</span><br><span class="line">#   'password': base64.b64encode(password.encode()).decode(),</span><br><span class="line">#   'password': base64.b64encode(password.encode()),</span><br><span class="line">   'ac_id': ac_id,</span><br><span class="line">#   'user_ip': user_ip,</span><br><span class="line">   'save_me': save_me,</span><br><span class="line">   'ajax': ajax</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>内容有方式、学号、密码还有其他，其中密码不是明文，这密码应该是加密的，在所有js文件中搜索password，发现有一处函数，验证了是base64加密方式。（<font color="red">注意：以下操作是在在Chrome浏览器中进行的</font>）<br>在chrome浏览器中，输入账号登录网址”<code>http://211.85.192.115/srun_portal_pc.php?ac_id=1&amp;</code>“，右键【审查元素】-【网络】，然后刷新<br><img src="/images/基于Python的校园网自动登录/img1-6.png" alt><br><img src="/images/基于Python的校园网自动登录/img1-7.png" alt><br>于是开始着手写代码了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">def login_request():</span><br><span class="line">    if not is_net_ok():</span><br><span class="line">        print(&quot;[03]&#123;&#125; whpu-wlan is offline, request now...&quot;.format(datetime.datetime.now().strftime(&apos;%Y-%m-%d %H:%M:%S&apos;)))</span><br><span class="line">#        password = base64.b64encode(password.encode()).decode()    #加密</span><br><span class="line">        try:</span><br><span class="line">            # 发送post请求登录网页</span><br><span class="line">            result = requests.post(post_addr, data=post_data, headers=post_header)</span><br><span class="line"></span><br><span class="line">            # z.text为str类型的json数据因此先编码成byte类型再解码成unicode类型这样就可以正常输出中文</span><br><span class="line">            s = result.text.encode(&apos;utf-8&apos;).decode(&apos;unicode-escape&apos;)</span><br><span class="line">            print(s)</span><br><span class="line">            print(&quot;login success!&quot;)</span><br><span class="line">        except:</span><br><span class="line">            print(&quot;[00]&#123;&#125; request error, whpu-wlan isnto connected to WIFI...&quot;.format(datetime.datetime.now().strftime(&apos;%Y-%m-%d %H:%M:%S&apos;)))</span><br><span class="line">    else:</span><br><span class="line">        print(&quot;[02]&#123;&#125; whpu-wlan is online, login sucesss...&quot;.format(datetime.datetime.now().strftime(&apos;%Y-%m-%d %H:%M:%S&apos;)))</span><br><span class="line"></span><br><span class="line">login_request()</span><br></pre></td></tr></table></figure></p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><ul>
+<li><p><a href="https://blog.csdn.net/abitch/article/details/51939879" target="_blank" rel="noopener">(2016.7.18)python脚本实现自动登录校园网</a></p>
+</li>
+<li><p><a href="http://blog.csdn.net/shenhuaifeng/article/details/78333851" target="_blank" rel="noopener">(2017.10.24)python实现校园网自动登录</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/u012328159/article/details/81034763" target="_blank" rel="noopener">(2018.7.13)用python写服务器校园网上网认证脚本</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/kaspar1992/article/details/84172543" target="_blank" rel="noopener"><font color="red">(2018.11.24)基于python实现校园网自动登录</font></a></p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">------------------------ The End ------------------------</div>
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://imjunjie.github.io/zheng-jian-zhi-xing-ruan-jian-ge-ren-jia-mi-gou-wan-mei-po-jie-xin-de.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -4402,208 +4591,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://imjunjie.github.io/idm-ke-yi-zhi-jie-bu-zhuo-xia-zai-ge-chong-ge-shi-de-wang-ye-zai-xian-shi-pin.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Junjie Jia">
-      <meta itemprop="description" content="生命中的每一步都必须认真对待，把握今天，成就明天！">
-      <meta itemprop="image" content="http://image.xcar.com.cn/attachments/a/day_130416/2013041610_b3e94dab51a2253bd17dxx64sn6s0q2H.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Imjunjie">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/idm-ke-yi-zhi-jie-bu-zhuo-xia-zai-ge-chong-ge-shi-de-wang-ye-zai-xian-shi-pin.html" class="post-title-link" itemprop="url">IDM可以直接捕捉、下载各种格式的网页在线视频</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-03-03 00:08:02 / 修改时间：00:14:56" itemprop="dateCreated datePublished" datetime="2019-03-03T00:08:02+08:00">2019-03-03</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Idm/" itemprop="url" rel="index"><span itemprop="name">Idm</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">1.3k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">1 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>本人亲测、实力见证！新版 IDM不仅可以全速、无死角下载百度云里的一切资源，还可以下载网络上各种敏感、限制级的资源，最重要的是可以直接嗅探、捕捉、下载各种格式的网页在线视频！包括 m3u8 代码形式的在线视频，而不需要使用下载速度比较慢且不能批量下载的<code>m3u8 downloader</code>了。</p>
-<p>完全可以代替迅雷、百度网盘实现满速、全速下载。真正做到所见即所得！（划重点）</p>
-<h1 id="STEP-1→如何安装？"><a href="#STEP-1→如何安装？" class="headerlink" title="STEP 1→如何安装？"></a>STEP 1→如何安装？</h1><p>1.下载新版IDM文件夹,先运行软件安装程序:IDM v6.xx.x.exe,安装完成后关闭注册提醒对话框。（新版IDM下载链接在文末）</p>
-<p>2.运行压缩包 Crack.zip 中的 IDM_6.2x_Crack.exe 进行破解，破解完成。</p>
-<p>3.全部过程完成，您需要重启一下电脑，再打开  IDM.，点击菜单—&gt;关于 IDM，确认一下是否破解成功。</p>
-<h1 id="STEP-2→必要插件？"><a href="#STEP-2→必要插件？" class="headerlink" title="STEP 2→必要插件？"></a>STEP 2→必要插件？</h1><p>1.在浏览器装tampermonkey（油猴）插件，本人用360浏览器，浏览器收藏栏右上角有个：扩展—&gt;扩展中心—&gt;直接在搜索应用名称中输入tampermonkey，点击安装即可。</p>
-<p>2.在浏览器中安装脚本，打开<code>https://greasyfork.org/zh-CN/scripts</code>，安装<code>“百度网盘直接下载助手 直链加速版”</code>脚本。</p>
-<p>3.在浏览器装IDM插件:扩展—&gt;扩展中心—&gt;直接在搜索应用名称中输入IDM，点击安装即可。</p>
-<p>4.安装完成后重启浏览器。</p>
-<h1 id="STEP-3→如何使用？"><a href="#STEP-3→如何使用？" class="headerlink" title="STEP 3→如何使用？"></a>STEP 3→如何使用？</h1><p>1.下载百度云资源：打开IDM，打开一个需要下载的文件，在页面的上部就会出现一个“下载助手”的按钮，点击按钮会出现：下载、显示链接、批量链接等选项，点击下载，IDM会自动嗅探到资源，弹出一个下载文件信息框，点击开始下载，享受全速下载的乐趣吧！</p>
-<p>2.下载网页在线视频：打开一个需要下载的在线视频，点击播放，IDM会自动嗅探到资源，同时在播放框的右上角会出现如下按钮：，点击下载该视频，弹出一个下载文件信息框，点击开始下载，享受全速下载的乐趣吧！</p>
-<h1 id="STEP-4→什么是IDM？"><a href="#STEP-4→什么是IDM？" class="headerlink" title="STEP 4→什么是IDM？"></a>STEP 4→什么是IDM？</h1><p>IDM 全名Internet Download Manager 是一款国外的多线程下载神器（简称IDM）Internet Download Manager 支持多媒体下载、自动捕获链接、自动识别文件名、静默下载、批量下载、计划下载任务、站点抓取、队列等等是一款国外的老牌下载工具。<br>互联网下载管理器 （IDM）是一种提高下载速度5倍，恢复和下载时间表的工具。全面的错误恢复和恢复功能将重新启动由于连接丢失，网络问题，计算机关机或意外断电而导致的下载或中断下载。简单的图形用户界面，使IDM用户友好，易于使用。下载管理器有一个智能下载逻辑加速器，具有智能动态文件分割和安全的多部分下载技术，加快您的下载。与其他下载管理器和加速器不同，Internet Download Manager在下载过程中动态地分段下载文件，并重复使用可用的连接，无需额外的连接和登录阶段即可实现最佳加速性能。</p>
-<h1 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h1><p>链接: <a href="https://pan.baidu.com/s/1m89whBLzvYoc7uZS6l9ZBQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1m89whBLzvYoc7uZS6l9ZBQ</a> 提取码: qcjp</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    <div style="text-align:center;color: #ccc;font-size:14px;">------------------------ The End ------------------------</div>
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -4652,7 +4639,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">33</span>
+                    <span class="site-state-item-count">34</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -4841,7 +4828,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">85k</span>
+    <span title="站点总字数">89k</span>
   
 
   
@@ -4850,7 +4837,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">1:18</span>
+    <span title="站点阅读时长">1:21</span>
   
 </div>
 
