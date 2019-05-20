@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://imjunjie.github.io/"/>
-  <updated>2019-04-19T01:09:38.091Z</updated>
+  <updated>2019-05-20T07:48:53.692Z</updated>
   <id>http://imjunjie.github.io/</id>
   
   <author>
@@ -17,11 +17,243 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>（全平台）中文-Sublime Text 3207激活</title>
+    <link href="http://imjunjie.github.io/quan-ping-tai-zhong-wen-sublime-text-3207-ji-huo.html"/>
+    <id>http://imjunjie.github.io/quan-ping-tai-zhong-wen-sublime-text-3207-ji-huo.html</id>
+    <published>2019-05-20T07:30:02.000Z</published>
+    <updated>2019-05-20T07:48:53.692Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Win10如何自定义右键菜单-修改注册表（图文）</title>
+    <link href="http://imjunjie.github.io/win10-ru-he-zi-ding-yi-you-jian-cai-dan-xiu-gai-zhu-ce-biao-tu-wen.html"/>
+    <id>http://imjunjie.github.io/win10-ru-he-zi-ding-yi-you-jian-cai-dan-xiu-gai-zhu-ce-biao-tu-wen.html</id>
+    <published>2019-05-20T06:36:40.000Z</published>
+    <updated>2019-05-20T07:19:07.987Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Semi-supervised learning with GANs</title>
+    <link href="http://imjunjie.github.io/semi-supervised-learning-with-gans.html"/>
+    <id>http://imjunjie.github.io/semi-supervised-learning-with-gans.html</id>
+    <published>2019-05-09T03:47:15.000Z</published>
+    <updated>2019-05-09T07:50:55.424Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Semi-Supervised Learning and GANs</title>
+    <link href="http://imjunjie.github.io/semi-supervised-learning-and-gans.html"/>
+    <id>http://imjunjie.github.io/semi-supervised-learning-and-gans.html</id>
+    <published>2019-05-09T01:50:06.000Z</published>
+    <updated>2019-05-09T03:05:07.619Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>手把手教你用GAN实现半监督学习</title>
+    <link href="http://imjunjie.github.io/shou-ba-shou-jiao-ni-yong-gan-shi-xian-ban-jian-du-xue-xi.html"/>
+    <id>http://imjunjie.github.io/shou-ba-shou-jiao-ni-yong-gan-shi-xian-ban-jian-du-xue-xi.html</id>
+    <published>2019-05-08T14:30:59.000Z</published>
+    <updated>2019-05-09T01:17:40.932Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>训练TensorFlow识别手写数字</title>
+    <link href="http://imjunjie.github.io/xun-lian-tensorflow-shi-bie-shou-xie-shu-zi.html"/>
+    <id>http://imjunjie.github.io/xun-lian-tensorflow-shi-bie-shou-xie-shu-zi.html</id>
+    <published>2019-05-07T00:02:53.000Z</published>
+    <updated>2019-05-07T01:28:07.028Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Windows系统下Tensorboard显示空白的问题</title>
+    <link href="http://imjunjie.github.io/windows-xi-tong-xia-tensorboard-xian-shi-kong-bai-de-wen-ti.html"/>
+    <id>http://imjunjie.github.io/windows-xi-tong-xia-tensorboard-xian-shi-kong-bai-de-wen-ti.html</id>
+    <published>2019-04-26T14:13:14.000Z</published>
+    <updated>2019-04-26T14:24:32.186Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>机器学习常见处理方法</title>
+    <link href="http://imjunjie.github.io/ji-qi-xue-xi-chang-jian-chu-li-fang-fa.html"/>
+    <id>http://imjunjie.github.io/ji-qi-xue-xi-chang-jian-chu-li-fang-fa.html</id>
+    <published>2019-04-24T12:14:47.000Z</published>
+    <updated>2019-04-24T12:31:55.111Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Python 批量修改文件名</title>
+    <link href="http://imjunjie.github.io/python-pi-liang-xiu-gai-wen-jian-ming.html"/>
+    <id>http://imjunjie.github.io/python-pi-liang-xiu-gai-wen-jian-ming.html</id>
+    <published>2019-04-22T03:09:18.000Z</published>
+    <updated>2019-04-23T06:52:29.356Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="机器学习" scheme="http://imjunjie.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="数据集处理" scheme="http://imjunjie.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%95%B0%E6%8D%AE%E9%9B%86%E5%A4%84%E7%90%86/"/>
+    
+    
+      <category term="机器学习，数据集处理" scheme="http://imjunjie.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%8C%E6%95%B0%E6%8D%AE%E9%9B%86%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>eclipse作为Python的开发工具</title>
+    <link href="http://imjunjie.github.io/eclipse-zuo-wei-python-de-kai-fa-gong-ju.html"/>
+    <id>http://imjunjie.github.io/eclipse-zuo-wei-python-de-kai-fa-gong-ju.html</id>
+    <published>2019-04-21T10:34:54.000Z</published>
+    <updated>2019-04-23T13:08:06.610Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Machine Learning" scheme="http://imjunjie.github.io/categories/Machine-Learning/"/>
+    
+      <category term="Eclipse" scheme="http://imjunjie.github.io/categories/Machine-Learning/Eclipse/"/>
+    
+    
+      <category term="Marchine Learning；Eclipse" scheme="http://imjunjie.github.io/tags/Marchine-Learning%EF%BC%9BEclipse/"/>
+    
+  </entry>
+  
+  <entry>
     <title>TensorFlow学习知识点总结</title>
     <link href="http://imjunjie.github.io/tensorflow-xue-xi-zhi-shi-dian-zong-jie.html"/>
     <id>http://imjunjie.github.io/tensorflow-xue-xi-zhi-shi-dian-zong-jie.html</id>
     <published>2019-04-19T01:06:42.000Z</published>
-    <updated>2019-04-19T01:09:38.091Z</updated>
+    <updated>2019-04-20T01:13:21.085Z</updated>
     
     <summary type="html">
     
@@ -289,288 +521,6 @@
     
     
       <category term="Chrome; Cookies" scheme="http://imjunjie.github.io/tags/Chrome-Cookies/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>离线下载Chrome crx扩展插件</title>
-    <link href="http://imjunjie.github.io/chi-xian-xia-zai-chrome-crx-kuo-zhan-cha-jian.html"/>
-    <id>http://imjunjie.github.io/chi-xian-xia-zai-chrome-crx-kuo-zhan-cha-jian.html</id>
-    <published>2019-03-04T05:33:14.000Z</published>
-    <updated>2019-03-04T05:54:34.179Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Chrome" scheme="http://imjunjie.github.io/categories/Chrome/"/>
-    
-    
-      <category term="Chrome; crx插件" scheme="http://imjunjie.github.io/tags/Chrome-crx%E6%8F%92%E4%BB%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>逆向一个易语言DLL的加密算法</title>
-    <link href="http://imjunjie.github.io/ni-xiang-yi-ge-yi-yu-yan-dll-de-jia-mi-suan-fa.html"/>
-    <id>http://imjunjie.github.io/ni-xiang-yi-ge-yi-yu-yan-dll-de-jia-mi-suan-fa.html</id>
-    <published>2019-03-04T04:52:09.000Z</published>
-    <updated>2019-03-04T05:07:44.620Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="电脑" scheme="http://imjunjie.github.io/categories/%E7%94%B5%E8%84%91/"/>
-    
-      <category term="逆向分析" scheme="http://imjunjie.github.io/categories/%E7%94%B5%E8%84%91/%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/"/>
-    
-    
-      <category term="电脑；逆向分析" scheme="http://imjunjie.github.io/tags/%E7%94%B5%E8%84%91%EF%BC%9B%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>安卓逆向分析笔记---002</title>
-    <link href="http://imjunjie.github.io/an-zhuo-ni-xiang-fen-xi-bi-ji-002.html"/>
-    <id>http://imjunjie.github.io/an-zhuo-ni-xiang-fen-xi-bi-ji-002.html</id>
-    <published>2019-03-04T03:57:29.000Z</published>
-    <updated>2019-03-04T04:38:01.145Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="http://imjunjie.github.io/categories/Android/"/>
-    
-      <category term="安卓逆向分析" scheme="http://imjunjie.github.io/categories/Android/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/"/>
-    
-    
-      <category term="Android，安卓逆向分析" scheme="http://imjunjie.github.io/tags/Android%EF%BC%8C%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>获取腾讯视频真实地址（涉及清晰度选择）</title>
-    <link href="http://imjunjie.github.io/huo-qu-teng-xun-shi-pin-zhen-shi-di-zhi-she-ji-qing-xi-du-xuan-ze.html"/>
-    <id>http://imjunjie.github.io/huo-qu-teng-xun-shi-pin-zhen-shi-di-zhi-she-ji-qing-xi-du-xuan-ze.html</id>
-    <published>2019-03-03T13:49:26.000Z</published>
-    <updated>2019-03-03T16:41:48.104Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="电脑" scheme="http://imjunjie.github.io/categories/%E7%94%B5%E8%84%91/"/>
-    
-      <category term="视频解析" scheme="http://imjunjie.github.io/categories/%E7%94%B5%E8%84%91/%E8%A7%86%E9%A2%91%E8%A7%A3%E6%9E%90/"/>
-    
-    
-      <category term="电脑" scheme="http://imjunjie.github.io/tags/%E7%94%B5%E8%84%91/"/>
-    
-      <category term="视频" scheme="http://imjunjie.github.io/tags/%E8%A7%86%E9%A2%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>腾讯视频的地址解析下载</title>
-    <link href="http://imjunjie.github.io/teng-xun-shi-pin-de-di-zhi-jie-xi-xia-zai.html"/>
-    <id>http://imjunjie.github.io/teng-xun-shi-pin-de-di-zhi-jie-xi-xia-zai.html</id>
-    <published>2019-03-03T13:24:04.000Z</published>
-    <updated>2019-03-03T13:37:32.800Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="电脑" scheme="http://imjunjie.github.io/categories/%E7%94%B5%E8%84%91/"/>
-    
-      <category term="视频解析" scheme="http://imjunjie.github.io/categories/%E7%94%B5%E8%84%91/%E8%A7%86%E9%A2%91%E8%A7%A3%E6%9E%90/"/>
-    
-    
-      <category term="电脑" scheme="http://imjunjie.github.io/tags/%E7%94%B5%E8%84%91/"/>
-    
-      <category term="视频解析" scheme="http://imjunjie.github.io/tags/%E8%A7%86%E9%A2%91%E8%A7%A3%E6%9E%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>自己做腾讯视频真实地址解析分析</title>
-    <link href="http://imjunjie.github.io/zi-ji-zuo-teng-xun-shi-pin-zhen-shi-di-zhi-jie-xi-fen-xi.html"/>
-    <id>http://imjunjie.github.io/zi-ji-zuo-teng-xun-shi-pin-zhen-shi-di-zhi-jie-xi-fen-xi.html</id>
-    <published>2019-03-03T11:39:40.000Z</published>
-    <updated>2019-03-03T12:57:43.830Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="电脑" scheme="http://imjunjie.github.io/categories/%E7%94%B5%E8%84%91/"/>
-    
-      <category term="视频解析" scheme="http://imjunjie.github.io/categories/%E7%94%B5%E8%84%91/%E8%A7%86%E9%A2%91%E8%A7%A3%E6%9E%90/"/>
-    
-    
-      <category term="视频解析" scheme="http://imjunjie.github.io/tags/%E8%A7%86%E9%A2%91%E8%A7%A3%E6%9E%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>安卓逆向分析笔记---001</title>
-    <link href="http://imjunjie.github.io/an-zhuo-ni-xiang-fen-xi-bi-ji-001.html"/>
-    <id>http://imjunjie.github.io/an-zhuo-ni-xiang-fen-xi-bi-ji-001.html</id>
-    <published>2019-03-02T16:39:34.000Z</published>
-    <updated>2019-03-02T16:59:55.826Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="http://imjunjie.github.io/categories/Android/"/>
-    
-      <category term="安卓逆向分析" scheme="http://imjunjie.github.io/categories/Android/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/"/>
-    
-    
-      <category term="Android，安卓逆向分析" scheme="http://imjunjie.github.io/tags/Android%EF%BC%8C%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Windows 10文件资源管理器中删除快速访问</title>
-    <link href="http://imjunjie.github.io/windows-10-wen-jian-zi-yuan-guan-li-qi-zhong-shan-chu-kuai-su-fang-wen.html"/>
-    <id>http://imjunjie.github.io/windows-10-wen-jian-zi-yuan-guan-li-qi-zhong-shan-chu-kuai-su-fang-wen.html</id>
-    <published>2019-03-02T16:24:57.000Z</published>
-    <updated>2019-03-02T16:28:09.799Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="电脑" scheme="http://imjunjie.github.io/categories/%E7%94%B5%E8%84%91/"/>
-    
-      <category term="常见故障" scheme="http://imjunjie.github.io/categories/%E7%94%B5%E8%84%91/%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/"/>
-    
-    
-      <category term="注册表" scheme="http://imjunjie.github.io/tags/%E6%B3%A8%E5%86%8C%E8%A1%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PC监控小工具</title>
-    <link href="http://imjunjie.github.io/pc-jian-kong-xiao-gong-ju.html"/>
-    <id>http://imjunjie.github.io/pc-jian-kong-xiao-gong-ju.html</id>
-    <published>2019-03-02T16:17:38.000Z</published>
-    <updated>2019-03-02T16:29:14.855Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="电脑" scheme="http://imjunjie.github.io/categories/%E7%94%B5%E8%84%91/"/>
-    
-      <category term="软件" scheme="http://imjunjie.github.io/categories/%E7%94%B5%E8%84%91/%E8%BD%AF%E4%BB%B6/"/>
-    
-    
-      <category term="电脑" scheme="http://imjunjie.github.io/tags/%E7%94%B5%E8%84%91/"/>
-    
-      <category term="软件" scheme="http://imjunjie.github.io/tags/%E8%BD%AF%E4%BB%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>IDM可以直接捕捉、下载各种格式的网页在线视频</title>
-    <link href="http://imjunjie.github.io/idm-ke-yi-zhi-jie-bu-zhuo-xia-zai-ge-chong-ge-shi-de-wang-ye-zai-xian-shi-pin.html"/>
-    <id>http://imjunjie.github.io/idm-ke-yi-zhi-jie-bu-zhuo-xia-zai-ge-chong-ge-shi-de-wang-ye-zai-xian-shi-pin.html</id>
-    <published>2019-03-02T16:08:02.000Z</published>
-    <updated>2019-03-02T16:14:56.413Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Idm" scheme="http://imjunjie.github.io/categories/Idm/"/>
-    
-    
-      <category term="Idm" scheme="http://imjunjie.github.io/tags/Idm/"/>
     
   </entry>
   

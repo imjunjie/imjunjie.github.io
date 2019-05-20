@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="https://fonts.cat.net/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false,"dimmer":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="&amp;emsp;&amp;emsp;Vincent Van Gogh painted this beautiful art: ‘The Starry Night’ in 1889 and today my GAN model (I like to call it GAN Gogh :P) painted some MNIST digits with only 20% labeled data!! How co">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Semi-Supervised Learning and GANs">
+<meta property="og:url" content="http://imjunjie.github.io/semi-supervised-learning-and-gans.html">
+<meta property="og:site_name" content="Imjunjie">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;Vincent Van Gogh painted this beautiful art: ‘The Starry Night’ in 1889 and today my GAN model (I like to call it GAN Gogh :P) painted some MNIST digits with only 20% labeled data!! How co">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://imjunjie.github.io/images/Semi-Supervised-Learning-and-GANs/jpeg1-1.jpeg">
+<meta property="og:image" content="http://imjunjie.github.io/images/Semi-Supervised-Learning-and-GANs/png1-1.png">
+<meta property="og:image" content="http://imjunjie.github.io/images/Semi-Supervised-Learning-and-GANs/png1-2.png">
+<meta property="og:image" content="http://imjunjie.github.io/images/Semi-Supervised-Learning-and-GANs/jpeg1-2.jpeg">
+<meta property="og:updated_time" content="2019-05-09T03:05:07.619Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Semi-Supervised Learning and GANs">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;Vincent Van Gogh painted this beautiful art: ‘The Starry Night’ in 1889 and today my GAN model (I like to call it GAN Gogh :P) painted some MNIST digits with only 20% labeled data!! How co">
+<meta name="twitter:image" content="http://imjunjie.github.io/images/Semi-Supervised-Learning-and-GANs/jpeg1-1.jpeg">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Imjunjie" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://imjunjie.github.io/semi-supervised-learning-and-gans.html">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Semi-Supervised Learning and GANs | Imjunjie</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Imjunjie</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">蜻蜓雨荷</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://imjunjie.github.io/semi-supervised-learning-and-gans.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Junjie Jia">
+      <meta itemprop="description" content="生命中的每一步都必须认真对待，把握今天，成就明天！">
+      <meta itemprop="image" content="http://image.xcar.com.cn/attachments/a/day_130416/2013041610_b3e94dab51a2253bd17dxx64sn6s0q2H.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Imjunjie">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Semi-Supervised Learning and GANs
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-09 09:50:06 / 修改时间：11:05:07" itemprop="dateCreated datePublished" datetime="2019-05-09T09:50:06+08:00">2019-05-09</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">13k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">12 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="/images/Semi-Supervised-Learning-and-GANs/jpeg1-1.jpeg" alt><br>&emsp;&emsp;Vincent Van Gogh painted this beautiful art: ‘The Starry Night’ in 1889 and today my GAN model (I like to call it GAN Gogh :P) painted some MNIST digits with only 20% labeled data!! How could it achieve this remarkable feat? … Let’s find out </p>
+<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p><strong><em>What is semi-supervised learning?</em></strong><br>&emsp;&emsp;Most deep learning classifiers require a large amount of labeled samples to generalize well, but getting such data is an expensive and difficult process. To deal with this limitation Semi-supervised learning is presented, which is a class of techniques that make use of a morsel of labeled data along with a large amount of unlabeled data.<code>Many machine-learning researchers have found that unlabeled data, when used in conjunction with a small amount of labeled data can produce considerable improvement in learning accuracy</code>. GANs have shown a lot of potential in semi-supervised learning where the classifier can obtain a good performance with very few labeled data.</p>
+<p><strong><em>Background on GANs</em></strong><br>&emsp;&emsp;GANs are members of deep generative models. They are particularly interesting because they don’t explicitly represent a probability distribution over the space where the data lies. Instead, they provide some way of interacting less directly with this probability distribution by drawing samples from it.<br><img src="/images/Semi-Supervised-Learning-and-GANs/png1-1.png" alt="Architecture of a Vanilla GAN"><br>The basic idea of GAN is to set up a game between two players:</p>
+<ul>
+<li>A generator G: Takes random noise z as input and outputs an image x. Its parameters are tuned to get a high score from the discriminator on fake images that it generates.</li>
+<li>A discriminator D: Takes an image x as input and outputs a score which reflects its confidence that it is a real image. Its parameters are tuned to have a high score when it is fed by a real image, and a low score when a fake image is fed from the generator.</li>
+</ul>
+<p>&emsp;&emsp;I suggest you to go through this and this for more details on their working and optimisation objectives. Now, let us turn the wheels a little and talk about one of the most prominent applications of GANs, semi-supervised learning.</p>
+<h1 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition"></a>Intuition</h1><p>&emsp;&emsp;The vanilla architecture of discriminator has only one output neuron for classifying the R/F probabilities. We train both the networks simultaneously and discard the discriminator after the training as it was used only for improving the generator.<br><img src="/images/Semi-Supervised-Learning-and-GANs/png1-2.png" alt><br>&emsp;&emsp;For the semi-supervised task, in addition to R/F neuron, the discriminator will now have 10 more neurons for classification of MNIST digits. Also, this time their roles change and we can discard the generator after training, whose only objective was to generate unlabeled data to improve the discriminator’s performance.<br><strong><em>&emsp;&emsp;Now the discriminator is turned into an 11-class classifier with 1 neuron (R/F neuron) representing the fake data output and the other 10 representing real data with classes. The following has to be kept in mind:</em></strong></p>
+<ul>
+<li>To assert R/F neuron output label = 0, when real unsupervised data from dataset is fed </li>
+<li>To assert R/F neuron output label= 1, when fake unsupervised data from generator is fed </li>
+<li>To assert R/F output label = 0 and corresponding label output = 1, when real supervised data is fed </li>
+</ul>
+<p>This combination of different sources of data will help the discriminator classify more accurately than, if it had been only provided with a portion of labeled data.</p>
+<h1 id="Architecture"><a href="#Architecture" class="headerlink" title="Architecture"></a>Architecture</h1><p>Now it’s time to get our hands dirty with some code :D<br><strong><em>The Discriminator</em></strong><br>&emsp;&emsp;The architecture followed is similar to the one proposed in <a href="https://arxiv.org/pdf/1511.06434.pdf" target="_blank" rel="noopener">DCGAN paper</a>. We use strided convolutions for reducing the dimensions of the feature-vectors rather than any pooling layers and apply a series of leaky_relu, dropout and BN for all layers to stabilize the learning. BN is dropped for input layer and last layer (for the purpose of feature matching). In the end, we perform Global Average Pooling to take the average over the spatial dimensions of the feature vectors. This squashes the tensor dimensions to a single value. After flattening the features, a dense layer of 11 classes is added with softmax activation for multi-class output.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">discriminator</span><span class="params">(x, dropout_rate = <span class="number">0.</span>, is_training = True, reuse = False)</span>:</span></span><br><span class="line">   <span class="comment"># input x -&gt; n+1 classes</span></span><br><span class="line">   <span class="keyword">with</span> tf.variable_scope(<span class="string">'Discriminator'</span>, reuse = reuse): </span><br><span class="line">     <span class="comment"># x = ?*64*64*1</span></span><br><span class="line">     </span><br><span class="line">     <span class="comment">#Layer 1</span></span><br><span class="line">     conv1 = tf.layers.conv2d(x, <span class="number">128</span>, kernel_size = [<span class="number">4</span>,<span class="number">4</span>], strides = [<span class="number">2</span>,<span class="number">2</span>],</span><br><span class="line">                             padding = <span class="string">'same'</span>, activation = tf.nn.leaky_relu, name = <span class="string">'conv1'</span>) <span class="comment"># ?*32*32*128</span></span><br><span class="line">     <span class="comment">#No batch-norm for input layer</span></span><br><span class="line">     dropout1 = tf.nn.dropout(conv1, dropout_rate)</span><br><span class="line">     </span><br><span class="line">     <span class="comment">#Layer2</span></span><br><span class="line">     conv2 = tf.layers.conv2d(dropout1, <span class="number">256</span>, kernel_size = [<span class="number">4</span>,<span class="number">4</span>], strides = [<span class="number">2</span>,<span class="number">2</span>],</span><br><span class="line">                             padding = <span class="string">'same'</span>, activation = tf.nn.leaky_relu, name = <span class="string">'conv2'</span>) <span class="comment"># ?*16*16*256</span></span><br><span class="line">     batch2 = tf.layers.batch_normalization(conv2, training = is_training)</span><br><span class="line">     dropout2 = tf.nn.dropout(batch2, dropout_rate)</span><br><span class="line">     </span><br><span class="line">     <span class="comment">#Layer3</span></span><br><span class="line">     conv3 = tf.layers.conv2d(dropout2, <span class="number">512</span>, kernel_size = [<span class="number">4</span>,<span class="number">4</span>], strides = [<span class="number">4</span>,<span class="number">4</span>],</span><br><span class="line">                             padding = <span class="string">'same'</span>, activation = tf.nn.leaky_relu, name = <span class="string">'conv3'</span>) <span class="comment"># ?*4*4*512</span></span><br><span class="line">     batch3 = tf.layers.batch_normalization(conv3, training = is_training)</span><br><span class="line">     dropout3 = tf.nn.dropout(batch3, dropout_rate)</span><br><span class="line">       </span><br><span class="line">     <span class="comment"># Layer 4</span></span><br><span class="line">     conv4 = tf.layers.conv2d(dropout3, <span class="number">1024</span>, kernel_size=[<span class="number">3</span>,<span class="number">3</span>], strides=[<span class="number">1</span>,<span class="number">1</span>],</span><br><span class="line">                              padding=<span class="string">'valid'</span>,activation = tf.nn.leaky_relu, name=<span class="string">'conv4'</span>) <span class="comment"># ?*2*2*1024</span></span><br><span class="line">     <span class="comment"># No batch-norm as this layer's op will be used in feature matching loss</span></span><br><span class="line">     <span class="comment"># No dropout as feature matching needs to be definite on logits</span></span><br><span class="line"></span><br><span class="line">     <span class="comment"># Layer 5</span></span><br><span class="line">     <span class="comment"># Note: Applying Global average pooling        </span></span><br><span class="line">     flatten = tf.reduce_mean(conv4, axis = [<span class="number">1</span>,<span class="number">2</span>])</span><br><span class="line">     logits_D = tf.layers.dense(flatten, (<span class="number">1</span> + num_classes))</span><br><span class="line">     out_D = tf.nn.softmax(logits_D)     </span><br><span class="line">   <span class="keyword">return</span> flatten,logits_D,out_D</span><br></pre></td></tr></table></figure></p>
+<p><strong><em>The Generator</em></strong><br>&emsp;&emsp;The generator architecture is designed to mirror the discriminator’s spatial outputs. Fractional strided convolutions are used to increase the spatial dimension of the representation. An input of 4-D tensor of noise z is fed which undergoes a series of transposed convolutions, relu, BN(except at output layer) and dropout operations. Finally tanh activation maps the output image in range (-1,1).<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generator</span><span class="params">(z, dropout_rate = <span class="number">0.</span>, is_training = True, reuse = False)</span>:</span></span><br><span class="line">    <span class="comment"># input latent z -&gt; image x</span></span><br><span class="line">    <span class="keyword">with</span> tf.variable_scope(<span class="string">'Generator'</span>, reuse = reuse):</span><br><span class="line">      <span class="comment">#Layer 1</span></span><br><span class="line">      deconv1 = tf.layers.conv2d_transpose(z, <span class="number">512</span>, kernel_size = [<span class="number">4</span>,<span class="number">4</span>],</span><br><span class="line">                                         strides = [<span class="number">1</span>,<span class="number">1</span>], padding = <span class="string">'valid'</span>,</span><br><span class="line">                                        activation = tf.nn.relu, name = <span class="string">'deconv1'</span>) <span class="comment"># ?*4*4*512</span></span><br><span class="line">      batch1 = tf.layers.batch_normalization(deconv1, training = is_training)</span><br><span class="line">      dropout1 = tf.nn.dropout(batch1, dropout_rate)</span><br><span class="line">      </span><br><span class="line">      <span class="comment">#Layer 2</span></span><br><span class="line">      deconv2 = tf.layers.conv2d_transpose(dropout1, <span class="number">256</span>, kernel_size = [<span class="number">4</span>,<span class="number">4</span>],</span><br><span class="line">                                         strides = [<span class="number">4</span>,<span class="number">4</span>], padding = <span class="string">'same'</span>,</span><br><span class="line">                                        activation = tf.nn.relu, name = <span class="string">'deconv2'</span>)<span class="comment"># ?*16*16*256</span></span><br><span class="line">      batch2 = tf.layers.batch_normalization(deconv2, training = is_training)</span><br><span class="line">      dropout2 = tf.nn.dropout(batch2, dropout_rate)</span><br><span class="line">        </span><br><span class="line">      <span class="comment">#Layer 3</span></span><br><span class="line">      deconv3 = tf.layers.conv2d_transpose(dropout2, <span class="number">128</span>, kernel_size = [<span class="number">4</span>,<span class="number">4</span>],</span><br><span class="line">                                         strides = [<span class="number">2</span>,<span class="number">2</span>], padding = <span class="string">'same'</span>,</span><br><span class="line">                                        activation = tf.nn.relu, name = <span class="string">'deconv3'</span>)<span class="comment"># ?*32*32*256</span></span><br><span class="line">      batch3 = tf.layers.batch_normalization(deconv3, training = is_training)</span><br><span class="line">      dropout3 = tf.nn.dropout(batch3, dropout_rate)</span><br><span class="line">      </span><br><span class="line">      <span class="comment">#Output layer</span></span><br><span class="line">      deconv4 = tf.layers.conv2d_transpose(dropout3, <span class="number">1</span>, kernel_size = [<span class="number">4</span>,<span class="number">4</span>],</span><br><span class="line">                                        strides = [<span class="number">2</span>,<span class="number">2</span>], padding = <span class="string">'same'</span>,</span><br><span class="line">                                        activation = <span class="literal">None</span>, name = <span class="string">'deconv4'</span>)<span class="comment"># ?*64*64*1</span></span><br><span class="line">      out = tf.nn.tanh(deconv4)</span><br><span class="line">    <span class="keyword">return</span> out</span><br></pre></td></tr></table></figure></p>
+<h1 id="Model-Loss"><a href="#Model-Loss" class="headerlink" title="Model Loss"></a>Model Loss</h1><p>&emsp;&emsp;We start by preparing an extended label for the whole batch by appending actual label to zeros. This is done to assert the R/F neuron output to 0 when the labeled data is fed. The discriminator loss for unlabeled data can be thought of as a binary sigmoid loss by asserting R/F neuron output to 1 for fake images and 0 for real images.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">             <span class="comment">### Discriminator loss ###</span></span><br><span class="line"><span class="comment"># Supervised loss -&gt; which class the real data belongs to    </span></span><br><span class="line">temp = tf.nn.softmax_cross_entropy_with_logits_v2(logits = D_real_logit,</span><br><span class="line">                                              labels = extended_label) </span><br><span class="line"><span class="comment"># Labeled_mask and temp are of same size = batch_size where temp is softmax cross_entropy calculated over whole batch</span></span><br><span class="line"></span><br><span class="line">D_L_Supervised = tf.reduce_sum(tf.multiply(temp,labeled_mask)) / tf.reduce_sum(labeled_mask)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Multiplying temp with labeled_mask gives supervised loss on labeled_mask</span></span><br><span class="line"><span class="comment"># data only, calculating mean by dividing by no of labeled samples</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Unsupervised loss -&gt; R/F    </span></span><br><span class="line">D_L_RealUnsupervised = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(</span><br><span class="line">        logits = D_real_logit[:, <span class="number">0</span>], labels = tf.zeros_like(D_real_logit[:, <span class="number">0</span>], dtype=tf.float32)))</span><br><span class="line"></span><br><span class="line">D_L_FakeUnsupervised = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(</span><br><span class="line">        logits = D_fake_logit[:, <span class="number">0</span>], labels = tf.ones_like(D_fake_logit[:, <span class="number">0</span>], dtype=tf.float32)))</span><br><span class="line"></span><br><span class="line">D_L = D_L_Supervised + D_L_RealUnsupervised + D_L_FakeUnsupervised</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;Generator loss is a combination of fake_image loss which falsely wants to assert R/F neuron output to 0 and feature matching loss which penalizes the mean absolute error between the average value of some set of features on the training data and the average values of that set of features on the generated samples.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">             <span class="comment">### Generator loss ###                </span></span><br><span class="line"><span class="comment"># G_L_1 -&gt; Fake data wanna be real </span></span><br><span class="line"></span><br><span class="line">G_L_1 = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(</span><br><span class="line">        logits = D_fake_logit[:, <span class="number">0</span>],labels = tf.zeros_like(D_fake_logit[:, <span class="number">0</span>], dtype=tf.float32)))</span><br><span class="line"></span><br><span class="line"><span class="comment"># G_L_2 -&gt; Feature matching</span></span><br><span class="line">data_moments = tf.reduce_mean(D_real_features, axis = <span class="number">0</span>)</span><br><span class="line">sample_moments = tf.reduce_mean(D_fake_features, axis = <span class="number">0</span>)</span><br><span class="line">G_L_2 = tf.reduce_mean(tf.square(data_moments-sample_moments))</span><br><span class="line"></span><br><span class="line">G_L = G_L_1 + G_L_2</span><br></pre></td></tr></table></figure></p>
+<h1 id="Training"><a href="#Training" class="headerlink" title="Training"></a>Training</h1><p>&emsp;&emsp;The training images are resized from [batch_size, 28 ,28 , 1] to [batch_size, 64, 64, 1] to fit the generator/discriminator architectures. Losses, accuracies and generated samples are calculated and are observed to improve over each epoch.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> range(epochs):</span><br><span class="line">  train_accuracies, train_D_losses, train_G_losses = [], [], []</span><br><span class="line">  <span class="keyword">for</span> it <span class="keyword">in</span> range(no_of_batches):</span><br><span class="line">  </span><br><span class="line">  batch = mnist_data.train.next_batch(batch_size, shuffle = <span class="literal">False</span>)</span><br><span class="line">  <span class="comment"># batch[0] has shape: batch_size*28*28*1         </span></span><br><span class="line">  batch_reshaped = tf.image.resize_images(batch[<span class="number">0</span>], [<span class="number">64</span>, <span class="number">64</span>]).eval()</span><br><span class="line">  <span class="comment"># Reshaping the whole batch into batch_size*64*64*1 for disc/gen architecture</span></span><br><span class="line">  batch_z = np.random.normal(<span class="number">0</span>, <span class="number">1</span>, (batch_size, <span class="number">1</span>, <span class="number">1</span>, latent))</span><br><span class="line">  mask = get_labeled_mask(labeled_rate, batch_size)</span><br><span class="line">                </span><br><span class="line">  train_feed_dict = &#123;x : scale(batch_reshaped), z : batch_z,</span><br><span class="line">                              label : batch[<span class="number">1</span>], labeled_mask : mask,</span><br><span class="line">                               dropout_rate : <span class="number">0.7</span>, is_training : <span class="literal">True</span>&#125;</span><br><span class="line">  <span class="comment">#The label provided in dict are one hot encoded in 10 classes</span></span><br><span class="line">                </span><br><span class="line">  D_optimizer.run(feed_dict = train_feed_dict)</span><br><span class="line">  G_optimizer.run(feed_dict = train_feed_dict)</span><br><span class="line">                </span><br><span class="line">  train_D_loss = D_L.eval(feed_dict = train_feed_dict)</span><br><span class="line">  train_G_loss = G_L.eval(feed_dict = train_feed_dict)</span><br><span class="line">  train_accuracy = accuracy.eval(feed_dict = train_feed_dict)</span><br><span class="line">          </span><br><span class="line">  train_D_losses.append(train_D_loss)</span><br><span class="line">  train_G_losses.append(train_G_loss)</span><br><span class="line">  train_accuracies.append(train_accuracy)</span><br><span class="line">          </span><br><span class="line">  tr_GL = np.mean(train_G_losses)</span><br><span class="line">  tr_DL = np.mean(train_D_losses)</span><br><span class="line">  tr_acc = np.mean(train_accuracies)       </span><br><span class="line">  </span><br><span class="line">  <span class="keyword">print</span> (<span class="string">'After epoch: '</span>+ str(epoch+<span class="number">1</span>) + <span class="string">' Generator loss: '</span></span><br><span class="line">                       + str(tr_GL) + <span class="string">' Discriminator loss: '</span> + str(tr_DL) + <span class="string">' Accuracy: '</span> + str(tr_acc))</span><br><span class="line">        </span><br><span class="line">  gen_samples = fake_data.eval(feed_dict = &#123;z : np.random.normal(<span class="number">0</span>, <span class="number">1</span>, (<span class="number">25</span>, <span class="number">1</span>, <span class="number">1</span>, latent)), dropout_rate : <span class="number">0.7</span>, is_training : <span class="literal">False</span>&#125;)</span><br><span class="line">  <span class="comment"># Dont train batch-norm while plotting =&gt; is_training = False</span></span><br><span class="line">  test_images = tf.image.resize_images(gen_samples, [<span class="number">64</span>, <span class="number">64</span>]).eval()</span><br><span class="line">  show_result(test_images, (epoch + <span class="number">1</span>), show = <span class="literal">True</span>, save = <span class="literal">False</span>, path = <span class="string">''</span>)</span><br></pre></td></tr></table></figure></p>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>&emsp;&emsp;The training was done for 5 epochs and 20% labeled_rate due to restricted GPU access. For better results more training epochs with lesser labeled_rate is advised. The complete code notebook can be found <a href="https://github.com/raghav64/SemiSuper_GAN/blob/master/SSGAN.py" target="_blank" rel="noopener">here</a>.<br><img src="/images/Semi-Supervised-Learning-and-GANs/jpeg1-2.jpeg" alt="Training Results"><br>&emsp;&emsp;Unsupervised learning is considered as a lacuna in the field of AGI. To bridge this gap, GANs are considered as a potential solution for learning complex tasks with low labeled data. With blooming new approaches in the domain of semi and unsupervised learning we can expect that this gap will lessen.<br>&emsp;&emsp;I would be remiss not to mention my inspiration from this beautiful blog, this implementation along with the assistance of my colleague working on similar projects.<br><strong><em>Until next time!! Kz</em></strong></p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
+<li><a href="https://towardsdatascience.com/semi-supervised-learning-and-gans-f23bbf4ac683" target="_blank" rel="noopener">Semi-Supervised Learning and GANs</a></li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">------------------------ The End ------------------------</div>
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/shou-ba-shou-jiao-ni-yong-gan-shi-xian-ban-jian-du-xue-xi.html" rel="next" title="手把手教你用GAN实现半监督学习">
+                <i class="fa fa-chevron-left"></i> 手把手教你用GAN实现半监督学习
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/semi-supervised-learning-with-gans.html" rel="prev" title="Semi-supervised learning with GANs">
+                Semi-supervised learning with GANs <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://image.xcar.com.cn/attachments/a/day_130416/2013041610_b3e94dab51a2253bd17dxx64sn6s0q2H.gif" alt="Junjie Jia">
+            
+              <p class="site-author-name" itemprop="name">Junjie Jia</p>
+              <p class="site-description motion-element" itemprop="description">生命中的每一步都必须认真对待，把握今天，成就明天！</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/imjunjie" title="GitHub &rarr; https://github.com/imjunjie" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="mailto:junjie017@gmail.com" title="E-Mail &rarr; mailto:junjie017@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Intuition"><span class="nav-number">2.</span> <span class="nav-text">Intuition</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Architecture"><span class="nav-number">3.</span> <span class="nav-text">Architecture</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Model-Loss"><span class="nav-number">4.</span> <span class="nav-text">Model Loss</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Training"><span class="nav-number">5.</span> <span class="nav-text">Training</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Conclusion"><span class="nav-number">6.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">7.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Junjie Jia</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">184k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">2:47</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.0.0</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+  
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <!-- 代码块复制功能 -->
+<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+
+</body>
+</html>

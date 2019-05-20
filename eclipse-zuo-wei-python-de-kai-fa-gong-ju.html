@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="https://fonts.cat.net/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false,"dimmer":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="简介Eclipse是一款基于Java的可扩展开发平台。其官方下载中包括J2EE方向版本、Java方向版本、C/C++方向版本、移动应用方向版本等诸多版本。除此之外，Eclipse还可以通过安装插件的方式进行诸如Python、Android、PHP等语言的开发。 其中PyDev是一个功能强大的 Eclipse插件，使用户可用 Eclipse 来进行 Python 应用程序的开发和调试。PyDev 插">
+<meta name="keywords" content="Marchine Learning；Eclipse">
+<meta property="og:type" content="article">
+<meta property="og:title" content="eclipse作为Python的开发工具">
+<meta property="og:url" content="http://imjunjie.github.io/eclipse-zuo-wei-python-de-kai-fa-gong-ju.html">
+<meta property="og:site_name" content="Imjunjie">
+<meta property="og:description" content="简介Eclipse是一款基于Java的可扩展开发平台。其官方下载中包括J2EE方向版本、Java方向版本、C/C++方向版本、移动应用方向版本等诸多版本。除此之外，Eclipse还可以通过安装插件的方式进行诸如Python、Android、PHP等语言的开发。 其中PyDev是一个功能强大的 Eclipse插件，使用户可用 Eclipse 来进行 Python 应用程序的开发和调试。PyDev 插">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://imjunjie.github.io/images/eclipse作为Python的开发工具/img1-4.png">
+<meta property="og:image" content="http://imjunjie.github.io/images/eclipse作为Python的开发工具/img1-1.png">
+<meta property="og:image" content="http://imjunjie.github.io/images/eclipse作为Python的开发工具/img1-2.png">
+<meta property="og:image" content="http://imjunjie.github.io/images/eclipse作为Python的开发工具/img1-5.png">
+<meta property="og:image" content="http://imjunjie.github.io/images/eclipse作为Python的开发工具/img1-3.png">
+<meta property="og:updated_time" content="2019-04-23T13:08:06.610Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="eclipse作为Python的开发工具">
+<meta name="twitter:description" content="简介Eclipse是一款基于Java的可扩展开发平台。其官方下载中包括J2EE方向版本、Java方向版本、C/C++方向版本、移动应用方向版本等诸多版本。除此之外，Eclipse还可以通过安装插件的方式进行诸如Python、Android、PHP等语言的开发。 其中PyDev是一个功能强大的 Eclipse插件，使用户可用 Eclipse 来进行 Python 应用程序的开发和调试。PyDev 插">
+<meta name="twitter:image" content="http://imjunjie.github.io/images/eclipse作为Python的开发工具/img1-4.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Imjunjie" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://imjunjie.github.io/eclipse-zuo-wei-python-de-kai-fa-gong-ju.html">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>eclipse作为Python的开发工具 | Imjunjie</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Imjunjie</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">蜻蜓雨荷</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://imjunjie.github.io/eclipse-zuo-wei-python-de-kai-fa-gong-ju.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Junjie Jia">
+      <meta itemprop="description" content="生命中的每一步都必须认真对待，把握今天，成就明天！">
+      <meta itemprop="image" content="http://image.xcar.com.cn/attachments/a/day_130416/2013041610_b3e94dab51a2253bd17dxx64sn6s0q2H.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Imjunjie">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">eclipse作为Python的开发工具
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-21 18:34:54" itemprop="dateCreated datePublished" datetime="2019-04-21T18:34:54+08:00">2019-04-21</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-23 21:08:06" itemprop="dateModified" datetime="2019-04-23T21:08:06+08:00">2019-04-23</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Machine-Learning/Eclipse/" itemprop="url" rel="index"><span itemprop="name">Eclipse</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">2.7k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">2 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Eclipse是一款基于Java的可扩展开发平台。其官方下载中包括J2EE方向版本、Java方向版本、C/C++方向版本、移动应用方向版本等诸多版本。除此之外，Eclipse还可以通过安装插件的方式进行诸如Python、Android、PHP等语言的开发。</p>
+<p>其中PyDev是一个功能强大的 Eclipse插件，使用户可用 Eclipse 来进行 Python 应用程序的开发和调试。PyDev 插件的出现方便了众多的 Python 开发人员，它提供了一些很好的功能，如：语法错误提示、源代码编辑助手、Quick Outline、Globals Browser、Hierarchy View、运行和调试等等。</p>
+<p>本文将介绍eclipse的pydev插件的安装与配置。 </p>
+<h1 id="安装准备"><a href="#安装准备" class="headerlink" title="安装准备"></a>安装准备</h1><p>配置Python的系统环境变量PATH=D:\Python34（即python的安装目录）<br>显示python的版本，用来测试python的环境是否配置好 , 命令：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Python</span><br></pre></td></tr></table></figure></p>
+<p>安装python的第三方库<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install pandas</span><br><span class="line">pip install PyMySql</span><br></pre></td></tr></table></figure></p>
+<p><img src="/images/eclipse作为Python的开发工具/img1-4.png" alt><br>用来测试python运行时会不会出错，没报错就说明程序可以运行。</p>
+<h1 id="安装教程"><a href="#安装教程" class="headerlink" title="安装教程"></a>安装教程</h1><pre><code>1. 首先下载jdk，安装，配置环境变量；
+2. 再下载eclipse，配置编译器；
+3. 写一个helloworld；（具体过程请专门看教程。）
+</code></pre><p>这样，基础环境就搭好了。下面安装PyDev，有两种安装方法，分别介绍之：</p>
+<h2 id="简易在线安装"><a href="#简易在线安装" class="headerlink" title="简易在线安装"></a>简易在线安装</h2><p>这是官网安装，下载安装很方便，但可能由于网络原因用时过长或失败。</p>
+<p>官网安装过程如下：</p>
+<h3 id="安装Pydev"><a href="#安装Pydev" class="headerlink" title="安装Pydev"></a>安装Pydev</h3><ul>
+<li>Help - Install New Software<br><img src="/images/eclipse作为Python的开发工具/img1-1.png" alt><br>(1)点击 - Add<br>(2)输入 Name 和 Location，Name 随意，Location 为 <a href="http://pydev.org/updates" target="_blank" rel="noopener">http://pydev.org/updates</a> ； 点击OK<br>把【connect all update sites during install to find required software】的勾选去掉，否则在安装新插件时会联网寻找所有可能的更新站点搜索，导致安装时间不可预估，并可能导致安装失败。</li>
+</ul>
+<p>确定后可以看到一个Pending过程，然后得到如下图所示的插件：<br><img src="/images/eclipse作为Python的开发工具/img1-2.png" alt><br>勾选后，点击Next进行安装。</p>
+<p>不过，由于网络的原因，这种方法安装PyDev极有可能失败，提示网络连接错误等。需要vpn。</p>
+<h3 id="eclipse和python关联："><a href="#eclipse和python关联：" class="headerlink" title="eclipse和python关联："></a>eclipse和python关联：</h3><p>eclipse菜单 -&gt; Windows -&gt;Preferences -&gt; PyDev-&gt; Interpreters - Python Interpreter.<br>点击New按钮,选择python.exe的路径(第1步安装Python的路径),打开后显示出一个包含很多复选框的窗口,点OK结束！<br><img src="/images/eclipse作为Python的开发工具/img1-5.png" alt></p>
+<h2 id="离线安装"><a href="#离线安装" class="headerlink" title="离线安装"></a>离线安装</h2><p>通常官网安装并不如人意，你懂的… 推荐离线安装，步骤如下</p>
+<ol>
+<li>下载PyDev离线安装包，我的云盘地址： <a href="http://pan.baidu.com/s/1pJ1HQKb" target="_blank" rel="noopener">http://pan.baidu.com/s/1pJ1HQKb</a></li>
+<li>将解压后的features和plugins两个文件夹分别拷贝到Eclipse安装目录下的features和plugins目录中</li>
+</ol>
+<h1 id="PyDev的配置"><a href="#PyDev的配置" class="headerlink" title="PyDev的配置"></a>PyDev的配置</h1><p>不论官网安装还是离线安装，都需要配置PyDev，步骤如下</p>
+<ol>
+<li><p>启动Eclipse，打开window-&gt;Preferences</p>
+</li>
+<li><p>选择Interpreter-Python，然后选择New</p>
+</li>
+<li><p>点击【New】，添加一个系统里已有的Python解释器的位置。确定后会经过短暂的处理，得到它的Libraries、Buildins等。<br>(我写的地址是提前安装好的annaconda。)</p>
+</li>
+<li><p>最后，单击Reference界面下的 OK ; 等待后即可在Eclipse中写Python了。　</p>
+</li>
+</ol>
+<h1 id="例子-实战"><a href="#例子-实战" class="headerlink" title="例子 实战"></a>例子 实战</h1><p>前面就已经配置好了Python的开发环境，下面新建一个项目，来测试一下，确实可以运行。</p>
+<p>点击【File】-【New】-【Other】，找到【PyDev】，选择【PyDev Project】，点击Next。取一个项目名称，比如helloPython，如下图所示：<br><img src="/images/eclipse作为Python的开发工具/img1-3.png" alt></p>
+<p>点击【Finish】，完成项目创建。然后你会进入PyDev视图，进行Python开发。</p>
+<p>右键项目的src目录，选择【New】-【PyDev Package】，创建一个Python包，此处也命名为helloPython。</p>
+<p>再右键该package，【New】-【PyDev Module】（python的module 就是java的calss），此处也命名为helloPython。 （pydev提供了一些模板，这边暂选 Empty）</p>
+<p>双击打开 helloPython .py，添加如下代码。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span><span class="string">'hello python!'</span></span><br></pre></td></tr></table></figure></p>
+<p>右键项目，选择【Run As】-【Python Run】，或Ctrl+F11运行项目。</p>
+<p>此时，可以在下方的console窗口，看到项目的运行结果。</p>
+<h1 id="PyDev的注释快捷键"><a href="#PyDev的注释快捷键" class="headerlink" title="PyDev的注释快捷键"></a>PyDev的注释快捷键</h1><p>个人认为，PyDev是很好用的python编辑器。使用起来的确得心应手，建议初学者多尝试用用。</p>
+<p>下面从网上整理了一些PyDev的快捷键，和大家分享分享：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+3 行注释</span><br><span class="line"></span><br><span class="line">Ctr+\ 去行注释</span><br><span class="line">Ctrl+Shift+3 去行注释</span><br><span class="line"></span><br><span class="line">Ctrl+4 块注释</span><br><span class="line">Ctrl+5 去块注释</span><br><span class="line"></span><br><span class="line">Ctrl+9 折叠全部</span><br><span class="line">Ctrl+0 展开全部</span><br><span class="line"></span><br><span class="line">Ctrl+- 折叠</span><br><span class="line">Ctrl+= 展开</span><br><span class="line"></span><br><span class="line">Ctrl+Shift+Up 上一函数</span><br><span class="line">Ctrl+Shift+Down 下一函数</span><br><span class="line"></span><br><span class="line">Ctrl+Shift+O 整理导入顺序</span><br></pre></td></tr></table></figure></p>
+<h1 id="tensorflow中所安装的模块"><a href="#tensorflow中所安装的模块" class="headerlink" title="tensorflow中所安装的模块"></a>tensorflow中所安装的模块</h1><ol>
+<li><p>Python安装cv2模块</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install opencv-python</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装 captcha</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install captcha</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h1><p><a href="https://www.python.org/dev/peps/pep-0263/" target="_blank" rel="noopener">PEP 263 — Defining Python Source Code Encodings</a></p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a href="https://www.52pojie.cn/thread-866403-1-1.html" target="_blank" rel="noopener">Eclipse环境安装Python插件PyDev</a></p>
+<h1 id="其他网址"><a href="#其他网址" class="headerlink" title="其他网址"></a>其他网址</h1><p><a href="http://www.spiderpy.cn/blog/detail/32" target="_blank" rel="noopener">使用captcha模块生成图形验证码</a><br><a href="http://blog.ku-cat.com/2018/04/23/python-captcha/" target="_blank" rel="noopener">python使用captcha模块生成图形验证码</a></p>
+<p><a href="https://www.jianshu.com/p/47f0319028f2" target="_blank" rel="noopener">【简书】1.CNN图片单标签分类（基于TensorFlow实现基础VGG16网络）</a><br><a href="https://www.jianshu.com/p/596db72a7e00" target="_blank" rel="noopener">【简书】2.CNN图片多标签分类（基于TensorFlow实现验证码识别OCR）</a><br><a href="https://blog.csdn.net/javastart/article/details/88087966" target="_blank" rel="noopener">【CSDN】2.CNN图片多标签分类（基于TensorFlow实现验证码识别OCR）</a></p>
+<p><a href="https://blog.csdn.net/xijuezhu8128/article/details/79556878" target="_blank" rel="noopener">Tensorflow制作并用CNN训练自己的数据集</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">------------------------ The End ------------------------</div>
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Marchine-Learning；Eclipse/" rel="tag"># Marchine Learning；Eclipse</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/tensorflow-xue-xi-zhi-shi-dian-zong-jie.html" rel="next" title="TensorFlow学习知识点总结">
+                <i class="fa fa-chevron-left"></i> TensorFlow学习知识点总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/python-pi-liang-xiu-gai-wen-jian-ming.html" rel="prev" title="Python 批量修改文件名">
+                Python 批量修改文件名 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://image.xcar.com.cn/attachments/a/day_130416/2013041610_b3e94dab51a2253bd17dxx64sn6s0q2H.gif" alt="Junjie Jia">
+            
+              <p class="site-author-name" itemprop="name">Junjie Jia</p>
+              <p class="site-description motion-element" itemprop="description">生命中的每一步都必须认真对待，把握今天，成就明天！</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/imjunjie" title="GitHub &rarr; https://github.com/imjunjie" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="mailto:junjie017@gmail.com" title="E-Mail &rarr; mailto:junjie017@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装准备"><span class="nav-number">2.</span> <span class="nav-text">安装准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装教程"><span class="nav-number">3.</span> <span class="nav-text">安装教程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简易在线安装"><span class="nav-number">3.1.</span> <span class="nav-text">简易在线安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Pydev"><span class="nav-number">3.1.1.</span> <span class="nav-text">安装Pydev</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#eclipse和python关联："><span class="nav-number">3.1.2.</span> <span class="nav-text">eclipse和python关联：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#离线安装"><span class="nav-number">3.2.</span> <span class="nav-text">离线安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PyDev的配置"><span class="nav-number">4.</span> <span class="nav-text">PyDev的配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#例子-实战"><span class="nav-number">5.</span> <span class="nav-text">例子 实战</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PyDev的注释快捷键"><span class="nav-number">6.</span> <span class="nav-text">PyDev的注释快捷键</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tensorflow中所安装的模块"><span class="nav-number">7.</span> <span class="nav-text">tensorflow中所安装的模块</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常见问题"><span class="nav-number">8.</span> <span class="nav-text">常见问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">9.</span> <span class="nav-text">参考文献</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他网址"><span class="nav-number">10.</span> <span class="nav-text">其他网址</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Junjie Jia</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">184k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">2:47</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.0.0</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+  
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <!-- 代码块复制功能 -->
+<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+
+</body>
+</html>

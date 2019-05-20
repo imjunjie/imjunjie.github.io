@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="https://fonts.cat.net/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false,"dimmer":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="引言&amp;emsp;&amp;emsp;本文主要介绍如何在tensorflow上仅使用200个带标签的mnist图像，实现在一万张测试图片上99%的测试精度，原理在于使用GAN做半监督学习。前文主要介绍一些原理部分，后文详细介绍代码及其实现原理。前文介绍比较简单，有基础的同学请略过直接看第二部分，文章末尾给出了代码GitHub链接。对GAN不了解的同学可以查看微信公众号：机器学习算法全栈工程师 的GAN入">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手把手教你用GAN实现半监督学习">
+<meta property="og:url" content="http://imjunjie.github.io/shou-ba-shou-jiao-ni-yong-gan-shi-xian-ban-jian-du-xue-xi.html">
+<meta property="og:site_name" content="Imjunjie">
+<meta property="og:description" content="引言&amp;emsp;&amp;emsp;本文主要介绍如何在tensorflow上仅使用200个带标签的mnist图像，实现在一万张测试图片上99%的测试精度，原理在于使用GAN做半监督学习。前文主要介绍一些原理部分，后文详细介绍代码及其实现原理。前文介绍比较简单，有基础的同学请略过直接看第二部分，文章末尾给出了代码GitHub链接。对GAN不了解的同学可以查看微信公众号：机器学习算法全栈工程师 的GAN入">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://imjunjie.github.io/images/手把手教你用GAN实现半监督学习/dib1-1.dib">
+<meta property="og:image" content="http://imjunjie.github.io/images/手把手教你用GAN实现半监督学习/png1-1.png">
+<meta property="og:image" content="http://imjunjie.github.io/images/手把手教你用GAN实现半监督学习/png1-2.png">
+<meta property="og:image" content="http://imjunjie.github.io/images/手把手教你用GAN实现半监督学习/jpg1-1.jpg">
+<meta property="og:image" content="http://imjunjie.github.io/images/手把手教你用GAN实现半监督学习/png1-3.png">
+<meta property="og:updated_time" content="2019-05-09T01:17:40.932Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="手把手教你用GAN实现半监督学习">
+<meta name="twitter:description" content="引言&amp;emsp;&amp;emsp;本文主要介绍如何在tensorflow上仅使用200个带标签的mnist图像，实现在一万张测试图片上99%的测试精度，原理在于使用GAN做半监督学习。前文主要介绍一些原理部分，后文详细介绍代码及其实现原理。前文介绍比较简单，有基础的同学请略过直接看第二部分，文章末尾给出了代码GitHub链接。对GAN不了解的同学可以查看微信公众号：机器学习算法全栈工程师 的GAN入">
+<meta name="twitter:image" content="http://imjunjie.github.io/images/手把手教你用GAN实现半监督学习/dib1-1.dib">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Imjunjie" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://imjunjie.github.io/shou-ba-shou-jiao-ni-yong-gan-shi-xian-ban-jian-du-xue-xi.html">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>手把手教你用GAN实现半监督学习 | Imjunjie</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Imjunjie</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">蜻蜓雨荷</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://imjunjie.github.io/shou-ba-shou-jiao-ni-yong-gan-shi-xian-ban-jian-du-xue-xi.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Junjie Jia">
+      <meta itemprop="description" content="生命中的每一步都必须认真对待，把握今天，成就明天！">
+      <meta itemprop="image" content="http://image.xcar.com.cn/attachments/a/day_130416/2013041610_b3e94dab51a2253bd17dxx64sn6s0q2H.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Imjunjie">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">手把手教你用GAN实现半监督学习
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-08 22:30:59" itemprop="dateCreated datePublished" datetime="2019-05-08T22:30:59+08:00">2019-05-08</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-09 09:17:40" itemprop="dateModified" datetime="2019-05-09T09:17:40+08:00">2019-05-09</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">20k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">18 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>&emsp;&emsp;本文主要介绍如何在tensorflow上仅使用200个带标签的mnist图像，实现在一万张测试图片上99%的测试精度，原理在于使用GAN做半监督学习。前文主要介绍一些原理部分，后文详细介绍代码及其实现原理。前文介绍比较简单，有基础的同学请略过直接看第二部分，文章末尾给出了代码GitHub链接。对GAN不了解的同学可以查看微信公众号：机器学习算法全栈工程师 的GAN入门文章。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">本博客中的代码最终以GitHub中的代码为准，GitHub链接在文章底部，另外，本文已投稿至微信公众号：机器学习算法全栈工程师，欢迎关注此公众号</span><br></pre></td></tr></table></figure></p>
+<h1 id="1-监督，无监督，半监督学习介绍"><a href="#1-监督，无监督，半监督学习介绍" class="headerlink" title="1.监督，无监督，半监督学习介绍"></a>1.监督，无监督，半监督学习介绍</h1><p>&emsp;&emsp;在正式介绍实现半监督学习之前，我在这里首先介绍一下<u>监督学习（supervised learning），半监督学习（semi-supervised learning）和无监督学习（unsupervised learning）的区别</u>。</p>
+<ul>
+<li><font color="blue">监督学习</font>是指在训练集中包含训练数据的标签（label），比如类别标签，位置标签等等。最普遍使用标签学习的是分类任务，对于分类任务，输入给网络训练样本（samples）的一些特征（feature）以及此样本对应的标签（label），通过神经网络拟合的方法，神经网络可以在特征和标签之间找到一个合适的映射关系（mapping），这样当训练完成后，输入给网络没有label的样本，神经网络可以通过这一个映射关系猜出它属于哪一类。典型机器学习的监督学习的例子是KNN和SVM。目前机器视觉领域的急速发展离不开监督学习。 </li>
+<li>而<font color="blue">无监督学习</font>的训练事先没有训练标签，直接输入给算法一些数据，算法会努力学习数据的共同点，寻找样本之间的规律性。无监督学习是很典型的学习，人的学习有时候就是基于无监督的，比如我并不懂音乐，但是我听了上百首歌曲后，我可以根据我听的结果将音乐分为摇滚乐（记为0类）、民谣（记为1类）、纯音乐（记为2类）等等，事实上，我并不知道具体是哪一类，所以将它们记为0，1，2三类。典型的无监督学习方法是聚类算法，比如k-means。 </li>
+<li>东方快车电影里面大侦探有过一个台词，人们的话只有对与错，没有中间地带，最后经过一系列事件后他找到了对与错之间的betweeness。在监督学习和无监督学习之间，同样存在着中间地带——<font color="blue">半监督学习</font>。半监督学习简单来说就是将无监督学习和监督学习相结合，一部分包含了监督学习一部分包含了无监督学习，比如给一个分类任务，此分类任务的训练集中有精确标签的数据非常少，但是包含了大量的没有标注的数据，如果直接用监督学习的方法去做的话，效果不一定很好，有标注的训练数据太少很容易导致过拟合，而且大量的无标注的数据都没有充分的利用，最常见的例子是在医学图像的分析检测任务中，医学图像本身就不容易获得，要获得精标注的图像就需要有经验的医生去一个一个标注，显然他们并没有那么多的时间。这时候就是半监督学习的用武之地了，<u>半监督学习很适合用在标签数据少，训练数据又比较多的情况</u>。<br>常见的半监督学习方法主要有：<br>&emsp;&emsp;1.<strong><em>Self training </em></strong><br>&emsp;&emsp;2.<strong><em>Generative model </em></strong><br>&emsp;&emsp;3.<strong><em>S3VMs </em></strong><br>&emsp;&emsp;4.<strong><em>Graph-Based AIgorithems </em></strong><br>&emsp;&emsp;5.<strong><em>Multiview AIgorithems   </em></strong></li>
+</ul>
+<p>&emsp;&emsp;接下来我会结合<strong><em>Improved Techniques for Training GANs</em></strong>这篇论文详细介绍如何使用目前最火的生成对抗模型GAN去实现半监督学习，也即是<font color="red">半监督学习的第二种方法</font>，并给出详细的代码解释，对理论不是很熟悉的同学可以直接看代码。另外注明：<u>我只复现了论文半监督学习的部分，之前也有人复现了此部分，但是我感觉他对原文有很大的曲解，他使用了所有的标签去帮助生成，并不在分类上，不太符合半监督学习的本质，而且代码很复杂</u>，感兴趣的可以去GitHub上搜ssgan,希望能帮助你。 </p>
+<h1 id="2-Improved-Techniques-for-Training-GANs"><a href="#2-Improved-Techniques-for-Training-GANs" class="headerlink" title="2. Improved Techniques for Training GANs"></a>2. Improved Techniques for Training GANs</h1><p>&emsp;&emsp;GAN是无监督学习的代表，它可以不断学习模拟数据的分布进而生成和训练数据相似分布的样本，在训练过程不需要标签，<u>GAN在无监督学习领域，生成领域，半监督学习领域以及强化学习领域都有广泛的应用</u>。但是GAN存在很多的训练不稳定等等的问题，作者good fellow在2016年放出了Improved Techniques for Training GANs，对GAN训练不稳定的问题做了一些解释和经验上的解决方案，并给出了和半监督学习结合的方法。<br>&emsp;&emsp;从平衡点角度解释GAN的不稳定性来说，GAN的<b>纳什均衡点</b>是一个鞍点，并不是一个局部最小值点，基于梯度的方法主要是寻找高维空间中的极小值点，因此使用梯度训练的方法很难使GAN收敛到平衡点。为此，为了进一部分缓解这个问题，goodfellow联合提出了一些改进方案，<br>主要有： </p>
+<ul>
+<li>Feature matching, </li>
+<li>Minibatch discrimination </li>
+<li>weight Historical averaging (相当于一个正则化的方式) </li>
+<li>One-sided label smoothing </li>
+<li>Virtual batch normalization </li>
+</ul>
+<p>后来发现<u>Feature matching在半监督学习上表现良好，mini-batch discrimination表现很差</u>。 </p>
+<h1 id="3-semi-supervised-GAN"><a href="#3-semi-supervised-GAN" class="headerlink" title="3. semi-supervised GAN"></a>3. semi-supervised GAN</h1><p>&emsp;&emsp;对于一个普通的分类器来说，假设对MNIST分类，一共有10类数据，分别是0-9，分类器模型以数据x作为输入，输出一个K=10维的向量，经过softmax后计算出分类概率最大的那个类别。<u>在监督学习领域，往往是通过最小化类别标签和预测分布 的交叉熵来实现最好的结果</u>。<br>&emsp;&emsp;但是<font color="red">将GAN用在半监督学习领域</font>的时候需要做一些改变，生成器不做改变，仍然负责从输入噪声数据中生成图像，判别器D不在是一个简单的真假分类（二分类）器，假设输入数据有K类，D就是K+1的分类器，多出的那一类是判别输入是否是生成器G生成的图像。网络的流程图见下图：<br><img src="/images/手把手教你用GAN实现半监督学习/dib1-1.dib" alt><br>&emsp;&emsp;网络结构确定了之后就是损失函数的设计部分，借助GAN我们就可以从无标签数据中学习，只要知道输入数据是真实数据，那就可以通过最大化\(logP_{model}(y\in{1,2,…,K}|x)\)来实现，上述式子可解释为不管输入的是哪一类真的图片（不是生成器G生成的假图片），只要最大化输出它是真图像的概率就可以了，不需要具体分出是哪一类。由于GAN的生成器的参与，训练数据中有一半都是生成的假数据。<br>&emsp;&emsp;下面给出判别器D的损失函数设计，D损失函数包括两个部分，一个是<u>监督学习损失</u>，一个是<u>半监督学习损失</u>，具体公式如下： </p>
+<script type="math/tex; mode=display">L=L_{supervised} + L_{unsupervised}</script><p>其中：<br><img src="/images/手把手教你用GAN实现半监督学习/png1-1.png" alt><br>对于无监督学习来说，只需要输出真假就可以了，不需要确定是哪一类，因此我们令 </p>
+<script type="math/tex; mode=display">D(x)=1-logP_{model}(y\in{1,2,...,K}|x)</script><p>其中\( P_{model} \)表示判别是假图像的概率，那么D(x)就代表了输出是真图像的概率，那么无监督学习的损失函数就可以表示为 </p>
+<script type="math/tex; mode=display">L_{unsupervised} = -\{E_{x\sim Pdata(x)}logD(x) + E_{z\sim noise}log(1-D(G(z)))\}</script><p>&emsp;&emsp;这不就是GAN的损失函数嘛！好了，到这里得出结论，在半监督学习中，判别器的分类要多分一类，多出的这一类表示的是生成器生成的假图像这一类，另外判别器的损失函数不仅包括了监督损失函数而且还有无监督的损失函数，在训练过程中同时最小化这两者。损失函数介绍完毕，接下来介绍代码实现部分。</p>
+<h1 id="4-代码实现及解读"><a href="#4-代码实现及解读" class="headerlink" title="4.代码实现及解读"></a>4.代码实现及解读</h1><p>&emsp;&emsp;<font color="red">注：完整代码的GitHub连接在文章底部。这里只截取关键部分做介绍 </font><br>&emsp;&emsp;在代码中，我使用feature matching，one side label smoothing方式，并没有使用论文中介绍的Historical averaging,而是只对判别器D使用了简单的l2正则化，防止过拟合，另外论文中介绍的Minibatch discrimination, Virtual batch normalization等等都没有使用，主要是这两者在半监督学习中表现不是很好，但是如果想获得好的生成结果还是很有用的。<br>&emsp;&emsp;首先介绍网络结构部分，因为是在mnist数据集比较简单，所以随便搭了一个判别器和生成器，具体如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">discriminator</span><span class="params">(self, name, inputs, reuse)</span>:</span></span><br><span class="line">        l = tf.shape(inputs)[<span class="number">0</span>]</span><br><span class="line">        inputs = tf.reshape(inputs, (l,self.img_size,self.img_size,self.dim))</span><br><span class="line">        <span class="keyword">with</span> tf.variable_scope(name,reuse=reuse):</span><br><span class="line">            out = []</span><br><span class="line">            output = conv2d(<span class="string">'d_con1'</span>,inputs,<span class="number">5</span>, <span class="number">64</span>, stride=<span class="number">2</span>, padding=<span class="string">'SAME'</span>) <span class="comment">#14*14</span></span><br><span class="line">            output1 = lrelu(self.bn(<span class="string">'d_bn1'</span>,output))</span><br><span class="line">            out.append(output1)</span><br><span class="line">            <span class="comment"># output1 = tf.contrib.keras.layers.GaussianNoise</span></span><br><span class="line">            output = conv2d(<span class="string">'d_con2'</span>, output1, <span class="number">3</span>, <span class="number">64</span>*<span class="number">2</span>, stride=<span class="number">2</span>, padding=<span class="string">'SAME'</span>)<span class="comment">#7*7</span></span><br><span class="line">            output2 = lrelu(self.bn(<span class="string">'d_bn2'</span>, output))</span><br><span class="line">            out.append(output2)</span><br><span class="line">            output = conv2d(<span class="string">'d_con3'</span>, output2, <span class="number">3</span>, <span class="number">64</span>*<span class="number">4</span>, stride=<span class="number">1</span>, padding=<span class="string">'VALID'</span>)<span class="comment">#5*5</span></span><br><span class="line">            output3 = lrelu(self.bn(<span class="string">'d_bn3'</span>, output))</span><br><span class="line">            out.append(output3)</span><br><span class="line">            output = conv2d(<span class="string">'d_con4'</span>, output3, <span class="number">3</span>, <span class="number">64</span>*<span class="number">4</span>, stride=<span class="number">2</span>, padding=<span class="string">'VALID'</span>)<span class="comment">#2*2</span></span><br><span class="line">            output4 = lrelu(self.bn(<span class="string">'d_bn4'</span>, output))</span><br><span class="line">            out.append(output4)</span><br><span class="line">            output = tf.reshape(output4, [l, <span class="number">2</span>*<span class="number">2</span>*<span class="number">64</span>*<span class="number">4</span>])<span class="comment"># 2*2*64*4</span></span><br><span class="line">            output = fc(<span class="string">'d_fc'</span>, output, self.num_class)</span><br><span class="line">            <span class="comment"># output = tf.nn.softmax(output)</span></span><br><span class="line">            <span class="keyword">return</span> output, out</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;其中conv2d()是卷积操作，参数依次是，<u>层的名字，输入tensor，卷积核大小，输出通道数，步长，padding</u>。判别器中每一层都加了归一化层，这里使用最简单的归一化，函数如下所示，另外每一层的激活函数使用leakyrelu。判别器D最终返回两个值，第一个是计算的logits，另外一个是一个列表，列表的每一个元素代表判别器每一层的输出，为接下来实现feature matching做准备。<br>&emsp;&emsp;生成器结构如下所示：<font color="red">其最后一层激活函数使用tanh</font><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generator</span><span class="params">(self,name, noise, reuse)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> tf.variable_scope(name,reuse=reuse):</span><br><span class="line">        l = self.batch_size</span><br><span class="line">        output = fc(<span class="string">'g_dc'</span>, noise, <span class="number">2</span>*<span class="number">2</span>*<span class="number">64</span>)</span><br><span class="line">        output = tf.reshape(output, [<span class="number">-1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">64</span>])</span><br><span class="line">        output = tf.nn.relu(self.bn(<span class="string">'g_bn1'</span>,output))</span><br><span class="line">        output = deconv2d(<span class="string">'g_dcon1'</span>,output,<span class="number">5</span>,outshape=[l, <span class="number">4</span>, <span class="number">4</span>, <span class="number">64</span>*<span class="number">4</span>])</span><br><span class="line">        output = tf.nn.relu(self.bn(<span class="string">'g_bn2'</span>,output))</span><br><span class="line"></span><br><span class="line">        output = deconv2d(<span class="string">'g_dcon2'</span>, output, <span class="number">5</span>, outshape=[l, <span class="number">8</span>, <span class="number">8</span>, <span class="number">64</span> * <span class="number">2</span>])</span><br><span class="line">        output = tf.nn.relu(self.bn(<span class="string">'g_bn3'</span>, output))</span><br><span class="line"></span><br><span class="line">        output = deconv2d(<span class="string">'g_dcon3'</span>, output, <span class="number">5</span>, outshape=[l, <span class="number">16</span>, <span class="number">16</span>,<span class="number">64</span> * <span class="number">1</span>])</span><br><span class="line">        output = tf.nn.relu(self.bn(<span class="string">'g_bn4'</span>, output))</span><br><span class="line"></span><br><span class="line">        output = deconv2d(<span class="string">'g_dcon4'</span>, output, <span class="number">5</span>, outshape=[l, <span class="number">32</span>, <span class="number">32</span>, self.dim])</span><br><span class="line">        output = tf.image.resize_images(output, (<span class="number">28</span>, <span class="number">28</span>))</span><br><span class="line">        <span class="comment"># output = tf.nn.relu(self.bn('g_bn4', output))</span></span><br><span class="line">        <span class="keyword">return</span> tf.nn.tanh(output)</span><br></pre></td></tr></table></figure></p>
+<p>网络结构是根据DCGAN的结构改的，所以网络简要介绍到这里。</p>
+<p>接下来介绍网络初始化方面：<br>首先在train.py里建立一个Train的类，并做一些初始化<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding:utf-8</span></span><br><span class="line"><span class="keyword">from</span> glob <span class="keyword">import</span> glob</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> scipy.misc <span class="keyword">as</span> scm</span><br><span class="line"><span class="keyword">from</span> vlib.layers <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> vlib.load_data <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> vlib.plot <span class="keyword">as</span> plot</span><br><span class="line"><span class="keyword">import</span> vlib.my_extract <span class="keyword">as</span> dataload</span><br><span class="line"><span class="keyword">import</span> vlib.save_images <span class="keyword">as</span> save_img</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> tensorflow.examples.tutorials.mnist <span class="keyword">import</span> input_data <span class="comment">#as mnist_data</span></span><br><span class="line">mnist = input_data.read_data_sets(<span class="string">'data/'</span>, one_hot=<span class="literal">True</span>)</span><br><span class="line"><span class="comment"># temp = 0.89</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Train</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, sess, args)</span>:</span></span><br><span class="line">        <span class="comment">#sess=tf.Session()</span></span><br><span class="line">        self.sess = sess</span><br><span class="line">        self.img_size = <span class="number">28</span>   <span class="comment"># the size of image</span></span><br><span class="line">        self.trainable = <span class="literal">True</span></span><br><span class="line">        self.batch_size = <span class="number">50</span>  <span class="comment"># must be even number</span></span><br><span class="line">        self.lr = <span class="number">0.0002</span></span><br><span class="line">        self.mm = <span class="number">0.5</span>      <span class="comment"># momentum term for adam</span></span><br><span class="line">        self.z_dim = <span class="number">128</span>   <span class="comment"># the dimension of noise z</span></span><br><span class="line">        self.EPOCH = <span class="number">50</span>    <span class="comment"># the number of max epoch</span></span><br><span class="line">        self.LAMBDA = <span class="number">0.1</span>  <span class="comment"># parameter of WGAN-GP</span></span><br><span class="line">        self.model = args.model  <span class="comment"># 'DCGAN' or 'WGAN'</span></span><br><span class="line">        self.dim = <span class="number">1</span>       <span class="comment"># RGB is different with gray pic</span></span><br><span class="line">        self.num_class = <span class="number">11</span></span><br><span class="line">        self.load_model = args.load_model</span><br><span class="line">        self.build_model()  <span class="comment"># initializer</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">build_model</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># build  placeholders</span></span><br><span class="line">        self.x=tf.placeholder(tf.float32,shape=[self.batch_size,self.img_size*self.img_size*self.dim],name=<span class="string">'real_img'</span>)</span><br><span class="line">        self.z = tf.placeholder(tf.float32, shape=[self.batch_size, self.z_dim], name=<span class="string">'noise'</span>)</span><br><span class="line">        self.label = tf.placeholder(tf.float32, shape=[self.batch_size, self.num_class - <span class="number">1</span>], name=<span class="string">'label'</span>)</span><br><span class="line">        self.flag = tf.placeholder(tf.float32, shape=[], name=<span class="string">'flag'</span>)</span><br><span class="line">        self.flag2 = tf.placeholder(tf.float32, shape=[], name=<span class="string">'flag2'</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># define the network</span></span><br><span class="line">        self.G_img = self.generator(<span class="string">'gen'</span>, self.z, reuse=<span class="literal">False</span>)</span><br><span class="line">        d_logits_r, layer_out_r = self.discriminator(<span class="string">'dis'</span>, self.x, reuse=<span class="literal">False</span>)</span><br><span class="line">        d_logits_f, layer_out_f = self.discriminator(<span class="string">'dis'</span>, self.G_img, reuse=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">        d_regular = tf.add_n(tf.get_collection(<span class="string">'regularizer'</span>, <span class="string">'dis'</span>), <span class="string">'loss'</span>)  <span class="comment"># D regular loss</span></span><br><span class="line">        <span class="comment"># caculate the unsupervised loss</span></span><br><span class="line">        un_label_r = tf.concat([tf.ones_like(self.label), tf.zeros(shape=(self.batch_size, <span class="number">1</span>))], axis=<span class="number">1</span>)</span><br><span class="line">        un_label_f = tf.concat([tf.zeros_like(self.label), tf.ones(shape=(self.batch_size, <span class="number">1</span>))], axis=<span class="number">1</span>)</span><br><span class="line">        logits_r, logits_f = tf.nn.softmax(d_logits_r), tf.nn.softmax(d_logits_f)</span><br><span class="line">        d_loss_r = -tf.log(tf.reduce_sum(logits_r[:, :<span class="number">-1</span>])/tf.reduce_sum(logits_r[:,:]))</span><br><span class="line">        d_loss_f = -tf.log(tf.reduce_sum(logits_f[:, <span class="number">-1</span>])/tf.reduce_sum(logits_f[:,:]))</span><br><span class="line">        <span class="comment"># d_loss_r = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=un_label_r*0.9, logits=d_logits_r))</span></span><br><span class="line">        <span class="comment"># d_loss_f = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=un_label_f*0.9, logits=d_logits_f))</span></span><br><span class="line">        <span class="comment"># feature match</span></span><br><span class="line">        f_match = tf.constant(<span class="number">0.</span>, dtype=tf.float32)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>):</span><br><span class="line">            f_match += tf.reduce_mean(tf.multiply(layer_out_f[i]-layer_out_r[i], layer_out_f[i]-layer_out_r[i]))</span><br><span class="line"></span><br><span class="line">        <span class="comment"># caculate the supervised loss</span></span><br><span class="line">        s_label = tf.concat([self.label, tf.zeros(shape=(self.batch_size,<span class="number">1</span>))], axis=<span class="number">1</span>)</span><br><span class="line">        s_l_r = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=s_label*<span class="number">0.9</span>, logits=d_logits_r))</span><br><span class="line">        s_l_f = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=un_label_f*<span class="number">0.9</span>, logits=d_logits_f))  <span class="comment"># same as d_loss_f</span></span><br><span class="line">        self.d_l_1, self.d_l_2 = d_loss_r + d_loss_f, s_l_r</span><br><span class="line">        self.d_loss = d_loss_r + d_loss_f + s_l_r*self.flag*<span class="number">10</span> + d_regular</span><br><span class="line">        self.g_loss = d_loss_f + <span class="number">0.01</span>*f_match</span><br><span class="line"></span><br><span class="line">        all_vars = tf.global_variables()</span><br><span class="line">        g_vars = [v <span class="keyword">for</span> v <span class="keyword">in</span> all_vars <span class="keyword">if</span> <span class="string">'gen'</span> <span class="keyword">in</span> v.name]</span><br><span class="line">        d_vars = [v <span class="keyword">for</span> v <span class="keyword">in</span> all_vars <span class="keyword">if</span> <span class="string">'dis'</span> <span class="keyword">in</span> v.name]</span><br><span class="line">        <span class="keyword">for</span> v <span class="keyword">in</span> all_vars:</span><br><span class="line">            <span class="keyword">print</span> v</span><br><span class="line">        <span class="keyword">if</span> self.model == <span class="string">'DCGAN'</span>:</span><br><span class="line">            self.opt_d = tf.train.AdamOptimizer(self.lr, beta1=self.mm).minimize(self.d_loss, var_list=d_vars)</span><br><span class="line">            self.opt_g = tf.train.AdamOptimizer(self.lr, beta1=self.mm).minimize(self.g_loss, var_list=g_vars)</span><br><span class="line">        <span class="keyword">elif</span> self.model == <span class="string">'WGAN_GP'</span>:</span><br><span class="line">            self.opt_d = tf.train.AdamOptimizer(<span class="number">1e-5</span>, beta1=<span class="number">0.5</span>, beta2=<span class="number">0.9</span>).minimize(self.d_loss, var_list=d_vars)</span><br><span class="line">            self.opt_g = tf.train.AdamOptimizer(<span class="number">1e-5</span>, beta1=<span class="number">0.5</span>, beta2=<span class="number">0.9</span>).minimize(self.g_loss, var_list=g_vars)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">print</span> (<span class="string">'model can only be "DCGAN","WGAN_GP" !'</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="comment"># test</span></span><br><span class="line">        test_logits, _ = self.discriminator(<span class="string">'dis'</span>, self.x, reuse=<span class="literal">True</span>)</span><br><span class="line">        test_logits = tf.nn.softmax(test_logits)</span><br><span class="line">        temp = tf.reshape(test_logits[:, <span class="number">-1</span>],shape=[self.batch_size, <span class="number">1</span>])</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">            temp = tf.concat([temp, tf.reshape(test_logits[:, <span class="number">-1</span>],shape=[self.batch_size, <span class="number">1</span>])], axis=<span class="number">1</span>)</span><br><span class="line">        test_logits -= temp</span><br><span class="line">        self.prediction = tf.nn.in_top_k(test_logits, tf.argmax(s_label, axis=<span class="number">1</span>), <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        self.saver = tf.train.Saver()</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.load_model:</span><br><span class="line">            init = tf.global_variables_initializer()</span><br><span class="line">            self.sess.run(init)</span><br><span class="line">        <span class="keyword">elif</span> self.load_model:</span><br><span class="line">            self.saver.restore(self.sess, os.getcwd()+<span class="string">'/model_saved/model.ckpt'</span>)</span><br><span class="line">            <span class="keyword">print</span> <span class="string">'model load done'</span></span><br><span class="line">        self.sess.graph.finalize()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">train</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(<span class="string">'model_saved'</span>):</span><br><span class="line">            os.mkdir(<span class="string">'model_saved'</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(<span class="string">'gen_picture'</span>):</span><br><span class="line">            os.mkdir(<span class="string">'gen_picture'</span>)</span><br><span class="line">        noise = np.random.normal(<span class="number">-1</span>, <span class="number">1</span>, [self.batch_size, <span class="number">128</span>])</span><br><span class="line">        temp = <span class="number">0.80</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">'training'</span></span><br><span class="line">        <span class="keyword">for</span> epoch <span class="keyword">in</span> range(self.EPOCH):</span><br><span class="line">            <span class="comment"># iters = int(156191//self.batch_size)</span></span><br><span class="line">            iters = <span class="number">50000</span>//self.batch_size</span><br><span class="line">            flag2 = <span class="number">1</span>  <span class="comment"># if epoch&gt;10 else 0</span></span><br><span class="line">            <span class="keyword">for</span> idx <span class="keyword">in</span> range(iters):</span><br><span class="line">                start_t = time.time()</span><br><span class="line">                flag = <span class="number">1</span> <span class="keyword">if</span> idx &lt; <span class="number">4</span> <span class="keyword">else</span> <span class="number">0</span> <span class="comment"># set we use 2*batch_size=200 train data labeled.</span></span><br><span class="line">                batchx, batchl = mnist.train.next_batch(self.batch_size)</span><br><span class="line">                <span class="comment"># batchx, batchl = self.sess.run([batchx, batchl])</span></span><br><span class="line">                g_opt = [self.opt_g, self.g_loss]</span><br><span class="line">                d_opt = [self.opt_d, self.d_loss, self.d_l_1, self.d_l_2]</span><br><span class="line">                feed = &#123;self.x:batchx, self.z:noise, self.label:batchl, self.flag:flag, self.flag2:flag2&#125;</span><br><span class="line">                <span class="comment"># update the Discrimater k times</span></span><br><span class="line">                _, loss_d, d1,d2 = self.sess.run(d_opt, feed_dict=feed)</span><br><span class="line">                <span class="comment"># update the Generator one time</span></span><br><span class="line">                _, loss_g = self.sess.run(g_opt, feed_dict=feed)</span><br><span class="line">                <span class="keyword">print</span> (<span class="string">"[%3f][epoch:%2d/%2d][iter:%4d/%4d],loss_d:%5f,loss_g:%4f, d1:%4f, d2:%4f"</span>%</span><br><span class="line">                       (time.time()-start_t, epoch, self.EPOCH,idx,iters, loss_d, loss_g,d1,d2)), <span class="string">'flag:'</span>,flag</span><br><span class="line">                plot.plot(<span class="string">'d_loss'</span>, loss_d)</span><br><span class="line">                plot.plot(<span class="string">'g_loss'</span>, loss_g)</span><br><span class="line">                <span class="keyword">if</span> ((idx+<span class="number">1</span>) % <span class="number">100</span>) == <span class="number">0</span>:  <span class="comment"># flush plot picture per 1000 iters</span></span><br><span class="line">                    plot.flush()</span><br><span class="line">                plot.tick()</span><br><span class="line">                <span class="keyword">if</span> (idx+<span class="number">1</span>)%<span class="number">500</span>==<span class="number">0</span>:</span><br><span class="line">                    <span class="keyword">print</span> (<span class="string">'images saving............'</span>)</span><br><span class="line">                    img = self.sess.run(self.G_img, feed_dict=feed)</span><br><span class="line">                    save_img.save_images(img, os.getcwd()+<span class="string">'/gen_picture/'</span>+<span class="string">'sample&#123;&#125;_&#123;&#125;.jpg'</span>\</span><br><span class="line">                                         .format(epoch, (idx+<span class="number">1</span>)/<span class="number">500</span>))</span><br><span class="line">                    <span class="keyword">print</span> <span class="string">'images save done'</span></span><br><span class="line">            test_acc = self.test()</span><br><span class="line">            plot.plot(<span class="string">'test acc'</span>, test_acc)</span><br><span class="line">            plot.flush()</span><br><span class="line">            plot.tick()</span><br><span class="line">            <span class="keyword">print</span> <span class="string">'test acc:&#123;&#125;'</span>.format(test_acc), <span class="string">'temp:%3f'</span>%(temp)</span><br><span class="line">            <span class="keyword">if</span> test_acc &gt; temp:</span><br><span class="line">                <span class="keyword">print</span> (<span class="string">'model saving..............'</span>)</span><br><span class="line">                path = os.getcwd() + <span class="string">'/model_saved'</span></span><br><span class="line">                save_path = os.path.join(path, <span class="string">"model.ckpt"</span>)</span><br><span class="line">                self.saver.save(self.sess, save_path=save_path)</span><br><span class="line">                <span class="keyword">print</span> (<span class="string">'model saved...............'</span>)</span><br><span class="line">                temp = test_acc</span><br><span class="line"></span><br><span class="line"><span class="comment"># output = conv2d('Z_cona&#123;&#125;'.format(i), output, 3, 64, stride=1, padding='SAME')</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">generator</span><span class="params">(self,name, noise, reuse)</span>:</span></span><br><span class="line">        <span class="keyword">with</span> tf.variable_scope(name,reuse=reuse):</span><br><span class="line">            l = self.batch_size</span><br><span class="line">            output = fc(<span class="string">'g_dc'</span>, noise, <span class="number">2</span>*<span class="number">2</span>*<span class="number">64</span>)</span><br><span class="line">            output = tf.reshape(output, [<span class="number">-1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">64</span>])</span><br><span class="line">            output = tf.nn.relu(self.bn(<span class="string">'g_bn1'</span>,output))</span><br><span class="line">            output = deconv2d(<span class="string">'g_dcon1'</span>,output,<span class="number">5</span>,outshape=[l, <span class="number">4</span>, <span class="number">4</span>, <span class="number">64</span>*<span class="number">4</span>])</span><br><span class="line">            output = tf.nn.relu(self.bn(<span class="string">'g_bn2'</span>,output))</span><br><span class="line"></span><br><span class="line">            output = deconv2d(<span class="string">'g_dcon2'</span>, output, <span class="number">5</span>, outshape=[l, <span class="number">8</span>, <span class="number">8</span>, <span class="number">64</span> * <span class="number">2</span>])</span><br><span class="line">            output = tf.nn.relu(self.bn(<span class="string">'g_bn3'</span>, output))</span><br><span class="line"></span><br><span class="line">            output = deconv2d(<span class="string">'g_dcon3'</span>, output, <span class="number">5</span>, outshape=[l, <span class="number">16</span>, <span class="number">16</span>,<span class="number">64</span> * <span class="number">1</span>])</span><br><span class="line">            output = tf.nn.relu(self.bn(<span class="string">'g_bn4'</span>, output))</span><br><span class="line"></span><br><span class="line">            output = deconv2d(<span class="string">'g_dcon4'</span>, output, <span class="number">5</span>, outshape=[l, <span class="number">32</span>, <span class="number">32</span>, self.dim])</span><br><span class="line">            output = tf.image.resize_images(output, (<span class="number">28</span>, <span class="number">28</span>))</span><br><span class="line">            <span class="comment"># output = tf.nn.relu(self.bn('g_bn4', output))</span></span><br><span class="line">            <span class="keyword">return</span> tf.nn.tanh(output)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">discriminator</span><span class="params">(self, name, inputs, reuse)</span>:</span></span><br><span class="line">        l = tf.shape(inputs)[<span class="number">0</span>]</span><br><span class="line">        inputs = tf.reshape(inputs, (l,self.img_size,self.img_size,self.dim))</span><br><span class="line">        <span class="keyword">with</span> tf.variable_scope(name,reuse=reuse):</span><br><span class="line">            out = []</span><br><span class="line">            output = conv2d(<span class="string">'d_con1'</span>,inputs,<span class="number">5</span>, <span class="number">64</span>, stride=<span class="number">2</span>, padding=<span class="string">'SAME'</span>) <span class="comment">#14*14</span></span><br><span class="line">            output1 = lrelu(self.bn(<span class="string">'d_bn1'</span>,output))</span><br><span class="line">            out.append(output1)</span><br><span class="line">            <span class="comment"># output1 = tf.contrib.keras.layers.GaussianNoise</span></span><br><span class="line">            output = conv2d(<span class="string">'d_con2'</span>, output1, <span class="number">3</span>, <span class="number">64</span>*<span class="number">2</span>, stride=<span class="number">2</span>, padding=<span class="string">'SAME'</span>)<span class="comment">#7*7</span></span><br><span class="line">            output2 = lrelu(self.bn(<span class="string">'d_bn2'</span>, output))</span><br><span class="line">            out.append(output2)</span><br><span class="line">            output = conv2d(<span class="string">'d_con3'</span>, output2, <span class="number">3</span>, <span class="number">64</span>*<span class="number">4</span>, stride=<span class="number">1</span>, padding=<span class="string">'VALID'</span>)<span class="comment">#5*5</span></span><br><span class="line">            output3 = lrelu(self.bn(<span class="string">'d_bn3'</span>, output))</span><br><span class="line">            out.append(output3)</span><br><span class="line">            output = conv2d(<span class="string">'d_con4'</span>, output3, <span class="number">3</span>, <span class="number">64</span>*<span class="number">4</span>, stride=<span class="number">2</span>, padding=<span class="string">'VALID'</span>)<span class="comment">#2*2</span></span><br><span class="line">            output4 = lrelu(self.bn(<span class="string">'d_bn4'</span>, output))</span><br><span class="line">            out.append(output4)</span><br><span class="line">            output = tf.reshape(output4, [l, <span class="number">2</span>*<span class="number">2</span>*<span class="number">64</span>*<span class="number">4</span>])<span class="comment"># 2*2*64*4</span></span><br><span class="line">            output = fc(<span class="string">'d_fc'</span>, output, self.num_class)</span><br><span class="line">            <span class="comment"># output = tf.nn.softmax(output)</span></span><br><span class="line">            <span class="keyword">return</span> output, out</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bn</span><span class="params">(self, name, input)</span>:</span></span><br><span class="line">        val = tf.contrib.layers.batch_norm(input, decay=<span class="number">0.9</span>,</span><br><span class="line">                                           updates_collections=<span class="literal">None</span>,</span><br><span class="line">                                           epsilon=<span class="number">1e-5</span>,</span><br><span class="line">                                           scale=<span class="literal">True</span>,</span><br><span class="line">                                           is_training=<span class="literal">True</span>,</span><br><span class="line">                                           scope=name)</span><br><span class="line">        <span class="keyword">return</span> val</span><br><span class="line"></span><br><span class="line">    <span class="comment"># def get_loss(self, logits, layer_out):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(self)</span>:</span></span><br><span class="line">        count = <span class="number">0.</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">'testing................'</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10000</span>//self.batch_size):</span><br><span class="line">            testx, textl = mnist.test.next_batch(self.batch_size)</span><br><span class="line">            prediction = self.sess.run(self.prediction, feed_dict=&#123;self.x:testx, self.label:textl&#125;)</span><br><span class="line">            count += np.sum(prediction)</span><br><span class="line">        <span class="keyword">return</span> count/<span class="number">10000.</span></span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;<font color="red">args</font>是传进来的参数，主要包括三个，</p>
+<ul>
+<li>一个是<strong><em>args.model</em></strong>，选择DCGAN模式还是WGAN-GP模式，二者的不同主要在于损失函数不同和优化器的学习率不同，其他都一样。</li>
+<li>第二个参数是<strong><em>args.trainable</em></strong>，训练还是测试，训练时为True，测试是False。</li>
+<li><strong><em>Loadmodel</em></strong>表示是否选择加载训练好的权重。 </li>
+</ul>
+<p>&emsp;&emsp;Build_model函数里面主要包括了网络训练前的准备工作，主要包括损失函数的设计和优化器的设计。下文将详细做出介绍，尤其是损失函数部分。<br>&emsp;&emsp;首先，建立了五个placeholder，flag表示两个标志位，只有0-1两种情况，注意到我num_class是11，也就是做11分类，但是lable的placeholder中shape是(batchsize,10)。为了方便，我将生成器的生成结果和真实数据X级联在一起作为判别器的输入，输出再把他它们结果split分开。<br>&emsp;&emsp;d_regular 表示正则化，这里我将判别器中所有的weights做了l2正则。<br>&emsp;&emsp;监督学习的损失函数使用常见的交叉熵损失函数，对生成器生成的图像的label的one_hot型为：<br>[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]<br>&emsp;&emsp;将原始的label扩展到(batchsize，11)后再和生成器生成的假数据的label在第一维度concat到一起得到batchl，另外乘以0.9，做单边标签平滑（one side smoothing），由此计算得到监督学习的损失函数值s_l,。 </p>
+<h2 id="生成器G的损失函数"><a href="#生成器G的损失函数" class="headerlink" title="生成器G的损失函数"></a>生成器G的损失函数</h2><p>&emsp;&emsp;生成器G的损失函数包括两部分，一个是来自GAN训练的部分，另外一个是feature matching , 论文中提到的feature matching意思是<font color="blue">特征匹配</font>，主要思想是希望生成器生成的假数据输入到判别器，经过判别器每一层计算的结果和将真实数据X输入到判别器，判别器每一层的结果尽可能的相似，公式如下： </p>
+<script type="math/tex; mode=display">\|E_{x\sim Pdata(x)}f(x) - E_{z\sim Pz(z)}f(G(z))\|^2_2</script><p>&emsp;&emsp;其中\(f(x)\)是D的每一层的输出。Feature matching 是指导G进行训练，所以我将他放在了G的损失函数里。</p>
+<h2 id="分类器D的损失函数："><a href="#分类器D的损失函数：" class="headerlink" title="分类器D的损失函数："></a>分类器D的损失函数：</h2><p>相比较G的损失函数，D的损失函数就比较麻烦了<br>接下来介绍无监督学习的损失函数实现：<br>在前面介绍的无监督学习的损失函数中，有一部分和GAN的损失函数很相似，所以在代码中我们使用了<br><img src="/images/手把手教你用GAN实现半监督学习/png1-2.png" alt><br>&emsp;&emsp;无监督学习的时候没有标签的指导，此时判别器或者称为分类器D无法正确对输入进行分类，此时只要求D能够区分真假就可以了，由此我们得到了无监督学习的损失un_s，直观上也很好理解，假设输入给判别器D真图像，它结果经过<em>softmax</em>后输出类似下面表格的形式，其中前十个黄色区域表示对0-9的分类概率，最后一个灰色的表示对假图像的分类概率，由于无监督学习中判别器D并不知道具体是哪一类数据，所以干脆D的损失函数最小化输出假图像的概率就可以了，当输入为生成器生成的假图像时，只要最小化D输出为真图像的概率，由此我们得到了un_s.。但是此时有一个问题，即是有监督学习的时候不就没有用了吗，因为这时候应该使用s_l.为了解决这个问题，我使用了一个标志位flag作为控制他们之间的使用，具体代码： </p>
+<script type="math/tex; mode=display">flag*s\_i + (1-flag)*un\_s</script><p>&emsp;&emsp;有标签的时候flag是1，表示使用s_l,无监督的时候flag是0，表示使用无监督损失函数。此时已经完成了判别器D损失函数的一部分设计，剩下的一部分和GAN中的D的损失一样，在代码中我给出了两种损失函数，一个是原始GAN的交叉熵损失函数，和DCGAN使用的一样，另外一个是improved wgan论文中使用的损失函数，但是在做了对比之后，我强烈建议使用DCGAN来做，improved wgan的损失函数虽然在生成结果的优化上有很大帮助，但是并不适合半监督学习中。 </p>
+<h2 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h2><p>接下来就是训练部分：<br>&emsp;&emsp;此时可能有一个疑问，我们是如何实现只使用200带标签的数据训练的，答案就在flag这个标志位里，在训练部分代码中，当迭代次数小于200的时候，flag=1, 此时表示使用s_l作为损失函数的一部分，当flag=0的时候，un_s起作用而s_l并没有起作用，这时，即使我们feed了正确的标签数据，但是s_l不起作用，就相当于没有使用标签。<br>&emsp;&emsp;flag的作用本来是使用他控制feature matching是否工作的，因为这部分损失相当的大，后来发现影响不大，暂时就放在这里了。 </p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(self)</span>:</span></span><br><span class="line">       count = <span class="number">0.</span></span><br><span class="line">       <span class="keyword">print</span> <span class="string">'testing................'</span></span><br><span class="line">       <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10000</span>//self.batch_size):</span><br><span class="line">           testx, textl = mnist.test.next_batch(self.batch_size)</span><br><span class="line">           prediction = self.sess.run(self.prediction, feed_dict=&#123;self.x:testx, self.label:textl&#125;)</span><br><span class="line">           count += np.sum(prediction)</span><br><span class="line">       <span class="keyword">return</span> count/<span class="number">10000.</span></span><br></pre></td></tr></table></figure>
+<h2 id="测试精度结果变化图"><a href="#测试精度结果变化图" class="headerlink" title="测试精度结果变化图"></a>测试精度结果变化图</h2><p><img src="/images/手把手教你用GAN实现半监督学习/jpg1-1.jpg" alt></p>
+<h1 id="本文实验代码"><a href="#本文实验代码" class="headerlink" title="本文实验代码"></a>本文实验代码</h1><p>使用GAN实现半监督学习代码<a href="https://github.com/LDOUBLEV/semi-supervised-GAN" target="_blank" rel="noopener">https://github.com/LDOUBLEV/semi-supervised-GAN</a><br>如果感觉有用的话，欢迎star， fork</p>
+<h1 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h1><p>&emsp;&emsp;详细代码请以github中为准，另关于结果不理想的问题，可能和之前做的迁移学习有关，下面是最近跑出来的结果，最好的精度是0.95，这个问题有时间会慢慢解决。另：链接中的模型精度是很高的，可以直接调用<br><img src="/images/手把手教你用GAN实现半监督学习/png1-3.png" alt></p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><ul>
+<li><a href="https://blog.csdn.net/qq_25737169/article/details/78532719" target="_blank" rel="noopener">手把手教你用GAN实现半监督学习</a></li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">------------------------ The End ------------------------</div>
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/xun-lian-tensorflow-shi-bie-shou-xie-shu-zi.html" rel="next" title="训练TensorFlow识别手写数字">
+                <i class="fa fa-chevron-left"></i> 训练TensorFlow识别手写数字
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/semi-supervised-learning-and-gans.html" rel="prev" title="Semi-Supervised Learning and GANs">
+                Semi-Supervised Learning and GANs <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://image.xcar.com.cn/attachments/a/day_130416/2013041610_b3e94dab51a2253bd17dxx64sn6s0q2H.gif" alt="Junjie Jia">
+            
+              <p class="site-author-name" itemprop="name">Junjie Jia</p>
+              <p class="site-description motion-element" itemprop="description">生命中的每一步都必须认真对待，把握今天，成就明天！</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/imjunjie" title="GitHub &rarr; https://github.com/imjunjie" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="mailto:junjie017@gmail.com" title="E-Mail &rarr; mailto:junjie017@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-监督，无监督，半监督学习介绍"><span class="nav-number">2.</span> <span class="nav-text">1.监督，无监督，半监督学习介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Improved-Techniques-for-Training-GANs"><span class="nav-number">3.</span> <span class="nav-text">2. Improved Techniques for Training GANs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-semi-supervised-GAN"><span class="nav-number">4.</span> <span class="nav-text">3. semi-supervised GAN</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-代码实现及解读"><span class="nav-number">5.</span> <span class="nav-text">4.代码实现及解读</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#生成器G的损失函数"><span class="nav-number">5.1.</span> <span class="nav-text">生成器G的损失函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分类器D的损失函数："><span class="nav-number">5.2.</span> <span class="nav-text">分类器D的损失函数：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#训练"><span class="nav-number">5.3.</span> <span class="nav-text">训练</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试"><span class="nav-number">5.4.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试精度结果变化图"><span class="nav-number">5.5.</span> <span class="nav-text">测试精度结果变化图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#本文实验代码"><span class="nav-number">6.</span> <span class="nav-text">本文实验代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#备注"><span class="nav-number">7.</span> <span class="nav-text">备注</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">8.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Junjie Jia</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">184k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">2:47</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.0.0</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+  
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <!-- 代码块复制功能 -->
+<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+
+</body>
+</html>
