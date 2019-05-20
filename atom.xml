@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://imjunjie.github.io/"/>
-  <updated>2019-04-09T05:39:59.829Z</updated>
+  <updated>2019-04-19T01:09:38.091Z</updated>
   <id>http://imjunjie.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>TensorFlow学习知识点总结</title>
+    <link href="http://imjunjie.github.io/tensorflow-xue-xi-zhi-shi-dian-zong-jie.html"/>
+    <id>http://imjunjie.github.io/tensorflow-xue-xi-zhi-shi-dian-zong-jie.html</id>
+    <published>2019-04-19T01:06:42.000Z</published>
+    <updated>2019-04-19T01:09:38.091Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="机器学习" scheme="http://imjunjie.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="TensorFlow" scheme="http://imjunjie.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/TensorFlow/"/>
+    
+    
+      <category term="TensorFlow" scheme="http://imjunjie.github.io/tags/TensorFlow/"/>
+    
+  </entry>
   
   <entry>
     <title>基于Python的校园网自动登录</title>
@@ -543,30 +571,6 @@
     
     
       <category term="Idm" scheme="http://imjunjie.github.io/tags/Idm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>hexo博文加密</title>
-    <link href="http://imjunjie.github.io/hexo-bo-wen-jia-mi.html"/>
-    <id>http://imjunjie.github.io/hexo-bo-wen-jia-mi.html</id>
-    <published>2019-03-02T13:45:11.000Z</published>
-    <updated>2019-03-02T13:56:10.286Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Hexo" scheme="http://imjunjie.github.io/tags/Hexo/"/>
     
   </entry>
   
