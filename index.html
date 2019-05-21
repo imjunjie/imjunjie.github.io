@@ -383,6 +383,669 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://imjunjie.github.io/win10-rtx-2060-tensorflow-gpu.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Junjie Jia">
+      <meta itemprop="description" content="生命中的每一步都必须认真对待，把握今天，成就明天！">
+      <meta itemprop="image" content="http://image.xcar.com.cn/attachments/a/day_130416/2013041610_b3e94dab51a2253bd17dxx64sn6s0q2H.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Imjunjie">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/win10-rtx-2060-tensorflow-gpu.html" class="post-title-link" itemprop="url">Win10 + RTX 2060 + tensorflow GPU</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-21 08:31:43 / 修改时间：09:21:15" itemprop="dateCreated datePublished" datetime="2019-05-21T08:31:43+08:00">2019-05-21</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习/TensorFlow/" itemprop="url" rel="index"><span itemprop="name">TensorFlow</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.8k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">2 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>买了新的笔电并成功配置了Win10上面的tensorflow的GPU版</p>
+<p>毕竟稍微大一点的神经网路CPU跑起来实在慢的要人命!</p>
+<p>纪录了一些流程希望帮助也在安装的朋友省一点时间</p>
+<p>可以赶快开始利用新买的显卡来工作或做程式学习</p>
+<h1 id="配置流程"><a href="#配置流程" class="headerlink" title="配置流程"></a>配置流程</h1><h2 id="首先下载并安装Anaconda-Python3-7的版本"><a href="#首先下载并安装Anaconda-Python3-7的版本" class="headerlink" title="首先下载并安装Anaconda+Python3.7的版本"></a>首先下载并安装Anaconda+Python3.7的版本</h2><p><a href="https://www.anaconda.com/distribution/" target="_blank" rel="noopener">https://www.anaconda.com/distribution/</a><br><img src="/images/Win10-RTX-2060-tensorflow-GPU/png1-1.png" alt></p>
+<h2 id="下载后直接参考tensorflow官网的说明"><a href="#下载后直接参考tensorflow官网的说明" class="headerlink" title="下载后直接参考tensorflow官网的说明"></a>下载后直接参考tensorflow官网的说明</h2><p>不要相信来路不明的教学啦QQ乖乖照着<a href="https://www.tensorflow.org/install/gpu" target="_blank" rel="noopener">TensorFlow-gpu官网</a>做才是最准的!!!<br>我们需要做的事情有:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> 确认GPU驱动有更新</span><br><span class="line"><span class="number">2.</span> CUDA@Tookit <span class="number">10.0</span>安装</span><br><span class="line"><span class="number">3.</span> cuDNN SDK <span class="number">7.5</span>(forCUDA <span class="number">10.0</span>)安装</span><br></pre></td></tr></table></figure></p>
+<p>官方网址：<a href="https://www.tensorflow.org/install/gpu" target="_blank" rel="noopener">https://www.tensorflow.org/install/gpu</a><br><img src="/images/Win10-RTX-2060-tensorflow-GPU/png1-2.png" alt="tensorflow官网的GPU配置要求"><br>配置方案，可以<a href="https://github.com/fo40225/tensorflow-windows-wheel" target="_blank" rel="noopener">参考</a>下图<br><img src="/images/Win10-RTX-2060-tensorflow-GPU/png1-3.png" alt="tensorflow官网的GPU配置要求"><br>照着上面的标示安装必要程序<br>1.显卡驱动因为刚买来还满新的进Geforce Experience更新一下不用重载<br>根据<a href="https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html" target="_blank" rel="noopener">显卡驱动</a>，选择对应的CUDA版本号<br><img src="/images/Win10-RTX-2060-tensorflow-GPU/png1-4.png" alt="tensorflow官网的GPU配置要求"></p>
+<p>查看本机的显卡驱动版本号，方法如下：<br>&emsp;&emsp;WIN+R，输入CMD，然后输入”nvidia-smi”，即可显示对应的显卡驱动版本号，有些还会显示对应的支持CUDA的版本号，本机验证CUDA支持10.0。</p>
+<p>2.下载CUDA 10.0 + CUDNN7.5 for 10.0 (版本记得要一样喔不然会错误)</p>
+<ul>
+<li>1.下载CUDA 10.0, <a href="https://developer.nvidia.com/cuda-toolkit-archive" target="_blank" rel="noopener">CUDA Toolkit Archive</a><br><img src="/images/Win10-RTX-2060-tensorflow-GPU/png1-5.png" alt="tensorflow官网的GPU配置要求"></li>
+</ul>
+<p>如想了解是否正确安装可以<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvcc - V</span><br></pre></td></tr></table></figure></p>
+<p>如果成功应该是如下图所示：<br><img src="/images/Win10-RTX-2060-tensorflow-GPU/png1-6.png" alt="测试cuda是否安装成功-别人的图"></p>
+<ul>
+<li>2.下载CUDNN<br>&emsp;&emspp;直接去NVDIA官网去下载就好啦~大家想要下载，还需要注册NVDIA账户，很麻烦，不过下载好像可以直接微信登录了，我没试过，大家就直接微信登录就好啦,下面附上链接：<a href="https://developer.nvidia.com/rdp/cudnn-archive" target="_blank" rel="noopener">下载链接</a><br><code>这里面有好几个for CUDA10.0的，大家一定要注意，因为关系到我们后面tensorflow的版本，这里出错了，后面就会报错！！！
+这里我们选择cuDNN v7.5的版本</code><br>到这里下载完成！完成后咱们开始解压，然后将相应的包，放到cuda相应包底下。<br><img src="/images/Win10-RTX-2060-tensorflow-GPU/png1-7.png" alt="测试cuda是否安装成功-别人的图"><br>咱们只需要拿出这些文件夹里面文件放到想要cuda文件夹即可，我的cuda文件夹地址为：<br><code>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0</code><br>供大家参考。</li>
+</ul>
+<ol>
+<li>TensorFlow-GPU下载和安装<br><img src="/images/Win10-RTX-2060-tensorflow-GPU/png1-8.png" alt="测试cuda是否安装成功-别人的图"><br>我们可以通过进入英伟达控制面板，点击帮助，选择系统信息，再点组件，看到我们的RTX 2060显卡是支持CUDA10。<br>前面我让大家下载了CUDA9.2,没坑大家哦，CUDA9.2也是支持RTX 2060的。tensoeflow官方现在无论哪个版本都不支持，所以我们还是去求助<a href="https://github.com/fo40225/tensorflow-windows-wheel" target="_blank" rel="noopener">Github</a>！！！ </li>
+</ol>
+<p>安装<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// An highlighted block</span><br><span class="line">pip install tensorflow_gpu</span><br></pre></td></tr></table></figure></p>
+<h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// An highlighted block</span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">hello = tf.constant(<span class="string">'Hello, TensorFlow!'</span>)</span><br><span class="line">sess = tf.Session()</span><br><span class="line">print(sess.run(hello))</span><br></pre></td></tr></table></figure>
+<h1 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h1><p><img src="/images/Win10-RTX-2060-tensorflow-GPU/png1-9.png" alt="测试cuda是否安装成功-别人的图"><br><img src="/images/Win10-RTX-2060-tensorflow-GPU/png1-10.png" alt="测试cuda是否安装成功-别人的图"><br>已经能够识别出RTX2060显卡了，并成功输出！到这里也算完成了，大家安装遇到的坑也欢迎来交流！</p>
+<h1 id="常用网址"><a href="#常用网址" class="headerlink" title="常用网址"></a>常用网址</h1><ol>
+<li><a href="https://developer.nvidia.com/cuda-toolkit-archive" target="_blank" rel="noopener">CUDA Toolkit Archive</a></li>
+<li><a href="https://developer.nvidia.com/rdp/cudnn-archive" target="_blank" rel="noopener">cuDNN Archive</a></li>
+<li><a href="https://github.com/fo40225/tensorflow-windows-wheel" target="_blank" rel="noopener">Tensorflow prebuilt binary for Windows</a></li>
+<li><a href="https://www.tensorflow.org/install/gpu" target="_blank" rel="noopener">TensorFlow-gpu官网</a></li>
+</ol>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><ul>
+<li><a href="https://blog.csdn.net/weixin_38525326/article/details/86687885" target="_blank" rel="noopener">【CSDN】(2019年01月29日 11:48:14)RTX2060+win10+Tensorflow GPU+CUDA 9.2+CUDNN7.2+python 3.65</a></li>
+<li><a href="https://www.gongyesheji.org/?p=951" target="_blank" rel="noopener">【Blog】(2019年3月24日)WIN10+CUDA10 +CUDNN7.5+ TENSORFLOW-GPU1.13.1 + python3.7 运行NVIDIA STYLEGAN 的安装过程和踩坑实录</a></li>
+<li><a href="https://medium.com/%E5%B0%8F%E7%86%8A%E8%B1%AC%E7%9A%84%E7%A8%8B%E5%BC%8F%E4%B8%96%E7%95%8C/win10-rtx-2060-tensorflow-gpu-10b1c656ac0e" target="_blank" rel="noopener">【Medium】(2019年4月27日)Win10 + RTX 2060 + tensorflow GPU</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">------------------------ The End ------------------------</div>
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://imjunjie.github.io/importerror-tensorflow-chang-jian-mo-kuai-bao-cuo-chu-li.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Junjie Jia">
+      <meta itemprop="description" content="生命中的每一步都必须认真对待，把握今天，成就明天！">
+      <meta itemprop="image" content="http://image.xcar.com.cn/attachments/a/day_130416/2013041610_b3e94dab51a2253bd17dxx64sn6s0q2H.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Imjunjie">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/importerror-tensorflow-chang-jian-mo-kuai-bao-cuo-chu-li.html" class="post-title-link" itemprop="url">ImportError:TensorFlow常见模块报错处理</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-21 08:22:11 / 修改时间：08:27:16" itemprop="dateCreated datePublished" datetime="2019-05-21T08:22:11+08:00">2019-05-21</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习/TensorFlow/" itemprop="url" rel="index"><span itemprop="name">TensorFlow</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">184</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">1 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="ImportError-No-module-named-cv2-报错处理"><a href="#ImportError-No-module-named-cv2-报错处理" class="headerlink" title="ImportError: No module named cv2 报错处理"></a>ImportError: No module named cv2 报错处理</h1><h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><ul>
+<li>在安装opevncv时会出现 ImportError: No module named cv2 的错误，找不到cv2的包。</li>
+<li>这时候安装扩展包即可：<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install opencv-python</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="参考地址"><a href="#参考地址" class="headerlink" title="参考地址"></a>参考地址</h2><p><a href="https://blog.csdn.net/chao2016/article/details/78071392" target="_blank" rel="noopener">ImportError: No module named cv2 报错处理</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">------------------------ The End ------------------------</div>
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://imjunjie.github.io/win10-anaconda-xia-tensorflow-gpu-huan-jing-da-jian-xiang-xi-jiao-cheng-bao-han-cuda-cudnn-an-zhuang-guo-cheng.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Junjie Jia">
+      <meta itemprop="description" content="生命中的每一步都必须认真对待，把握今天，成就明天！">
+      <meta itemprop="image" content="http://image.xcar.com.cn/attachments/a/day_130416/2013041610_b3e94dab51a2253bd17dxx64sn6s0q2H.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Imjunjie">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/win10-anaconda-xia-tensorflow-gpu-huan-jing-da-jian-xiang-xi-jiao-cheng-bao-han-cuda-cudnn-an-zhuang-guo-cheng.html" class="post-title-link" itemprop="url">Win10 Anaconda下TensorFlow-GPU环境搭建详细教程（包含CUDA+cuDNN安装过程）</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-20 17:57:22 / 修改时间：18:35:22" itemprop="dateCreated datePublished" datetime="2019-05-20T17:57:22+08:00">2019-05-20</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习/TensorFlow/" itemprop="url" rel="index"><span itemprop="name">TensorFlow</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">3.7k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">3 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="前沿"><a href="#前沿" class="headerlink" title="前沿"></a>前沿</h1><p>配置环境，研究了一整天，踩了很多坑，在网上找了很多资料，发现基本上都没非常明确的教程，所以今天想分享一下配置tensorflow GPU版本的经验，希望能让各位朋友少走些弯路。（PS：一切的前提，你需要有一张Nvidia显卡。我的显卡是 GT940MX）</p>
+<p>Tensorflow有两个版本：GPU和CPU版本，CPU的很好安装；GPU 版本需要 CUDA 和 cuDNN 的支持，如果你是独显+集显，那么推荐你用GPU版本的，因为GPU对矩阵运算有很好的支持，会加速程序执行！并且CUDA是Nvidia下属的程序，所以你的GPU最好是Nvidia的，AMD的显卡没有CUDA加速！满足以上条件之后，你需要查看一下你的英伟达GPU是否支持CUDA，以下是Geforce支持的目录：<br><img src="/images/Win10-Anaconda下TensorFlow-GPU环境搭建详细教程（包含CUDA-cuDNN安装过程）/png1-1.png" alt><br>你也可以<a href="https://developer.nvidia.com/cuda-gpus" target="_blank" rel="noopener">点击查看你的GPU是否支持CUDA</a></p>
+<p>满足以上条件之后，你就可以安装Tensorflow了！</p>
+<h1 id="第一步：安装Anaconda"><a href="#第一步：安装Anaconda" class="headerlink" title="第一步：安装Anaconda"></a>第一步：安装Anaconda</h1><p>1.下载和安装<br>下载地址：<a href="https://www.anaconda.com/download/" target="_blank" rel="noopener">https://www.anaconda.com/download/</a><br><img src="/images/Win10-Anaconda下TensorFlow-GPU环境搭建详细教程（包含CUDA-cuDNN安装过程）/png1-2.png" alt><br>我系统是64位，所以下载<a href="https://repo.anaconda.com/archive/Anaconda3-5.2.0-Windows-x86_64.exe" target="_blank" rel="noopener"> 64-Bit Graphical Installer (631 MB)</a>，之后就是进行安装了。<br><img src="/images/Win10-Anaconda下TensorFlow-GPU环境搭建详细教程（包含CUDA-cuDNN安装过程）/png1-3.png" alt><br>和安装其他软件没有什么区别，需要注意的是这一步，不要勾选<strong>“Add Anaconda to my PATH enviroment variable”</strong>，我们后面会手动加入。<br><img src="/images/Win10-Anaconda下TensorFlow-GPU环境搭建详细教程（包含CUDA-cuDNN安装过程）/png1-4.png" alt><br>接下来就是等待了，安装结束后需要测试是否能正常使用，打开CMD输入“conda”命令，发现提示“’conda’ is not recognized as an internal or external command, operable program or batch file.”<br><img src="/images/Win10-Anaconda下TensorFlow-GPU环境搭建详细教程（包含CUDA-cuDNN安装过程）/png1-5.png" alt><br>这是由于我们没有配置环境变量的原因。</p>
+<p>2.配置Anaconda环境变量<br>我们点击左下角搜索栏搜索“环境变量”<br><img src="/images/Win10-Anaconda下TensorFlow-GPU环境搭建详细教程（包含CUDA-cuDNN安装过程）/png1-6.png" alt><br>点击环境变量<br><img src="/images/Win10-Anaconda下TensorFlow-GPU环境搭建详细教程（包含CUDA-cuDNN安装过程）/png1-7.png" alt><br>选择“Path”，点击“编辑”<br><img src="/images/Win10-Anaconda下TensorFlow-GPU环境搭建详细教程（包含CUDA-cuDNN安装过程）/png1-8.png" alt><br>将以下三个路径加入，注意这里要换成你自己的安装路径。</p>
+<ul>
+<li>C:\Users\t-yaoguo\AppData\Local\Continuum\anaconda3</li>
+<li>C:\Users\t-yaoguo\AppData\Local\Continuum\anaconda3\Scripts</li>
+<li>C:\Users\t-yaoguo\AppData\Local\Continuum\anaconda3\Library\bin<br><img src="/images/Win10-Anaconda下TensorFlow-GPU环境搭建详细教程（包含CUDA-cuDNN安装过程）/png1-9.png" alt><br>然后点击“确定”保存，这回再测试一下，再cmd中输入“conda -V”，能正常显示版本号，证明已经配置好了。<br><img src="/images/Win10-Anaconda下TensorFlow-GPU环境搭建详细教程（包含CUDA-cuDNN安装过程）/png1-10.png" alt></li>
+</ul>
+<h1 id="第二步：安装TensorFlow-GPU"><a href="#第二步：安装TensorFlow-GPU" class="headerlink" title="第二步：安装TensorFlow-GPU"></a>第二步：安装TensorFlow-GPU</h1><p>打开tensorflow官网：<a href="https://www.tensorflow.org/install/install_windows#installing_with_anaconda" target="_blank" rel="noopener">https://www.tensorflow.org/install/install_windows#installing_with_anaconda</a><br><img src="/images/Win10-Anaconda下TensorFlow-GPU环境搭建详细教程（包含CUDA-cuDNN安装过程）/png1-11.png" alt><br>跟着操作步骤走就可以了。</p>
+<p>1.创建conda环境<br>通过调用下列命令，创建一个名为“tensorflow”的conda环境：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create -n tensorflow pip python=<span class="number">3.5</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="/images/Win10-Anaconda下TensorFlow-GPU环境搭建详细教程（包含CUDA-cuDNN安装过程）/png1-12.png" alt><br>等待相应包的安装，如果国内网络太慢的话，可以为conda设置清华源，这样速度能快一点，具体配置过程，网上查一下吧，此处不再讲述。如果看到这样的提示，就证明conda环境创建成功。<br><img src="/images/Win10-Anaconda下TensorFlow-GPU环境搭建详细教程（包含CUDA-cuDNN安装过程）/png1-13.png" alt></p>
+<p>2.激活环境<br>通过以下命令激活conda环境：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">activate tensorflow</span><br></pre></td></tr></table></figure></p>
+<p><img src="/images/Win10-Anaconda下TensorFlow-GPU环境搭建详细教程（包含CUDA-cuDNN安装过程）/png1-14.png" alt><br>这样就进入了刚创建的“tensorflow”环境。</p>
+<p>3.安装tensorflow-gpu<br>安装GPU版本的tensorflow需要输入以下命令：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install --ignore-installed --upgrade tensorflow-gpu</span><br></pre></td></tr></table></figure></p>
+<p>如果只需要安装CPU版本的tensorflow则输入以下命令：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install --ignore-installed --upgrade tensorflow</span><br></pre></td></tr></table></figure></p>
+<p><img src="/images/Win10-Anaconda下TensorFlow-GPU环境搭建详细教程（包含CUDA-cuDNN安装过程）/png1-15.png" alt><br>这样就安装成功了。</p>
+<p>注意：务必注意一点，在安装完tensroflow后，由于我们是新创建的conda环境，该环境中基本上是空的，有很多包和IDE并没有安装进来，例如“Ipython”，“spyder”此时如果我们在该环境下打开spyder/Ipyton/jupyter notebook等，会发现其实IDE使用的kernel并不是新建立的这个环境的kernel，而是“base”这个环境的，而“base”环境中我们并没有安装tensorflow，所以一定无法import。这也就是为什么有很多人在安装好tensorflow后仍然在IDE里无法正常使用的原因了。</p>
+<p>通过以下命令安装Anaconda基础包<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install anaconda</span><br></pre></td></tr></table></figure></p>
+<p>这回，我们测试一下是否能import tensorflow<br><img src="/images/Win10-Anaconda下TensorFlow-GPU环境搭建详细教程（包含CUDA-cuDNN安装过程）/png1-16.png" alt><br>程序报错，这是由于我们虽然安装好了tensorflow-gpu，但是还需要安装CUDA Toolkit 和 cuDNN。</p>
+<h1 id="第三步：安装CUDA-Toolkit-cuDNN"><a href="#第三步：安装CUDA-Toolkit-cuDNN" class="headerlink" title="第三步：安装CUDA Toolkit + cuDNN"></a>第三步：安装CUDA Toolkit + cuDNN</h1><p>1.查看需要安装的CUDA+cuDNN版本<br>注意，tensorflow是在持续更新的，具体安装的CUDA和cuDNN版本需要去官网查看，要与最新版本的tensorflow匹配。</p>
+<p>点击查看最新tensorflow支持的CUDA版本：<br><a href="https://www.tensorflow.org/install/install_windows#requirements_to_run_tensorflow_with_gpu_support" target="_blank" rel="noopener">https://www.tensorflow.org/install/install_windows#requirements_to_run_tensorflow_with_gpu_support</a><br><img src="/images/Win10-Anaconda下TensorFlow-GPU环境搭建详细教程（包含CUDA-cuDNN安装过程）/png1-17.png" alt><br>现在（PS：此博客书写日期 2018年7月5日）最新版tensorflow支持的是 CUDA® Toolkit 9.0 + cuDNN v7.0，一定注意，安装的版本一定一定要正确，不要看NVIDIA官网推出CUDA® Toolkit 9.2了就感觉最新版的更好，而安装最新版，这样很可能会导致tensorflow无法正常使用，所以一定要跟着tensorflow 官网的提示来。</p>
+<p>2.下载CUDA + cuDNN<br>在这个网址查找CUDA已发布版本：<a href="https://developer.nvidia.com/cuda-toolkit-archive" target="_blank" rel="noopener">https://developer.nvidia.com/cuda-toolkit-archive</a><br><img src="/images/Win10-Anaconda下TensorFlow-GPU环境搭建详细教程（包含CUDA-cuDNN安装过程）/png1-18.png" alt><br>进入下载界面<br><img src="/images/Win10-Anaconda下TensorFlow-GPU环境搭建详细教程（包含CUDA-cuDNN安装过程）/png1-19.png" alt><br>下载好CUDA Toolkit 9.0 后，我们开始下载cuDnn 7.0，需要注意的是，下载cuDNN需要在nvidia上注册账号，使用邮箱注册就可以，免费的。登陆账号后才能下载。</p>
+<p>cuDNN历史版本在该网址下载：<a href="https://developer.nvidia.com/rdp/cudnn-archive" target="_blank" rel="noopener">https://developer.nvidia.com/rdp/cudnn-archive</a><br><img src="/images/Win10-Anaconda下TensorFlow-GPU环境搭建详细教程（包含CUDA-cuDNN安装过程）/png1-20.png" alt><br><img src="/images/Win10-Anaconda下TensorFlow-GPU环境搭建详细教程（包含CUDA-cuDNN安装过程）/png1-21.png" alt><br>这样，我们就下载好了 CUDA Toolkit 9.0 和 cuDnn 7.0，下面我们开始安装。<br><img src="/images/Win10-Anaconda下TensorFlow-GPU环境搭建详细教程（包含CUDA-cuDNN安装过程）/png1-22.png" alt></p>
+<p>3.安装 CUDA Toolkit 9.0 和 cuDnn 7.0<br>至关重要的一步：卸载显卡驱动<br>由于CUDA Toolkit需要在指定版本显卡驱动环境下才能正常使用的，所以如果我们已经安装了nvidia显卡驱动（很显然，大部分人都安装了），再安装CUDA Toolkit时，会因二者版本不兼容而导致CUDA无法正常使用，这也就是很多人安装失败的原因。而CUDA Toolkit安装包中自带与之匹配的显卡驱动，所以务必要删除电脑先前的显卡驱动。<br>安装<br><img src="/images/Win10-Anaconda下TensorFlow-GPU环境搭建详细教程（包含CUDA-cuDNN安装过程）/png1-23.png" alt><br><img src="/images/Win10-Anaconda下TensorFlow-GPU环境搭建详细教程（包含CUDA-cuDNN安装过程）/png1-24.png" alt><br>此处选择“自定义（高级）”<br><img src="/images/Win10-Anaconda下TensorFlow-GPU环境搭建详细教程（包含CUDA-cuDNN安装过程）/png1-25.png" alt><br>勾选所有<br><img src="/images/Win10-Anaconda下TensorFlow-GPU环境搭建详细教程（包含CUDA-cuDNN安装过程）/png1-26.png" alt><br>一路通过即可。</p>
+<p>接下来，解压“cudnn-9.0-windows10-x64-v7.zip”，将一下三个文件夹，拷贝到CUDA安装的根目录下。<br><img src="/images/Win10-Anaconda下TensorFlow-GPU环境搭建详细教程（包含CUDA-cuDNN安装过程）/png1-27.png" alt><br>这样CUDA Toolkit 9.0 和 cuDnn 7.0就已经安装了，下面要进行环境变量的配置。</p>
+<p>配置环境变量<br>将下面四个路径加入到环境变量中，注意要换成自己的安装路径。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0</span><br><span class="line"></span><br><span class="line">C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0\bin</span><br><span class="line"></span><br><span class="line">C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0\lib\x64</span><br><span class="line"></span><br><span class="line">C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0\libnvvp</span><br></pre></td></tr></table></figure></p>
+<p>到此，全部的安装步骤都已经完成，这回我们测试一下。</p>
+<h1 id="第四步：测试"><a href="#第四步：测试" class="headerlink" title="第四步：测试"></a>第四步：测试</h1><p>1.查看是否使用GPU<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">tf.test.gpu_device_name()</span><br></pre></td></tr></table></figure></p>
+<p><img src="/images/Win10-Anaconda下TensorFlow-GPU环境搭建详细教程（包含CUDA-cuDNN安装过程）/png1-28.png" alt></p>
+<p>2.查看在使用哪个GPU<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorflow.python.client <span class="keyword">import</span> device_lib</span><br><span class="line">device_lib.list_local_devices()</span><br></pre></td></tr></table></figure></p>
+<p><img src="/images/Win10-Anaconda下TensorFlow-GPU环境搭建详细教程（包含CUDA-cuDNN安装过程）/png1-29.png" alt><br>好了大功告成！</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a href="https://www.cnblogs.com/guoyaohua/p/9265268.html" target="_blank" rel="noopener">Win10 Anaconda下TensorFlow-GPU环境搭建详细教程（包含CUDA+cuDNN安装过程）</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">------------------------ The End ------------------------</div>
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://imjunjie.github.io/quan-ping-tai-zhong-wen-sublime-text-3207-ji-huo.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -3856,736 +4519,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://imjunjie.github.io/ji-yu-baidupcs-go-da-zao-de-web-jie-mian.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Junjie Jia">
-      <meta itemprop="description" content="生命中的每一步都必须认真对待，把握今天，成就明天！">
-      <meta itemprop="image" content="http://image.xcar.com.cn/attachments/a/day_130416/2013041610_b3e94dab51a2253bd17dxx64sn6s0q2H.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Imjunjie">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/ji-yu-baidupcs-go-da-zao-de-web-jie-mian.html" class="post-title-link" itemprop="url">基于BaiduPCS-Go打造的Web界面</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-03-18 19:27:56 / 修改时间：20:00:02" itemprop="dateCreated datePublished" datetime="2019-03-18T19:27:56+08:00">2019-03-18</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/电脑/" itemprop="url" rel="index"><span itemprop="name">电脑</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/电脑/百度云下载/" itemprop="url" rel="index"><span itemprop="name">百度云下载</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/电脑/百度云下载/BaiduPCS-Go/" itemprop="url" rel="index"><span itemprop="name">BaiduPCS-Go</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">1.1k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">1 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h1><p><strong>github地址:</strong> <a href="https://github.com/liuzhuoling2011/baidupcs-web" target="_blank" rel="noopener">https://github.com/liuzhuoling2011/baidupcs-web</a><br><img src="/images/基于BaiduPCS-Go打造的Web界面/img1-1.png" alt><br><img src="/images/基于BaiduPCS-Go打造的Web界面/img1-2.png" alt><br><img src="/images/基于BaiduPCS-Go打造的Web界面/img1-3.png" alt><br><img src="/images/基于BaiduPCS-Go打造的Web界面/img1-4.png" alt></p>
-<p><strong>腾讯视频</strong>: <a href="https://v.qq.com/x/page/e0774xoeatv.html" target="_blank" rel="noopener">地址</a></p>
-<iframe frameborder="0" src="https://v.qq.com/txp/iframe/player.html?vid=e0774xoeatv" width="100%" height="415" allowfullscreen="true"></iframe>
-
-<p><strong>下载链接</strong>: <a href="https://github.com/liuzhuoling2011/baidupcs-web/releases" target="_blank" rel="noopener">https://github.com/liuzhuoling2011/baidupcs-web/releases</a></p>
-<p>3.6.5 版本发布:  </p>
-<ul>
-<li>修复由于密码访问带来的安全隐患，强烈建议更新</li>
-<li>增加只可以本地访问的模式</li>
-<li>后台增加配置下载设置的API（页面暂时还没加入）</li>
-<li>修复无法上传文件名含有 [ 字符的文件</li>
-<li>新增公众号二维码， 更方便及时交流</li>
-</ul>
-<p>3.6.4 版本发布:  </p>
-<ul>
-<li>支持设置工作目录，之后可以规避错误 “无法下载 返回“遇到错误, 远端服务器返回错误, 代码: 31326, 消息: user is not authorized, hitcode:123”</li>
-<li>参考链接 <a href="https://github.com/iikira/BaiduPCS-Go/issues/460" target="_blank" rel="noopener">https://github.com/iikira/BaiduPCS-Go/issues/460</a></li>
-</ul>
-<p>3.6.3 版本发布:  </p>
-<ul>
-<li>修复了移动端页面显示异常的bug</li>
-</ul>
-<p>3.6.2 版本发布:  </p>
-<ul>
-<li>页面针对包含大量文件的文件夹处理，上传下载列表进行优化，解决页面卡死问题，打开速度提升十倍左右</li>
-<li>文件列表排序选项写入localstorage，长久有效</li>
-<li>在Windows和Mac下程序打开时调用默认浏览器打开链接 <a href="http://localhost:5299" target="_blank" rel="noopener">http://localhost:5299</a></li>
-</ul>
-<p>3.6.1 版本发布:  </p>
-<ul>
-<li>添加移动端UI</li>
-<li>新增支持BDUSS登录</li>
-</ul>
-<p>3.5.9 版本发布:  </p>
-<ul>
-<li>根据baidupcs-go的后台项目更新升级优化了下载, 上传</li>
-<li>新增回收站操作(暂时回收站删除单个文件会出问题, 不过不影响)</li>
-<li>新增重命名操作, 添加了列视图下文件删除和下载的快捷操作</li>
-<li>修复下载文件夹时文件夹任务残留的bug</li>
-<li>修复appid错误设置之后打开设置界面为空白的问题</li>
-<li>修复了设置界面输入特殊符号无效的问题</li>
-</ul>
-<p><font color="red">附加说明：</font></p>
-<ul>
-<li><p>之前如果使用过BaiduPcs软件, 可能会出现登录后加载文件列表会卡死，或者遇到错误, 远端服务器返回错误, 代码: 4, 消息:<code>&quot;No permission to do this operation&quot;</code></p>
-</li>
-<li><p>可以试试, 在右上角的设置里面把<font color="red"> PCS应用ID </font>设置为<font color="red"> 266719 </font>就可以正常使用了</p>
-</li>
-</ul>
-<ul>
-<li><p><code>&quot;目前百度是针对账号进行限速，当一个非会员账号下载量达到一定阈值就会触发限速。账号被限速之后容易出现下载错误、掉连接数等问题，需要过几天或者开通会员才会恢复。&quot;</code></p>
-</li>
-<li><p>这个是需要百度云账号登陆的， 不用太担心安全什么的，相信开源的力量吧~</p>
-</li>
-</ul>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><ul>
-<li><a href="https://www.52pojie.cn/thread-841306-1-1.html" target="_blank" rel="noopener">[WEB]基于BaiduPCS-Go打造的Web界面, 让你高效的使用百度云</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    <div style="text-align:center;color: #ccc;font-size:14px;">------------------------ The End ------------------------</div>
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://imjunjie.github.io/ai-zi-mu-app-po-jie-vip-jiao-cheng.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Junjie Jia">
-      <meta itemprop="description" content="生命中的每一步都必须认真对待，把握今天，成就明天！">
-      <meta itemprop="image" content="http://image.xcar.com.cn/attachments/a/day_130416/2013041610_b3e94dab51a2253bd17dxx64sn6s0q2H.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Imjunjie">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/ai-zi-mu-app-po-jie-vip-jiao-cheng.html" class="post-title-link" itemprop="url">爱字幕app破解VIP教程</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-03-07 14:28:07 / 修改时间：15:15:45" itemprop="dateCreated datePublished" datetime="2019-03-07T14:28:07+08:00">2019-03-07</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/逆向分析/" itemprop="url" rel="index"><span itemprop="name">逆向分析</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">303</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">1 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>这次是破解爱字母app的VIP教程<br>破解教程仅供研究参考，请勿用于商业用途</p>
-<p>软件有360加固哦  自行脱壳<br>本次只会给出核心破解版</p>
-<p>此次教程是用小米商店下载的最新版爱字幕1.5</p>
-<ul>
-<li>完美没水印</li>
-<li>解锁VIP</li>
-</ul>
-<h1 id="破解前"><a href="#破解前" class="headerlink" title="破解前"></a>破解前</h1><iframe src="/images/爱字幕app破解VIP教程/crack_pre.gif" width="50%" height="720"></iframe>
-
-<h1 id="破解后"><a href="#破解后" class="headerlink" title="破解后"></a>破解后</h1><iframe src="/images/爱字幕app破解VIP教程/crack_after.gif" width="50%" height="720"></iframe>
-<iframe src="/images/爱字幕app破解VIP教程/crack_after2.gif" width="60%" height="800"></iframe>
-
-<h1 id="破解步骤"><a href="#破解步骤" class="headerlink" title="破解步骤"></a>破解步骤</h1><ul>
-<li>首先脱壳得到dex  把除了软件的类全部删除<br><img src="/images/爱字幕app破解VIP教程/img1-1.png" alt></li>
-<li>搜索<code>isVip</code><br><img src="/images/爱字幕app破解VIP教程/img1-2.png" alt></li>
-<li>全部赋值1<br><img src="/images/爱字幕app破解VIP教程/img1-3.jpg" alt><br><img src="/images/爱字幕app破解VIP教程/img1-4.jpg" alt></li>
-</ul>
-<p>重命名为classes2<br>添加进apk<br>保存返回安装看效果<br><img src="/images/爱字幕app破解VIP教程/crack_result.gif" alt></p>
-<h1 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h1><p>成品下载地址：<a href="http://t.cn/EIu1EDR" target="_blank" rel="noopener">http://t.cn/EIu1EDR</a><br><a href="/images/爱字幕app破解VIP教程/爱字幕VIP版_需核心破解.apk">成品本地下载地址2 </a></p>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>【简单】爱字幕app破解VIP教程<br><a href="https://www.52pojie.cn/thread-889438-1-1.html" target="_blank" rel="noopener">https://www.52pojie.cn/thread-889438-1-1.html</a><br>(出处: 吾爱破解论坛)</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    <div style="text-align:center;color: #ccc;font-size:14px;">------------------------ The End ------------------------</div>
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://imjunjie.github.io/ai-qi-yi-wan-neng-bo-fang-qi-lu-se-xiu-gai-gao-su-bai-du-yun-xia-zai.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Junjie Jia">
-      <meta itemprop="description" content="生命中的每一步都必须认真对待，把握今天，成就明天！">
-      <meta itemprop="image" content="http://image.xcar.com.cn/attachments/a/day_130416/2013041610_b3e94dab51a2253bd17dxx64sn6s0q2H.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Imjunjie">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/ai-qi-yi-wan-neng-bo-fang-qi-lu-se-xiu-gai-gao-su-bai-du-yun-xia-zai.html" class="post-title-link" itemprop="url">爱奇艺万能播放器 绿色修改 & 高速百度云下载</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-03-07 12:55:30" itemprop="dateCreated datePublished" datetime="2019-03-07T12:55:30+08:00">2019-03-07</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-18 19:56:35" itemprop="dateModified" datetime="2019-03-18T19:56:35+08:00">2019-03-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/电脑/" itemprop="url" rel="index"><span itemprop="name">电脑</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/电脑/百度云下载/" itemprop="url" rel="index"><span itemprop="name">百度云下载</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/电脑/百度云下载/爱奇艺万能播放器/" itemprop="url" rel="index"><span itemprop="name">爱奇艺万能播放器</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">1.9k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">2 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>目前爱奇艺属于百度旗下，有细心的网友发现爱奇艺万能播放器竟然能不限速的下载百度网盘的资源！<br>启动播放器，右上角可以看见百度网盘的标志。<br><img src="/images/爱奇艺万能播放器-绿色修改-高速百度云下载/img2-1.jpg" alt><br>2018/11/18 17:00 之前下载的网友重新下载即可解决问题。<br>百度云高速下载速度不错：</p>
-<h1 id="测试效果"><a href="#测试效果" class="headerlink" title="测试效果"></a>测试效果</h1><p>百度云下载功能可用，<code>2018/11/18 17:00</code>测试效果：</p>
-<iframe src="/images/爱奇艺万能播放器-绿色修改-高速百度云下载/test_result.gif" width="70%" height="415"></iframe>
-
-<h1 id="绿化步骤"><a href="#绿化步骤" class="headerlink" title="绿化步骤"></a>绿化步骤</h1><p>使用须知，绿化步骤：</p>
-<p><img src="/images/爱奇艺万能播放器-绿色修改-高速百度云下载/img1-1.png" alt></p>
-<h1 id="百度云功能启用"><a href="#百度云功能启用" class="headerlink" title="百度云功能启用"></a>百度云功能启用</h1><p>百度云功能启用：<br><img src="/images/爱奇艺万能播放器-绿色修改-高速百度云下载/img1-2.png" alt><br><img src="/images/爱奇艺万能播放器-绿色修改-高速百度云下载/img1-3.png" alt></p>
-<h1 id="设置图片关联功能"><a href="#设置图片关联功能" class="headerlink" title="设置图片关联功能"></a>设置图片关联功能</h1><p>设置图片关联功能：（可设置为默认查看器，菜单里找）设置步骤:<br><img src="/images/爱奇艺万能播放器-绿色修改-高速百度云下载/img1-4.png" alt><br>修改特点：</p>
-<p><font color="red"># 去除强制更新。</font><br></p>
-<p><font color="red"># 去除多余菜单，界面搜索框。</font><br></p>
-<p><font color="red"># 禁止生成无用文件及文件夹。</font><br></p>
-<p><font color="red"># 批处理进行 绿化、卸载。</font><br></p>
-<h1 id="使用指南"><a href="#使用指南" class="headerlink" title="使用指南"></a>使用指南</h1><p>目前爱奇艺属于百度旗下，有细心的网友发现爱奇艺万能播放器竟然能不限速的下载百度网盘的资源！<br>启动播放器，右上角可以看见百度网盘的标志。<br><img src="/images/爱奇艺万能播放器-绿色修改-高速百度云下载/img2-1.jpg" alt><br>然后登录你的百度网盘账号<br><img src="/images/爱奇艺万能播放器-绿色修改-高速百度云下载/img2-2.jpg" alt><br>找到你要下载的资源即可下载啦！<br><img src="/images/爱奇艺万能播放器-绿色修改-高速百度云下载/img2-3.jpg" alt><br>这个功能目前不支持同时下载多个任务，不支持下载文件夹；<br>如果界面右上角没出现百度网盘功能的按钮，请重启播放器！</p>
-<p>更新日志：<br>5.1.55.4941 (2018.12.05)<br>更新日志:<br>1、新增暂停时逐帧快进功能<br>2、优化程序启动速度<br>3、优化播放器定时功能<br>4、优化看图模式图片缩放效率<br>5、其他各种问题修正及细节优化</p>
-<h2 id="官方下载地址"><a href="#官方下载地址" class="headerlink" title="官方下载地址"></a>官方下载地址</h2><p>官方下载地址：<br>爱奇艺万能播放器 v5.1.55.4941<br><a href="http://mbdapp.iqiyi.com/j/ot/GeePlayerSetup_onlineupdate_201812051603.exe" target="_blank" rel="noopener">http://mbdapp.iqiyi.com/j/ot/GeePlayerSetup_onlineupdate_201812051603.exe</a></p>
-<h1 id="更新介绍及下载"><a href="#更新介绍及下载" class="headerlink" title="更新介绍及下载"></a>更新介绍及下载</h1><p>2018/11/18 更新特点：<br><strong>没有集成 百度云下载浏览器 ，点击 百度云图标 会自动下载！！！</strong></p>
-<p>2019/11/19 使用说明：<br>1、有网友反映，在线播放 打开URL 功能不能使用，经体验，官方版也不能使用。<br>2、百度云功能正常能用，不能使用的网友，确定下载的是18号更新的版本，首次打开需等待百度云加载完成。<br>3、看到有网友反馈限速，这个问题我解决不了。因为我这里的下载速度大家也看到了，网络是 电信网络。对于限速的网友，可以尝试换一下网络环境试试，或者 换一个 百度云账号看一下。另外，这款软件只能单个下载，无法批量下载。</p>
-<p>2018/11/19 15:00 做最后更新：<br>1、修复由于之前修改过度，导致 点击 设置关联 的时候不能设置关联以及闪退问题。<br>2、精简一些更新有关的文件（软件已禁止更新）。</p>
-<p>2018/11/23 14:00 完善批处理:<br>1、完善卸载批处理，卸载后几乎不留痕迹。</p>
-<p>爱奇艺万能播放器 3.2.49.4280 下载链接：(2018/11/23 14:00 更新)<br>链接: <a href="https://pan.baidu.com/s/1pNt3Cr6WmZrukN8P-tbdpg" target="_blank" rel="noopener">https://pan.baidu.com/s/1pNt3Cr6WmZrukN8P-tbdpg</a> 提取码: pyev </p>
-<p>2018/11/18 更新到最新版：<br>爱奇艺万能播放器 5.1.53.4745 下载链接：(2018/11/23 14:00 更新)<br>链接: <a href="https://pan.baidu.com/s/1WC5pCtnmTo8F8AouufNU1Q" target="_blank" rel="noopener">https://pan.baidu.com/s/1WC5pCtnmTo8F8AouufNU1Q</a> 提取码:dqv5 </p>
-<p>两个版本比较：<br>1、从百度云下载来看没啥区别<br>2、新版貌似多着<font color="red">爱奇艺视频助手</font> 功能，但是这个功能开启后，安装体积100M多点。<br>3、没啥特殊需求的话，两个版本随意用。</p>
-<p>当然，想必有网友问，有没有<font color="red">爱奇艺视频助手</font> 提取版，答案是：必须有。</p>
-<h1 id="爱奇艺视频助手"><a href="#爱奇艺视频助手" class="headerlink" title="爱奇艺视频助手"></a>爱奇艺视频助手</h1><p>爱奇艺视频助手 7.5.3.15 修改特点：</p>
-<ul>
-<li>禁止检查更新</li>
-<li>去除反馈等菜单</li>
-</ul>
-<h2 id="爱奇艺视频助手-软件特色："><a href="#爱奇艺视频助手-软件特色：" class="headerlink" title="爱奇艺视频助手 软件特色："></a>爱奇艺视频助手 软件特色：</h2><p>图片MV ，功能：<br><img src="/images/爱奇艺万能播放器-绿色修改-高速百度云下载/img1-5.png" alt></p>
-<h2 id="转码功能"><a href="#转码功能" class="headerlink" title="转码功能"></a>转码功能</h2><p><strong>转码功能</strong>：支持各种视频转换为mp4\mkv\flv格式<br><img src="/images/爱奇艺万能播放器-绿色修改-高速百度云下载/img1-6.png" alt></p>
-<p>2018/11/23 14:00 完善批处理:<br>1、完善卸载批处理，卸载后几乎不留痕迹。<br>爱奇艺视频助手 7.5.3.15 下载链接：(2018/11/23 14:00 更新)<br>链接:<a href="https://pan.baidu.com/s/1Cj37KNN_w-WqlG9vqpDbOw" target="_blank" rel="noopener">https://pan.baidu.com/s/1Cj37KNN_w-WqlG9vqpDbOw</a> 提取码: 8yki </p>
-<h1 id="问答"><a href="#问答" class="headerlink" title="问答"></a>问答</h1><ul>
-<li>对于不显示 百度云 图标的网友，尝试重新启动软件3次左右，每次在联网状态下停留1分钟左右。</li>
-</ul>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><ul>
-<li>参考1<br>11/23（完善批处理）修复百度云 爱奇艺万能播放器 绿色修改  &amp; 高速百度云下载<br><a href="https://www.52pojie.cn/thread-823826-1-1.html" target="_blank" rel="noopener">https://www.52pojie.cn/thread-823826-1-1.html</a></li>
-<li>参考2<br>爱奇艺万能播放器 v5.1.55.4941 支持度盘高速下载<br><a href="https://www.52pojie.cn/thread-834449-1-1.html" target="_blank" rel="noopener">https://www.52pojie.cn/thread-834449-1-1.html</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    <div style="text-align:center;color: #ccc;font-size:14px;">------------------------ The End ------------------------</div>
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -4634,7 +4567,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -4758,7 +4691,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">26</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -4839,7 +4776,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">184k</span>
+    <span title="站点总字数">190k</span>
   
 
   
@@ -4848,7 +4785,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:47</span>
+    <span title="站点阅读时长">2:52</span>
   
 </div>
 
