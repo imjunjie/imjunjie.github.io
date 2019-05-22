@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://imjunjie.github.io/"/>
-  <updated>2019-05-21T01:21:15.272Z</updated>
+  <updated>2019-05-21T13:45:40.556Z</updated>
   <id>http://imjunjie.github.io/</id>
   
   <author>
@@ -15,6 +15,84 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java - 在Windows环境下安装JDK并设置环境变量</title>
+    <link href="http://imjunjie.github.io/java-zai-windows-huan-jing-xia-an-zhuang-jdk-bing-she-zhi-huan-jing-bian-liang.html"/>
+    <id>http://imjunjie.github.io/java-zai-windows-huan-jing-xia-an-zhuang-jdk-bing-she-zhi-huan-jing-bian-liang.html</id>
+    <published>2019-05-21T12:51:53.000Z</published>
+    <updated>2019-05-21T13:45:40.556Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>python的Tqdm模块</title>
+    <link href="http://imjunjie.github.io/python-de-tqdm-mo-kuai.html"/>
+    <id>http://imjunjie.github.io/python-de-tqdm-mo-kuai.html</id>
+    <published>2019-05-21T11:14:49.000Z</published>
+    <updated>2019-05-21T11:56:55.711Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="机器学习" scheme="http://imjunjie.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="TensorFlow" scheme="http://imjunjie.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/TensorFlow/"/>
+    
+    
+      <category term="机器学习; TensorFlow" scheme="http://imjunjie.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-TensorFlow/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GAN学习系列教程</title>
+    <link href="http://imjunjie.github.io/gan-xue-xi-xi-lie-jiao-cheng.html"/>
+    <id>http://imjunjie.github.io/gan-xue-xi-xi-lie-jiao-cheng.html</id>
+    <published>2019-05-21T06:15:06.000Z</published>
+    <updated>2019-05-21T07:05:34.844Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="机器学习" scheme="http://imjunjie.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="TensorFlow" scheme="http://imjunjie.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/TensorFlow/"/>
+    
+    
+      <category term="机器学习; TensorFlow" scheme="http://imjunjie.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-TensorFlow/"/>
+    
+  </entry>
   
   <entry>
     <title>Win10 + RTX 2060 + tensorflow GPU</title>
@@ -309,7 +387,7 @@
     <link href="http://imjunjie.github.io/eclipse-zuo-wei-python-de-kai-fa-gong-ju.html"/>
     <id>http://imjunjie.github.io/eclipse-zuo-wei-python-de-kai-fa-gong-ju.html</id>
     <published>2019-04-21T10:34:54.000Z</published>
-    <updated>2019-04-23T13:08:06.610Z</updated>
+    <updated>2019-05-21T15:01:54.703Z</updated>
     
     <summary type="html">
     
@@ -435,94 +513,6 @@
     
     
       <category term="Win10" scheme="http://imjunjie.github.io/tags/Win10/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>BaiduPCS-Go的安装及使用[CMD]</title>
-    <link href="http://imjunjie.github.io/baidupcs-go-de-an-zhuang-ji-shi-yong.html"/>
-    <id>http://imjunjie.github.io/baidupcs-go-de-an-zhuang-ji-shi-yong.html</id>
-    <published>2019-03-18T12:08:12.000Z</published>
-    <updated>2019-03-18T13:31:09.580Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="电脑" scheme="http://imjunjie.github.io/categories/%E7%94%B5%E8%84%91/"/>
-    
-      <category term="百度云下载" scheme="http://imjunjie.github.io/categories/%E7%94%B5%E8%84%91/%E7%99%BE%E5%BA%A6%E4%BA%91%E4%B8%8B%E8%BD%BD/"/>
-    
-      <category term="BaiduPCS-Go[CMD]" scheme="http://imjunjie.github.io/categories/%E7%94%B5%E8%84%91/%E7%99%BE%E5%BA%A6%E4%BA%91%E4%B8%8B%E8%BD%BD/BaiduPCS-Go-CMD/"/>
-    
-    
-      <category term="电脑;百度网盘;BaiduPCS-Go" scheme="http://imjunjie.github.io/tags/%E7%94%B5%E8%84%91-%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98-BaiduPCS-Go/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>基于BaiduPCS-Go打造的Web界面</title>
-    <link href="http://imjunjie.github.io/ji-yu-baidupcs-go-da-zao-de-web-jie-mian.html"/>
-    <id>http://imjunjie.github.io/ji-yu-baidupcs-go-da-zao-de-web-jie-mian.html</id>
-    <published>2019-03-18T11:27:56.000Z</published>
-    <updated>2019-03-18T12:00:02.041Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="电脑" scheme="http://imjunjie.github.io/categories/%E7%94%B5%E8%84%91/"/>
-    
-      <category term="百度云下载" scheme="http://imjunjie.github.io/categories/%E7%94%B5%E8%84%91/%E7%99%BE%E5%BA%A6%E4%BA%91%E4%B8%8B%E8%BD%BD/"/>
-    
-      <category term="BaiduPCS-Go" scheme="http://imjunjie.github.io/categories/%E7%94%B5%E8%84%91/%E7%99%BE%E5%BA%A6%E4%BA%91%E4%B8%8B%E8%BD%BD/BaiduPCS-Go/"/>
-    
-    
-      <category term="电脑;百度网盘;BaiduPCS-Go" scheme="http://imjunjie.github.io/tags/%E7%94%B5%E8%84%91-%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98-BaiduPCS-Go/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>爱字幕app破解VIP教程</title>
-    <link href="http://imjunjie.github.io/ai-zi-mu-app-po-jie-vip-jiao-cheng.html"/>
-    <id>http://imjunjie.github.io/ai-zi-mu-app-po-jie-vip-jiao-cheng.html</id>
-    <published>2019-03-07T06:28:07.000Z</published>
-    <updated>2019-03-07T07:15:45.902Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="http://imjunjie.github.io/categories/Android/"/>
-    
-      <category term="逆向分析" scheme="http://imjunjie.github.io/categories/Android/%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/"/>
-    
-    
-      <category term="Android; 逆向分析" scheme="http://imjunjie.github.io/tags/Android-%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/"/>
     
   </entry>
   

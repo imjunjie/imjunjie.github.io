@@ -383,6 +383,869 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://imjunjie.github.io/zheng-jian-zhi-xing-ruan-jian-ge-ren-jia-mi-gou-wan-mei-po-jie-xin-de.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Junjie Jia">
+      <meta itemprop="description" content="生命中的每一步都必须认真对待，把握今天，成就明天！">
+      <meta itemprop="image" content="http://image.xcar.com.cn/attachments/a/day_130416/2013041610_b3e94dab51a2253bd17dxx64sn6s0q2H.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Imjunjie">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/zheng-jian-zhi-xing-ruan-jian-ge-ren-jia-mi-gou-wan-mei-po-jie-xin-de.html" class="post-title-link" itemprop="url">证件之星软件个人加密狗完美破解心得</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-20 18:49:08 / 修改时间：19:41:54" itemprop="dateCreated datePublished" datetime="2019-03-20T18:49:08+08:00">2019-03-20</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/电脑/" itemprop="url" rel="index"><span itemprop="name">电脑</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/电脑/破解心得/" itemprop="url" rel="index"><span itemprop="name">破解心得</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">1 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="破解过程"><a href="#破解过程" class="headerlink" title="破解过程"></a>破解过程</h1><p>由于此软件程序为Delphi 所编写，并且无壳，直接载入OD，发现有狗，第一次打狗，不容易，如下图<br><img src="/images/证件之星软件个人加密狗完美破解心得/img1-2.png" alt><br><img src="/images/证件之星软件个人加密狗完美破解心得/img1-1.png" alt><br>发现修改狗，轻松进入软件，但是通过使用软件后发现有以下四点问题：</p>
+<ol>
+<li>点击<code>&quot;一键完成&quot;</code>会出现错误信息弹窗，点击确定软件关闭，如下图：<br><img src="/images/证件之星软件个人加密狗完美破解心得/img1-3.png" alt></li>
+</ol>
+<p>程序载入OD,右键搜索中文字符“<font color="red">软件遇到异常错误，即将关闭</font>”，如下图，按图操作<br><img src="/images/证件之星软件个人加密狗完美破解心得/img1-4.png" alt><br><img src="/images/证件之星软件个人加密狗完美破解心得/img1-5.png" alt><br><strong>这个问题解决了，一键处理已经ok了</strong><br><strong>但是还有以下三个问题没有处理。</strong></p>
+<p>由于此软件是Delphi编写的，利用其<code>特征码</code>给其<code>按钮事件</code>下断，载入OD，<font color="red">CTRL+G,转到00401000处,然后右键—-查找——-二进制字符串，输入我们的特征码740E8BD38B83????????FF93????????</font>，在特征码的下面都会有一个call，我们就在call处下断点，之后寻找下一个（CTRL+L），直到显示为没有。为什么要下那么多断点，因为我们也不知道那一个会用上。那如果特征码的情况比较多怎么办，我的建议是使用脚本（脚本百度），能快速的下断点，程序运行起来，结果发现，断下来了，但是这三个按钮点击依然闪退，找不到真正的按钮事件地址，怎么办了呢？</p>
+<p>由于本菜鸟是新手，用了好多办法都不是很凑效，最后发现有这款软件，<font color="red">Delphi 事件到地址转换工具 v2.020</font> 汉化版——可以查看Delphi 程序软件的按钮事件真实地址，实在太好了，于是就将程序载入<font color="red">Delphi 事件到地址转换工具中</font>，终于找到了以<font color="red">OnClick</font> 显示的按钮事件真实地址。</p>
+<p>如下图说明：以此处理三个问题，载入OD，Ctrl+G，输入地址，点击ok来到真是地址，然后找到图中关键跳修改即可。</p>
+<ol>
+<li><p>点击背景处理弹窗中的“处理”按钮，软件闪退，解决办法如下图。<br><img src="/images/证件之星软件个人加密狗完美破解心得/img1-6.jpg" alt><br><img src="/images/证件之星软件个人加密狗完美破解心得/img1-7.png" alt></p>
+</li>
+<li><p>点击照片保存弹窗中的“保存”按钮，软件闪退，解决办法如下图。<br><img src="/images/证件之星软件个人加密狗完美破解心得/img1-8.jpg" alt><br><img src="/images/证件之星软件个人加密狗完美破解心得/img1-9.png" alt></p>
+</li>
+<li><p>点击照片打印，软件闪退，解决办法如下图。<br><img src="/images/证件之星软件个人加密狗完美破解心得/img1-10.jpg" alt><br><img src="/images/证件之星软件个人加密狗完美破解心得/img1-11.png" alt><br>到此完美爆破，本菜鸟还需努力学习，谢谢大家！</p>
+</li>
+</ol>
+<h1 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h1><h2 id="源程序下载"><a href="#源程序下载" class="headerlink" title="源程序下载"></a>源程序下载</h2><p><strong>原程序下载：</strong></p>
+<ul>
+<li><a href="http://xiazai.zhzzx.com/xiazai/zhengzhaozhixing-gerenban7.exe" target="_blank" rel="noopener">官网下载</a></li>
+<li><a href="/images/证件之星软件个人加密狗完美破解心得/zhengzhaozhixing-gerenban7.exe">本地下载</a></li>
+</ul>
+<h2 id="爆破程序下载"><a href="#爆破程序下载" class="headerlink" title="爆破程序下载"></a>爆破程序下载</h2><p><strong>爆破程序下载：</strong></p>
+<ul>
+<li>百度网盘 链接:<a href="https://pan.baidu.com/s/1wOwV6tjtKZ5wI78dQJQKCA" target="_blank" rel="noopener">https://pan.baidu.com/s/1wOwV6tjtKZ5wI78dQJQKCA</a> 提取码: kpsg  </li>
+<li><a href="/images/证件之星软件个人加密狗完美破解心得/之星个人加密狗版7.0.rar">本地下载</a></li>
+</ul>
+<h2 id="Delphi事件到地址转换工具-v2-020"><a href="#Delphi事件到地址转换工具-v2-020" class="headerlink" title="Delphi事件到地址转换工具 v2.020"></a>Delphi事件到地址转换工具 v2.020</h2><p>Delphi 事件到地址转换工具 v2.020 汉化版下载，<font color="red">解压密码：RCFF Team</font>：</p>
+<ul>
+<li>百度网盘 链接:<a href="https://pan.baidu.com/s/1Y_hgYvlcCjA_dObcrWSa4A" target="_blank" rel="noopener">https://pan.baidu.com/s/1Y_hgYvlcCjA_dObcrWSa4A</a> 密码:xihj</li>
+<li><a href="/images/证件之星软件个人加密狗完美破解心得/Delphi 事件到地址转换工具 v2.020 汉化版.rar">本地下载</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">------------------------ The End ------------------------</div>
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://imjunjie.github.io/win10-xie-zai-huo-geng-gai-cheng-xu-zhong-bu-xian-shi-xiu-gai-ri-qi-he-lei-xing.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Junjie Jia">
+      <meta itemprop="description" content="生命中的每一步都必须认真对待，把握今天，成就明天！">
+      <meta itemprop="image" content="http://image.xcar.com.cn/attachments/a/day_130416/2013041610_b3e94dab51a2253bd17dxx64sn6s0q2H.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Imjunjie">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/win10-xie-zai-huo-geng-gai-cheng-xu-zhong-bu-xian-shi-xiu-gai-ri-qi-he-lei-xing.html" class="post-title-link" itemprop="url">win10卸载或更改程序中不显示修改日期和类型</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-19 21:50:06 / 修改时间：22:14:52" itemprop="dateCreated datePublished" datetime="2019-03-19T21:50:06+08:00">2019-03-19</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/电脑/" itemprop="url" rel="index"><span itemprop="name">电脑</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/电脑/常见故障/" itemprop="url" rel="index"><span itemprop="name">常见故障</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">216</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">1 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Windows7 卸载或更改程序 中不显示时间和大小<br>急求！win10控制面板的卸载软件，都不显示安装日期了<br>有个软件我安装了新版本，准备按安装日期卸旧版本。上次关机前都是正常显示安装日期的，打开就成这样了，混在一起（点击日期全都变成一天的了）</p>
+<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p><img src="/images/win10卸载或更改程序中不显示修改日期和类型/img1-1.jpg" alt></p>
+<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><h2 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h2><p>在列表的空白处右键，在弹出的菜单中选择：“分组依据”，“更多”，勾选“安装时间”，最后点击“确定”即可。</p>
+<h2 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h2><p>在名称栏上右击</p>
+<p>将“安装时间”打勾即可</p>
+<p>如下图所示：<br><img src="/images/win10卸载或更改程序中不显示修改日期和类型/img1-2.jpg" alt></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">------------------------ The End ------------------------</div>
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://imjunjie.github.io/baidupcs-go-de-an-zhuang-ji-shi-yong.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Junjie Jia">
+      <meta itemprop="description" content="生命中的每一步都必须认真对待，把握今天，成就明天！">
+      <meta itemprop="image" content="http://image.xcar.com.cn/attachments/a/day_130416/2013041610_b3e94dab51a2253bd17dxx64sn6s0q2H.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Imjunjie">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/baidupcs-go-de-an-zhuang-ji-shi-yong.html" class="post-title-link" itemprop="url">BaiduPCS-Go的安装及使用[CMD]</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-18 20:08:12 / 修改时间：21:31:09" itemprop="dateCreated datePublished" datetime="2019-03-18T20:08:12+08:00">2019-03-18</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/电脑/" itemprop="url" rel="index"><span itemprop="name">电脑</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/电脑/百度云下载/" itemprop="url" rel="index"><span itemprop="name">百度云下载</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/电脑/百度云下载/BaiduPCS-Go-CMD/" itemprop="url" rel="index"><span itemprop="name">BaiduPCS-Go[CMD]</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">4.1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">4 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>你是否经常对百度网盘非VIP的几十K下载速度而痛恨不已？没错，百度就是无赖，VIP会员下载速度可以达到2MB/s，甚至更高，普通用户不加速也就算了，还限速！不能忍！其实，我个人对于百度的产品是十分抗拒的，因此平时基本不用百度的产品，但是也有例外的时候，比如百度网盘。因为对电影的画质要求比较高，所以一些1080P的电影动辄6、7个G，所以普通的网络下载是特别慢的，而且这些资源往往以种子的形式存在，于是经过摸索终于找到一个下载很快的方法，这里推荐给大家。当然，这个方法不仅适用于下载电影，任何保存于百度网盘的文件使用这种方法都可以达到不亚于VIP的速度，甚至顶速（具体情况取决于你使用的网络速度），关键是免费！</p>
+<p>注：这个教程里会涉及到一些非常简单的命令行操作，但是非程序员请不要抵触或者害怕，毕竟带来的便利是可观的，来个效果图感受一下：</p>
+<p><img src="/images/BaiduPCS-Go的安装及使用/img1-1.png" alt></p>
+<p>BaiduPCS-Go是用Go语言写的一个开源的小工具，专门用于突破百度对于非VIP用户对百度网盘下载速度的限制。其项目源码地址如下：<a href="https://github.com/iikira/BaiduPCS-Go" target="_blank" rel="noopener">https://github.com/iikira/BaiduPCS-Go</a> 。在其readme文件中，对于软件的使用做了很详细的介绍，有兴趣的人可以阅读一下，我这里只介绍最基本的安装和使用方法。</p>
+<h1 id="特色"><a href="#特色" class="headerlink" title="特色"></a>特色</h1><p> 这是一个仿Linux命令行的百度网盘客户端。（是的，不限速）</p>
+<p>注意：<br>    文件名和目录名可用通配符<em>补全(使用</em>代替n个字符，n&gt;=0)。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 示例：</span><br><span class="line">d /a_directory/b_directory/c_file.txt =</span><br><span class="line">d /a*/b*/c*</span><br></pre></td></tr></table></figure></p>
+<p>特点： </p>
+<ul>
+<li>跨平台（Windows，macOS，Android等） </li>
+<li>支持多账户。 </li>
+<li>网盘内列出文件和目录, 支持通配符匹配路径; </li>
+<li>下载网盘内文件, 支持网盘内目录 (文件夹) 下载, 支持多个文件或目录下载, 支持断点续传和高并发高速下载。 </li>
+<li>离线下载，支持http/https/ftp/电驴/磁力链协议。 </li>
+<li>好玩，不过没有一点Linux基础，就不怎么好玩了。</li>
+</ul>
+<h1 id="软件下载及安装"><a href="#软件下载及安装" class="headerlink" title="软件下载及安装"></a>软件下载及安装</h1><p>项目地址: <a href="https://github.com/iikira/BaiduPCS-Go" target="_blank" rel="noopener">iikira/BaiduPCS-Go</a><br>下载地址: <a href="https://github.com/iikira/BaiduPCS-Go/releases" target="_blank" rel="noopener">iikira/BaiduPCS-Go releases</a></p>
+<h2 id="a-Android-macOS"><a href="#a-Android-macOS" class="headerlink" title="a. Android/macOS"></a>a. Android/macOS</h2><p>Android：需要用到 Termux 或 NeoTerm 类软件。这里只提一下。<br>macOS：没有macOS的设备，这里属于凑字数。</p>
+<h2 id="b-Windows"><a href="#b-Windows" class="headerlink" title="b. Windows"></a>b. Windows</h2><h3 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址:"></a>下载地址:</h3><ul>
+<li>64位系统：<a href="https://github.com/iikira/BaiduPCS-Go/releases/download/v3.3.3/BaiduPCS-Go-v3.3.3-windows-x64.zip" target="_blank" rel="noopener">BaiduPCS-Go-v3.3.3-windows-x64.zip </a></li>
+<li>32位系统：<a href="https://github.com/iikira/BaiduPCS-Go/releases/download/v3.3.3/BaiduPCS-Go-v3.3.3-windows-x86.zip" target="_blank" rel="noopener">BaiduPCS-Go-v3.3.3-windows-x86.zip</a></li>
+<li>GitHub地址： <a href="https://github.com/iikira/BaiduPCS-Go/releases" target="_blank" rel="noopener">https://github.com/iikira/BaiduPCS-Go/releases</a></li>
+</ul>
+<h3 id="下载说明："><a href="#下载说明：" class="headerlink" title="下载说明："></a>下载说明：</h3><p><img src="/images/BaiduPCS-Go的安装及使用/img1-2.png" alt></p>
+<p>请按照上述说明下载对应的版本，我只测试了windows和linux的机器，其他系统暂时没有测试。</p>
+<p><code>对于windows系统，确认系统类型的方法：右键点击“我的电脑” -&gt; “属性” -&gt; “系统类型”</code></p>
+<p><img src="/images/BaiduPCS-Go的安装及使用/img1-3.png" alt></p>
+<p>该软件是绿色软件，下载完成后请直接解压到你的自己的软件目录即可。</p>
+<h1 id="软件的使用"><a href="#软件的使用" class="headerlink" title="软件的使用"></a>软件的使用</h1><p>该软件的使用方法也很简单，在Linux下和Windows下的方法一模一样，只不过程序的名字有一点差异（Windows下，软件的名字叫做“BaiduPCS-Go.exe”，Linux下，软件的名字叫做“BaiduPCS-Go”）。以下以Windows系统为例讲解软件的使用。</p>
+<h2 id="程序运行"><a href="#程序运行" class="headerlink" title="程序运行"></a>程序运行</h2><p>下载后解压缩，双击 BaiduPCS-Go.exe。<br>界面如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">----</span><br><span class="line">BaiduPCS-Go - 百度网盘客户端 for windows/amd64</span><br><span class="line">  .......</span><br><span class="line">  .......</span><br><span class="line">  .......</span><br><span class="line">BaiduPCS-Go &gt;</span><br></pre></td></tr></table></figure></p>
+<p>界面很长，这里用省略号代替。</p>
+<h2 id="登录-退出-切换"><a href="#登录-退出-切换" class="headerlink" title="登录/退出/切换"></a>登录/退出/切换</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">login     # 登录</span><br><span class="line">logout    # 退出当前账户</span><br><span class="line">su/chuser # 切换账户</span><br></pre></td></tr></table></figure>
+<p>在命令行窗口中输入 login ，再根据提示输入账号和密码，即可登录百度账号。</p>
+<p>还有其他登录方式，如 login -bduss=<bduss>。(获取bduss)</bduss></p>
+<p>logout 和 su / chuser 的用法也比较简单。</p>
+<p>在使用前，我们首先要登录百度账号，只要不手动退出账号，以后可以直接使用，而不必每次都登录。<br>首先，打开命令行，打开命令行的方式有两种：</p>
+<ul>
+<li><p>菜单打开<br>屏幕左下角“开始” -&gt; “所有程序” -&gt; “附件” -&gt; “命令提示符”</p>
+</li>
+<li><p>快捷键打开<br>按下键盘上的Win（显示微软图标的那个键）+R， 在弹出的窗口输入”cmd”，然后按下回车<br><img src="/images/BaiduPCS-Go的安装及使用/img1-4.png" alt></p>
+</li>
+</ul>
+<p>接下来我们需要进入刚才解压好的软件目录，比如我的路径为：<code>C:\Users\User\Downloads\BaiduPCS-Go-v3.5.6-windows-x64</code>，那么在刚弹出的窗口中输入，并按下回车：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd C:\Users\User\Downloads\BaiduPCS-Go-v3.5.6-windows-x64</span><br></pre></td></tr></table></figure></p>
+<p>然后开始输入命令登录百度账户，在窗口中输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go.exe login</span><br></pre></td></tr></table></figure></p>
+<p>然后按照下图操作即可登录：<br><img src="/images/BaiduPCS-Go的安装及使用/img1-5.png" alt></p>
+<p>在显示成功登陆后，我们就可以关掉这个窗口了。然后双击BaiduPCS-Go.exe这个文件就可以进行下一步的操作了。<br>如果要退出账号，只需要在这个窗口中输入logout即可。</p>
+<h3 id="切换目录"><a href="#切换目录" class="headerlink" title="切换目录"></a>切换目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd -l /Path/To/File</span><br><span class="line"></span><br><span class="line"># cd = change directory = 切换目录。</span><br><span class="line"># /Path/To/File = 文件路径，绝对路径或相对路径。</span><br><span class="line"># -l: 显示目标目录下的子文件及子目录。</span><br></pre></td></tr></table></figure>
+<p>例：cd /a/b/c/d </p>
+<h2 id="查看当前账户及已登录账户"><a href="#查看当前账户及已登录账户" class="headerlink" title="查看当前账户及已登录账户"></a>查看当前账户及已登录账户</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loglist</span><br></pre></td></tr></table></figure>
+<h2 id="查看文件"><a href="#查看文件" class="headerlink" title="查看文件"></a>查看文件</h2><ul>
+<li><p>查看文件命令ls (list)<br><img src="/images/BaiduPCS-Go的安装及使用/img1-6.png" alt></p>
+</li>
+<li><p>切换目录<br>默认情况下，打开之后执行ls看到的文件就是你百度网盘最顶层目录，如果想切换目录的话，执行以下命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd xxx</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>其中xxx是你想切换的文件夹名。</p>
+<ul>
+<li>切换到上一级目录<br>使用下面的命令可以切换到上一级目录：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ..</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="下载文件"><a href="#下载文件" class="headerlink" title="下载文件"></a>下载文件</h2><p>下载文件的命令如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">download -p 1000 xxx</span><br></pre></td></tr></table></figure></p>
+<p>其中xxx是你要下载的文件名，如下图所示:<br><img src="/images/BaiduPCS-Go的安装及使用/img1-7.png" alt></p>
+<h2 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h2><p>上传文件时，需要打开命令行来操作。上传文件的命令如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go upload xxx yyy</span><br></pre></td></tr></table></figure></p>
+<p>其中xxx是你要上传的本地文件名，yyy是你百度网盘下的目录名，比如我要把我本地放在C:\Users\User\Downloads下的一个叫做Git-2.18.0-64-bit.exe的文件传到百度网盘的/Softwares/Tools目录下。命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaiduPCS-Go.exe upload C:\Users\User\Downloads\Git-2.18.0-64-bit.exe /Softwares/Tools</span><br></pre></td></tr></table></figure>
+<p>然后，我们就能看到如下的结果：<br><img src="/images/BaiduPCS-Go的安装及使用/img1-7.png" alt><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这里要注意的是，windows系统下，本地文件的路径名书写要用\，而百度网盘路径名书写要用/.</span><br></pre></td></tr></table></figure></p>
+<h2 id="web功能"><a href="#web功能" class="headerlink" title="web功能"></a>web功能</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">web #启用web功能</span><br></pre></td></tr></table></figure>
+<p>输入上述命令后，在浏览器栏输入localhost:8080，就可以在本地查看你的网盘目录。</p>
+<p>很不错的功能。</p>
+<h1 id="帮助菜单"><a href="#帮助菜单" class="headerlink" title="帮助菜单"></a>帮助菜单</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">h</span><br></pre></td></tr></table></figure>
+<p>输入 h ，可以看到帮助菜单。这里做成表格，以便观看<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">用法：输入 h ，可以看到帮助菜单。这里做成表格，以便观看</span><br></pre></td></tr></table></figure></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>COMMANDS</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tool</td>
+<td style="text-align:left">工具箱</td>
+</tr>
+<tr>
+<td>help / h</td>
+<td style="text-align:left">Shows a list of commands or help for one command</td>
+</tr>
+<tr>
+<td>其他：</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>run</td>
+<td style="text-align:left">执行系统命令</td>
+</tr>
+<tr>
+<td>sumfile / sf</td>
+<td style="text-align:left">获取文件的秒传信息</td>
+</tr>
+<tr>
+<td>web</td>
+<td style="text-align:left">启用 web 客户端 (测试中)</td>
+</tr>
+<tr>
+<td>百度账号：</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>login</td>
+<td style="text-align:left">登录百度账号</td>
+</tr>
+<tr>
+<td>loglist</td>
+<td style="text-align:left">获取当前帐号, 和所有已登录的百度帐号</td>
+</tr>
+<tr>
+<td>logout</td>
+<td style="text-align:left">退出当前登录的百度帐号</td>
+</tr>
+<tr>
+<td>su / chuser</td>
+<td style="text-align:left">切换已登录的百度帐号</td>
+</tr>
+<tr>
+<td>百度网盘：</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>cd</td>
+<td style="text-align:left">切换工作目录</td>
+</tr>
+<tr>
+<td>cp</td>
+<td style="text-align:left">拷贝(复制) 文件/目录</td>
+</tr>
+<tr>
+<td>download / d</td>
+<td style="text-align:left">下载文件或目录</td>
+</tr>
+<tr>
+<td>ls / l / ll</td>
+<td style="text-align:left">列出当前工作目录内的文件和目录 或 指定目录内的文件和目录</td>
+</tr>
+<tr>
+<td>meta</td>
+<td style="text-align:left">获取单个文件/目录的元信息 (详细信息)</td>
+</tr>
+<tr>
+<td>mkdir</td>
+<td style="text-align:left">创建目录</td>
+</tr>
+<tr>
+<td>mv</td>
+<td style="text-align:left">移动/重命名 文件/目录 </td>
+</tr>
+<tr>
+<td>offlinedl/clouddl / od</td>
+<td style="text-align:left">离线下载 </td>
+</tr>
+<tr>
+<td>pwd</td>
+<td style="text-align:left">输出当前所在目录 (工作目录) </td>
+</tr>
+<tr>
+<td>quota</td>
+<td style="text-align:left">获取配额, 即获取网盘的总储存空间, 和已使用的储存空间</td>
+</tr>
+<tr>
+<td>rapidupload / ru</td>
+<td style="text-align:left">手动秒传文件</td>
+</tr>
+<tr>
+<td>rm</td>
+<td style="text-align:left">删除 单个/多个 文件/目录 </td>
+</tr>
+<tr>
+<td>upload / u</td>
+<td style="text-align:left">上传文件或目录 </td>
+</tr>
+<tr>
+<td>配置:</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>config</td>
+<td style="text-align:left">显示和修改程序配置项</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>GLOBAL OPTIONS:</th>
+<th style="text-align:left">全局选项</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–verbose</td>
+<td style="text-align:left">启用调试 [%BAIDUPCS_GO_VERBOSE%]</td>
+</tr>
+<tr>
+<td>–help / -h</td>
+<td style="text-align:left">查看帮助 </td>
+</tr>
+<tr>
+<td>–version / -v</td>
+<td style="text-align:left">查看版本号</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h1><ul>
+<li>关于BaiduPCS-Go不能用问题解决，报错【获取目录下的文件列表 遇到错误, 远端服务器返回错误】<br>BaiduPCS-Go不能使用报错：获取目录下的文件列表 遇到错误, 远端服务器返回错误, 代码: 4, 消息: No permissionto do this operation, 路径: /<br>设置新的appid!：<br>目前已知可用APP id：266719</li>
+</ul>
+<p>在软件输入 config set -appid=266719。</p>
+<ul>
+<li>注意以下问题：错误代码403/31066  造成无法下载问题</li>
+</ul>
+<ol>
+<li>下载路径和文件命名不带空格符号。</li>
+<li>检查文件路径是否过于复杂(如果实在不行就直接下载整个文件夹)</li>
+<li>如果还是不行，那就换别的账号登录吧</li>
+</ol>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><ul>
+<li><a href="https://blog.csdn.net/qq_39355782/article/details/80091071" target="_blank" rel="noopener">[教程]BaiduPCS-Go</a></li>
+<li><a href="https://luomuxiaoxiao.com/?p=102" target="_blank" rel="noopener">BaiduPCS-Go的安装及使用</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">------------------------ The End ------------------------</div>
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://imjunjie.github.io/ji-yu-baidupcs-go-da-zao-de-web-jie-mian.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -3741,648 +4604,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://imjunjie.github.io/hexo-bo-wen-jia-mi.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Junjie Jia">
-      <meta itemprop="description" content="生命中的每一步都必须认真对待，把握今天，成就明天！">
-      <meta itemprop="image" content="http://image.xcar.com.cn/attachments/a/day_130416/2013041610_b3e94dab51a2253bd17dxx64sn6s0q2H.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Imjunjie">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/hexo-bo-wen-jia-mi.html" class="post-title-link" itemprop="url">hexo博文加密</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-03-02 21:45:11 / 修改时间：21:56:10" itemprop="dateCreated datePublished" datetime="2019-03-02T21:45:11+08:00">2019-03-02</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">11k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">10 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>介绍一种给博客文章加密的方法。</p>
-<p>很多时候当我们写了一篇博客，但并不想所有人能够访问它。对于WordPress这很容易做到，但是对于hexo，由于是静态网页，并不能做到完全的加密。</p>
-<p>在GitHub上发现了有个人做了一个加密的插件，还挺好用，推荐给大家。</p>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>在你的hexo根目录的package.json文件夹中添加：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">“hexo-blog-encrypt”: “2.0.*”</span><br></pre></td></tr></table></figure></p>
-<p>然后在命令行中输入：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure></p>
-<p>这样这个插件就安装好了。</p>
-<p>找到根目录下的<code>_config.yml</code>文件，添加如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Security</span></span><br><span class="line"><span class="comment">##</span></span><br><span class="line">encrypt:</span><br><span class="line">    <span class="built_in">enable</span>: <span class="literal">true</span></span><br></pre></td></tr></table></figure></p>
-<p>这样就可以使用插件了。</p>
-<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>在你要加密的文章头部写入password，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hello World</span><br><span class="line">date: 2016-03-30 21:18:02</span><br><span class="line">password: abc123</span><br><span class="line">abstract: Welcome to my blog, enter password to read.</span><br><span class="line">message: Welcome to my blog, enter password to read.</span><br><span class="line">---</span><br></pre></td></tr></table></figure></p>
-<p>这样就可以需要输入密码访问了。</p>
-<h1 id="Bugs"><a href="#Bugs" class="headerlink" title="Bugs"></a>Bugs</h1><ul>
-<li>对于hexo-blog-encrypt2.0之前的版本，无法触发渲染mathjax的函数，需要进行升级。</li>
-<li>如果想对TOC进行加密，以next主题为例，将<code>next/layout/_macro/sidebar.swig</code>的文件替换为：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br></pre></td><td class="code"><pre><span class="line">&#123;% macro render(is_post) %&#125;</span><br><span class="line">&lt;div class=<span class="string">"sidebar-toggle"</span>&gt;</span><br><span class="line">  &lt;div class=<span class="string">"sidebar-toggle-line-wrap"</span>&gt;</span><br><span class="line">    &lt;span class=<span class="string">"sidebar-toggle-line sidebar-toggle-line-first"</span>&gt;&lt;/span&gt;</span><br><span class="line">    &lt;span class=<span class="string">"sidebar-toggle-line sidebar-toggle-line-middle"</span>&gt;&lt;/span&gt;</span><br><span class="line">    &lt;span class=<span class="string">"sidebar-toggle-line sidebar-toggle-line-last"</span>&gt;&lt;/span&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;aside id=<span class="string">"sidebar"</span> class=<span class="string">"sidebar"</span>&gt;</span><br><span class="line">  &lt;div class=<span class="string">"sidebar-inner"</span>&gt;</span><br><span class="line"></span><br><span class="line">    &#123;% <span class="built_in">set</span> display_toc = is_post and theme.toc.enable %&#125;</span><br><span class="line">    &#123;% <span class="keyword">if</span> page.encrypt == <span class="literal">true</span> %&#125;</span><br><span class="line">      &#123;% <span class="keyword">if</span> display_toc and toc(page.origin).length &gt; 1 %&#125;</span><br><span class="line">        &lt;ul class=<span class="string">"sidebar-nav motion-element"</span>&gt;</span><br><span class="line">          &lt;li class=<span class="string">"sidebar-nav-toc sidebar-nav-active"</span> data-target=<span class="string">"post-toc-wrap"</span> &gt;</span><br><span class="line">            &#123;&#123; __(<span class="string">'sidebar.toc'</span>) &#125;&#125;</span><br><span class="line">          &lt;/li&gt;</span><br><span class="line">          &lt;li class=<span class="string">"sidebar-nav-overview"</span> data-target=<span class="string">"site-overview"</span>&gt;</span><br><span class="line">            &#123;&#123; __(<span class="string">'sidebar.overview'</span>) &#125;&#125;</span><br><span class="line">          &lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">      &#123;% endif %&#125;</span><br><span class="line">    &#123;% <span class="keyword">else</span> %&#125;</span><br><span class="line">      &#123;% <span class="keyword">if</span> display_toc and toc(page.content).length &gt; 1 %&#125;</span><br><span class="line">        &lt;ul class=<span class="string">"sidebar-nav motion-element"</span>&gt;</span><br><span class="line">          &lt;li class=<span class="string">"sidebar-nav-toc sidebar-nav-active"</span> data-target=<span class="string">"post-toc-wrap"</span> &gt;</span><br><span class="line">            &#123;&#123; __(<span class="string">'sidebar.toc'</span>) &#125;&#125;</span><br><span class="line">          &lt;/li&gt;</span><br><span class="line">          &lt;li class=<span class="string">"sidebar-nav-overview"</span> data-target=<span class="string">"site-overview"</span>&gt;</span><br><span class="line">            &#123;&#123; __(<span class="string">'sidebar.overview'</span>) &#125;&#125;</span><br><span class="line">          &lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">      &#123;% endif %&#125;</span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;section class=<span class="string">"site-overview sidebar-panel&#123;% if not display_toc or toc(page.content).length &lt;= 1 %&#125; sidebar-panel-active&#123;% endif %&#125;"</span>&gt;</span><br><span class="line">      &lt;div class=<span class="string">"site-author motion-element"</span> itemprop=<span class="string">"author"</span> itemscope itemtype=<span class="string">"http://schema.org/Person"</span>&gt;</span><br><span class="line">        &lt;img class=<span class="string">"site-author-image"</span> itemprop=<span class="string">"image"</span></span><br><span class="line">             src=<span class="string">"&#123;&#123; url_for( theme.avatar | default(theme.images + '/avatar.gif') ) &#125;&#125;"</span></span><br><span class="line">             alt=<span class="string">"&#123;&#123; theme.author &#125;&#125;"</span> /&gt;</span><br><span class="line">        &lt;p class=<span class="string">"site-author-name"</span> itemprop=<span class="string">"name"</span>&gt;&#123;&#123; theme.author &#125;&#125;&lt;/p&gt;</span><br><span class="line">         &#123;% <span class="keyword">if</span> theme.seo %&#125;</span><br><span class="line">            &lt;p class=<span class="string">"site-description motion-element"</span> itemprop=<span class="string">"description"</span>&gt;&#123;&#123; theme.signature &#125;&#125;&lt;/p&gt;</span><br><span class="line">         &#123;% <span class="keyword">else</span> %&#125;</span><br><span class="line">            &lt;p class=<span class="string">"site-description motion-element"</span> itemprop=<span class="string">"description"</span>&gt;&#123;&#123; theme.description &#125;&#125;&lt;/p&gt;</span><br><span class="line">        &#123;% endif %&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &lt;nav class=<span class="string">"site-state motion-element"</span>&gt;</span><br><span class="line"></span><br><span class="line">        &#123;% <span class="keyword">if</span> config.archive_dir != <span class="string">'/'</span> %&#125;</span><br><span class="line">          &lt;div class=<span class="string">"site-state-item site-state-posts"</span>&gt;</span><br><span class="line">            &lt;a href=<span class="string">"&#123;&#123; url_for(theme.menu.archives) &#125;&#125;"</span>&gt;</span><br><span class="line">              &lt;span class=<span class="string">"site-state-item-count"</span>&gt;&#123;&#123; site.posts.length &#125;&#125;&lt;/span&gt;</span><br><span class="line">              &lt;span class=<span class="string">"site-state-item-name"</span>&gt;&#123;&#123; __(<span class="string">'state.posts'</span>) &#125;&#125;&lt;/span&gt;</span><br><span class="line">            &lt;/a&gt;</span><br><span class="line">          &lt;/div&gt;</span><br><span class="line">        &#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line">        &#123;% <span class="keyword">if</span> site.categories.length &gt; 0 %&#125;</span><br><span class="line">          &#123;% <span class="built_in">set</span> categoriesPageQuery = site.pages.find(&#123;<span class="built_in">type</span>: <span class="string">'categories'</span>&#125;, &#123;lean: <span class="literal">true</span>&#125;) %&#125;</span><br><span class="line">          &#123;% <span class="built_in">set</span> hasCategoriesPage = categoriesPageQuery.length &gt; 0 %&#125;</span><br><span class="line">          &lt;div class=<span class="string">"site-state-item site-state-categories"</span>&gt;</span><br><span class="line">            &#123;% <span class="keyword">if</span> hasCategoriesPage %&#125;&lt;a href=<span class="string">"&#123;&#123; url_for(categoriesPageQuery[0].path) &#125;&#125;"</span>&gt;&#123;% endif %&#125;</span><br><span class="line">              &lt;span class=<span class="string">"site-state-item-count"</span>&gt;&#123;&#123; site.categories.length &#125;&#125;&lt;/span&gt;</span><br><span class="line">              &lt;span class=<span class="string">"site-state-item-name"</span>&gt;&#123;&#123; __(<span class="string">'state.categories'</span>) &#125;&#125;&lt;/span&gt;</span><br><span class="line">            &#123;% <span class="keyword">if</span> hasCategoriesPage %&#125;&lt;/a&gt;&#123;% endif %&#125;</span><br><span class="line">          &lt;/div&gt;</span><br><span class="line">        &#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line">        &#123;% <span class="keyword">if</span> site.tags.length &gt; 0 %&#125;</span><br><span class="line">          &#123;% <span class="built_in">set</span> tagsPageQuery = site.pages.find(&#123;<span class="built_in">type</span>: <span class="string">'tags'</span>&#125;, &#123;lean: <span class="literal">true</span>&#125;) %&#125;</span><br><span class="line">          &#123;% <span class="built_in">set</span> hasTagsPage = tagsPageQuery.length &gt; 0 %&#125;</span><br><span class="line">          &lt;div class=<span class="string">"site-state-item site-state-tags"</span>&gt;</span><br><span class="line">            &#123;% <span class="keyword">if</span> hasTagsPage %&#125;&lt;a href=<span class="string">"&#123;&#123; url_for(tagsPageQuery[0].path) &#125;&#125;"</span>&gt;&#123;% endif %&#125;</span><br><span class="line">              &lt;span class=<span class="string">"site-state-item-count"</span>&gt;&#123;&#123; site.tags.length &#125;&#125;&lt;/span&gt;</span><br><span class="line">              &lt;span class=<span class="string">"site-state-item-name"</span>&gt;&#123;&#123; __(<span class="string">'state.tags'</span>) &#125;&#125;&lt;/span&gt;</span><br><span class="line">            &#123;% <span class="keyword">if</span> hasTagsPage %&#125;&lt;/a&gt;&#123;% endif %&#125;</span><br><span class="line">          &lt;/div&gt;</span><br><span class="line">        &#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line">      &lt;/nav&gt;</span><br><span class="line"></span><br><span class="line">      &#123;% <span class="keyword">if</span> theme.rss %&#125;</span><br><span class="line">        &lt;div class=<span class="string">"feed-link motion-element"</span>&gt;</span><br><span class="line">          &lt;a href=<span class="string">"&#123;&#123; url_for(theme.rss) &#125;&#125;"</span> rel=<span class="string">"alternate"</span>&gt;</span><br><span class="line">            &lt;i class=<span class="string">"fa fa-rss"</span>&gt;&lt;/i&gt;</span><br><span class="line">            RSS</span><br><span class="line">          &lt;/a&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">      &#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line">      &lt;div class=<span class="string">"links-of-author motion-element"</span>&gt;</span><br><span class="line">        &#123;% <span class="keyword">if</span> theme.social %&#125;</span><br><span class="line">          &#123;% <span class="keyword">for</span> name, link <span class="keyword">in</span> theme.social %&#125;</span><br><span class="line">            &lt;span class=<span class="string">"links-of-author-item"</span>&gt;</span><br><span class="line">              &lt;a href=<span class="string">"&#123;&#123; link &#125;&#125;"</span> target=<span class="string">"_blank"</span> title=<span class="string">"&#123;&#123; name &#125;&#125;"</span>&gt;</span><br><span class="line">                &#123;% <span class="keyword">if</span> theme.social_icons.enable %&#125;</span><br><span class="line">                  &lt;i class=<span class="string">"fa fa-fw fa-&#123;&#123; theme.social_icons[name] | default('globe') | lower &#125;&#125;"</span>&gt;&lt;/i&gt;</span><br><span class="line">                &#123;% endif %&#125;</span><br><span class="line">                &#123;&#123; name &#125;&#125;</span><br><span class="line">              &lt;/a&gt;</span><br><span class="line">            &lt;/span&gt;</span><br><span class="line">          &#123;% endfor %&#125;</span><br><span class="line">        &#123;% endif %&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">      &#123;% <span class="built_in">set</span> cc = &#123;<span class="string">'by'</span>: 1, <span class="string">'by-nc'</span>: 1, <span class="string">'by-nc-nd'</span>: 1, <span class="string">'by-nc-sa'</span>: 1, <span class="string">'by-nd'</span>: 1, <span class="string">'by-sa'</span>: 1, <span class="string">'zero'</span>: 1&#125; %&#125;</span><br><span class="line">      &#123;% <span class="keyword">if</span> theme.creative_commons <span class="keyword">in</span> cc %&#125;</span><br><span class="line">        &lt;div class=<span class="string">"cc-license motion-element"</span> itemprop=<span class="string">"license"</span>&gt;</span><br><span class="line">          &lt;a href=<span class="string">"https://creativecommons.org/&#123;% if theme.creative_commons === 'zero' %&#125;publicdomain/zero/1.0&#123;% else %&#125;licenses/&#123;&#123; theme.creative_commons &#125;&#125;/4.0&#123;% endif %&#125;/"</span> class=<span class="string">"cc-opacity"</span> target=<span class="string">"_blank"</span>&gt;</span><br><span class="line">            &lt;img src=<span class="string">"&#123;&#123; url_for(theme.images) &#125;&#125;/cc-&#123;&#123; theme.creative_commons &#125;&#125;.svg"</span> alt=<span class="string">"Creative Commons"</span> /&gt;</span><br><span class="line">          &lt;/a&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">      &#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line">      &#123;<span class="comment"># Blogroll #&#125;</span></span><br><span class="line">      &#123;% <span class="keyword">if</span> theme.links %&#125;</span><br><span class="line">        &lt;div class=<span class="string">"links-of-blogroll motion-element &#123;&#123; "</span>links-of-blogroll-<span class="string">" + theme.links_layout | default('inline') &#125;&#125;"</span>&gt;</span><br><span class="line">          &lt;div class=<span class="string">"links-of-blogroll-title"</span>&gt;</span><br><span class="line">            &lt;i class=<span class="string">"fa  fa-fw fa-&#123;&#123; theme.links_icon | default('globe') | lower &#125;&#125;"</span>&gt;&lt;/i&gt;</span><br><span class="line">            &#123;&#123; theme.links_title &#125;&#125;</span><br><span class="line">          &lt;/div&gt;</span><br><span class="line">          &lt;ul class=<span class="string">"links-of-blogroll-list"</span>&gt;</span><br><span class="line">            &#123;% <span class="keyword">for</span> name, link <span class="keyword">in</span> theme.links %&#125;</span><br><span class="line">              &lt;li class=<span class="string">"links-of-blogroll-item"</span>&gt;</span><br><span class="line">                &lt;a href=<span class="string">"&#123;&#123; link &#125;&#125;"</span> title=<span class="string">"&#123;&#123; name &#125;&#125;"</span> target=<span class="string">"_blank"</span>&gt;&#123;&#123; name &#125;&#125;&lt;/a&gt;</span><br><span class="line">              &lt;/li&gt;</span><br><span class="line">            &#123;% endfor %&#125;</span><br><span class="line">          &lt;/ul&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">      &#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line">      &#123;% include <span class="string">'../_custom/sidebar.swig'</span> %&#125;</span><br><span class="line"></span><br><span class="line">    &lt;/section&gt;</span><br><span class="line">    &#123;% <span class="keyword">if</span> page.encrypt == <span class="literal">true</span> %&#125;</span><br><span class="line">      &#123;% <span class="keyword">if</span> display_toc and toc(page.origin).length &gt; 1 %&#125;</span><br><span class="line">      &lt;!--noindex--&gt;</span><br><span class="line">        &lt;section class=<span class="string">"post-toc-wrap motion-element sidebar-panel sidebar-panel-active"</span>&gt;</span><br><span class="line">          &lt;div class=<span class="string">"post-toc"</span>&gt;</span><br><span class="line"></span><br><span class="line">            &#123;% <span class="keyword">if</span> page.toc_number === undefined %&#125;</span><br><span class="line">              &#123;% <span class="built_in">set</span> toc = toc(page.origin, &#123; <span class="string">"class"</span>: <span class="string">"nav"</span>, list_number: theme.toc.number &#125;) %&#125;</span><br><span class="line">            &#123;% <span class="keyword">else</span> %&#125;</span><br><span class="line">              &#123;% <span class="built_in">set</span> toc = toc(page.origin, &#123; <span class="string">"class"</span>: <span class="string">"nav"</span>, list_number: page.toc_number &#125;) %&#125;</span><br><span class="line">            &#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line">            &#123;% <span class="keyword">if</span> toc.length &lt;= 1 %&#125;</span><br><span class="line">              &lt;p class=<span class="string">"post-toc-empty"</span>&gt;&#123;&#123; __(<span class="string">'post.toc_empty'</span>) &#125;&#125;&lt;/p&gt;</span><br><span class="line">            &#123;% <span class="keyword">else</span> %&#125;</span><br><span class="line">              &lt;div class=<span class="string">"post-toc-content"</span>&gt;&#123;&#123; toc &#125;&#125;&lt;/div&gt;</span><br><span class="line">            &#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line">          &lt;/div&gt;</span><br><span class="line">        &lt;/section&gt;</span><br><span class="line">      &lt;!--/noindex--&gt;</span><br><span class="line">      &#123;% endif %&#125;</span><br><span class="line">    &#123;% <span class="keyword">else</span> %&#125;</span><br><span class="line">      &#123;% <span class="keyword">if</span> display_toc and toc(page.content).length &gt; 1 %&#125;</span><br><span class="line">      &lt;!--noindex--&gt;</span><br><span class="line">        &lt;section class=<span class="string">"post-toc-wrap motion-element sidebar-panel sidebar-panel-active"</span>&gt;</span><br><span class="line">          &lt;div class=<span class="string">"post-toc"</span>&gt;</span><br><span class="line"></span><br><span class="line">            &#123;% <span class="keyword">if</span> page.toc_number === undefined %&#125;</span><br><span class="line">              &#123;% <span class="built_in">set</span> toc = toc(page.content, &#123; <span class="string">"class"</span>: <span class="string">"nav"</span>, list_number: theme.toc.number &#125;) %&#125;</span><br><span class="line">            &#123;% <span class="keyword">else</span> %&#125;</span><br><span class="line">              &#123;% <span class="built_in">set</span> toc = toc(page.content, &#123; <span class="string">"class"</span>: <span class="string">"nav"</span>, list_number: page.toc_number &#125;) %&#125;</span><br><span class="line">            &#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line">            &#123;% <span class="keyword">if</span> toc.length &lt;= 1 %&#125;</span><br><span class="line">              &lt;p class=<span class="string">"post-toc-empty"</span>&gt;&#123;&#123; __(<span class="string">'post.toc_empty'</span>) &#125;&#125;&lt;/p&gt;</span><br><span class="line">            &#123;% <span class="keyword">else</span> %&#125;</span><br><span class="line">              &lt;div class=<span class="string">"post-toc-content"</span>&gt;&#123;&#123; toc &#125;&#125;&lt;/div&gt;</span><br><span class="line">            &#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line">          &lt;/div&gt;</span><br><span class="line">        &lt;/section&gt;</span><br><span class="line">      &lt;!--/noindex--&gt;</span><br><span class="line">      &#123;% endif %&#125;</span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line">    &#123;% <span class="keyword">if</span> theme.sidebar.b2t %&#125;</span><br><span class="line">      &lt;div class=<span class="string">"back-to-top"</span>&gt;</span><br><span class="line">        &lt;i class=<span class="string">"fa fa-arrow-up"</span>&gt;&lt;/i&gt;</span><br><span class="line">        &#123;% <span class="keyword">if</span> theme.sidebar.scrollpercent %&#125;</span><br><span class="line">          &lt;span id=<span class="string">"scrollpercent"</span>&gt;&lt;span&gt;0&lt;/span&gt;%&lt;/span&gt;</span><br><span class="line">        &#123;% endif %&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/aside&gt;</span><br><span class="line">&#123;% endmacro %&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><ul>
-<li><a href="https://blog.csdn.net/crazy_scott/article/details/80996427" target="_blank" rel="noopener">hexo博文加密_20180721</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    <div style="text-align:center;color: #ccc;font-size:14px;">------------------------ The End ------------------------</div>
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://imjunjie.github.io/latex-an-zhuang-jiao-cheng.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Junjie Jia">
-      <meta itemprop="description" content="生命中的每一步都必须认真对待，把握今天，成就明天！">
-      <meta itemprop="image" content="http://image.xcar.com.cn/attachments/a/day_130416/2013041610_b3e94dab51a2253bd17dxx64sn6s0q2H.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Imjunjie">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/latex-an-zhuang-jiao-cheng.html" class="post-title-link" itemprop="url">Latex安装教程</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-03-02 14:51:40 / 修改时间：15:37:29" itemprop="dateCreated datePublished" datetime="2019-03-02T14:51:40+08:00">2019-03-02</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LaTex/" itemprop="url" rel="index"><span itemprop="name">LaTex</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">1.1k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">1 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>毕业论文中需要使用Ctex来写，但是之前完全没有接触过这个软件，所以就打算记录一下自己的学习过程。本来打算自己写一下相关的一些东西，但是发现大佬们已经写得特别棒了，就把一些大佬写得东西的链接写出来，希望能帮到有需要的小伙伴们。</p>
-<h1 id="关于LaTeX和CTeX"><a href="#关于LaTeX和CTeX" class="headerlink" title="关于LaTeX和CTeX"></a>关于LaTeX和CTeX</h1><p>LaTeX是一种基于ΤΕΧ的排版系统，由美国计算机学家莱斯利·兰伯特（Leslie Lamport）在20世纪80年代初期开发，利用这种格式，即使使用者没有排版和程序设计的知识也可以充分发挥由TeX所提供的强大功能，能在几天，甚至几小时内生成很多具有书籍质量的印刷品。对于生成复杂表格和数学公式，这一点表现得尤为突出。因此它非常适用于生成高印刷质量的科技和数学类文档。这个系统同样适用于生成从简单的信件到完整书籍的所有其他种类的文档。</p>
-<p>CTeX是TEX中的一个版本，CTeX 指的是CTEX 中文套装的简称。TEX 在不同的硬件和操作系统上有不同的实现版本。这就像C 语言，在不同的操作系统中有不同的编译系统，例如Linux 下的gcc，Windows 下的Visual C++等。有时，一种操作系统里也会有好几种的TEX 系统。常见的Unix/Linux 下的TEX 系统是teTEX，Windows 下则有MiKTEX 和fpTEX。CTeX 指的是CTeX 中文套装的简称，是把MiKTEX 和一些常用的相关工具，如GSview，WinEdt 等包装在一起制作的一个简易安装程序，并对其中的中文支持部分进行了配置，使得安装后马上就可以使用中文。</p>
-<p>LaTeX官方网站：<a href="https://www.latex-project.org/" target="_blank" rel="noopener">https://www.latex-project.org/</a></p>
-<p>CTeX官方网站：<a href="http://www.ctex.org/HomePage" target="_blank" rel="noopener">http://www.ctex.org/HomePage</a></p>
-<h1 id="下载LaTex软件"><a href="#下载LaTex软件" class="headerlink" title="下载LaTex软件"></a>下载LaTex软件</h1><ol>
-<li><p>点击<a href="https://www.tug.org/texlive/" target="_blank" rel="noopener">TeXLive (Unix/Linux/Windows)</a>，选择”download on DVD”<br><img width="600" src="/images/Latex安装教程/imag1.jpg"></p>
-</li>
-<li><p>选择“downloading the Tex live ISO image and burning your own DVD”<br><img width="600" src="/images/Latex安装教程/imag2.jpg"></p>
-</li>
-<li><p>选择”downloaded form nearby CTAN mirror”<br><img width="600" src="/images/Latex安装教程/imag3.jpg"></p>
-</li>
-<li><p>选择”texlive2018.iso”<br><img width="600" src="/images/Latex安装教程/imag4.jpg"></p>
-</li>
-</ol>
-<hr>
-<blockquote>
-<p>注意：可以直接单击，如下网址进行下载<a href="http://mirrors-wan.geekpie.club/CTAN/systems/texlive/Images/" target="_blank" rel="noopener">http://mirrors-wan.geekpie.club/CTAN/systems/texlive/Images/</a></p>
-</blockquote>
-<h1 id="安装LaTex软件"><a href="#安装LaTex软件" class="headerlink" title="安装LaTex软件"></a>安装LaTex软件</h1><ol>
-<li><p>管理员权限打开”install-tl-advanced”<br><img width="600" src="/images/Latex安装教程/imag5.jpg"></p>
-</li>
-<li><p>选择需要安装的组件<br><img width="600" src="/images/Latex安装教程/imag6.jpg"><br><img width="600" src="/images/Latex安装教程/imag7.jpg"></p>
-</li>
-</ol>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><ol>
-<li><a href="https://blog.csdn.net/muzhicihe/article/details/80326090" target="_blank" rel="noopener">LaTeX的下载安装及简易使用_20180515</a></li>
-<li><a href="https://blog.csdn.net/baidu_41867252/article/details/86473839" target="_blank" rel="noopener">latex安装教程_20190114</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    <div style="text-align:center;color: #ccc;font-size:14px;">------------------------ The End ------------------------</div>
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://imjunjie.github.io/hexo-wen-zhang-zhong-tu-pian-dian-ji-quan-ping-cha-kan.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Junjie Jia">
-      <meta itemprop="description" content="生命中的每一步都必须认真对待，把握今天，成就明天！">
-      <meta itemprop="image" content="http://image.xcar.com.cn/attachments/a/day_130416/2013041610_b3e94dab51a2253bd17dxx64sn6s0q2H.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Imjunjie">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/hexo-wen-zhang-zhong-tu-pian-dian-ji-quan-ping-cha-kan.html" class="post-title-link" itemprop="url">hexo文章中图片点击全屏查看</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-03-02 13:05:41 / 修改时间：13:27:40" itemprop="dateCreated datePublished" datetime="2019-03-02T13:05:41+08:00">2019-03-02</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">2.1k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">2 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>hexo中实现类似于微信公众号中，点击图片方法全屏查看，再点击后回到原来的状态。</p>
-<p>效果如下,点击下图的图片放大查看。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">|1|2|3|</span><br><span class="line">|--|--|--|</span><br><span class="line">|![](http://qnfile.devzhao.com/blog/2018-10-16-155439.png)|![](http://qnfile.devzhao.com/blog/2018-10-16-155529.png)|![](http://qnfile.devzhao.com/blog/2018-10-16-155650.jpg)|</span><br></pre></td></tr></table></figure></p>
-<p>实现的效果如下：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><img src="http://qnfile.devzhao.com/blog/2018-10-16-155439.png" alt></td>
-<td><img src="http://qnfile.devzhao.com/blog/2018-10-16-155529.png" alt></td>
-<td><img src="http://qnfile.devzhao.com/blog/2018-10-16-155650.jpg" alt></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>1.修改 post-details.js 文件</p>
-<p>文件目录：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">devzhao.com/themes/next/<span class="built_in">source</span>/js/src/post-details.js</span><br><span class="line"></span><br><span class="line">devzhao.com是我的站点根目录。</span><br></pre></td></tr></table></figure></p>
-<p>在文件最后添加：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">//----自定义js----------------</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">createImgEventFullScreen</span></span>() &#123;</span><br><span class="line">  var imgs = $(<span class="string">".post-body"</span>).find(<span class="string">"img"</span>);</span><br><span class="line">  console.log(imgs);</span><br><span class="line">  <span class="keyword">for</span>(var i = 0;i &lt; imgs.length;i++) &#123;</span><br><span class="line">    // $(imgs[i]).click(createCover(imgs[i]));</span><br><span class="line">    imgs[i].onclick= <span class="keyword">function</span>(e) &#123;</span><br><span class="line">      var src = e.srcElement.currentSrc;</span><br><span class="line">      createCover(src)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> createCover (src) &#123;</span><br><span class="line">    console.log(src);</span><br><span class="line">    var cover = $(<span class="string">"&lt;div id='fullScreenCover' class='zhao-cover-img-container'&gt;&lt;img class='zhao-cover-img' src='"</span>+src+<span class="string">"'/&gt;&lt;/div&gt;"</span>);</span><br><span class="line">    $(<span class="string">"#fullScreenCover"</span>).remove();</span><br><span class="line">    $(<span class="string">"body"</span>).append(cover);</span><br><span class="line">    $(<span class="string">"body"</span>).addClass(<span class="string">"zhao-no-scroll"</span>);</span><br><span class="line">    $(<span class="string">"#fullScreenCover"</span>).click(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">      $(<span class="string">"#fullScreenCover"</span>).remove();</span><br><span class="line">      $(<span class="string">"body"</span>).removeClass(<span class="string">"zhao-no-scroll"</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">setTimeout(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">  createImgEventFullScreen();</span><br><span class="line">&#125;,1000)</span><br></pre></td></tr></table></figure></p>
-<p>2.修改custom.styl文件 </p>
-<p>文件目录：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">devzhao.com/themes/next/<span class="built_in">source</span>/css/_custom/custom.styl</span><br></pre></td></tr></table></figure>
-<p>在最后添加</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">.zhao-cover-img-container&#123;</span><br><span class="line"> position: fixed;</span><br><span class="line"> top: 0;</span><br><span class="line"> left: 0;</span><br><span class="line"> width: 100%;</span><br><span class="line"> height: 100vh;</span><br><span class="line"> z-index: 10002;</span><br><span class="line"> text-align: center;</span><br><span class="line"> background-color: <span class="comment">#000;</span></span><br><span class="line"> overflow-y: scroll;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.zhao-cover-img&#123;</span><br><span class="line"> width: 100%;</span><br><span class="line"> position: absolute;</span><br><span class="line"> top: 0;</span><br><span class="line"> bottom: 0;</span><br><span class="line">&#125;</span><br><span class="line">.zhao-no-scroll&#123;</span><br><span class="line"> width: 100%;</span><br><span class="line"> height: 100vh;</span><br><span class="line"> overflow: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>3.修改blog-encrypt.js文件 </p>
-<p>如果你安装了hexo-blog-encrypt插件，需要做这一步。</p>
-<p>文件目录：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">devzhao.com/node_modules/hexo-blog-encrypt/lib/blog-encrypt.js</span><br></pre></td></tr></table></figure></p>
-<p>找到如下代码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#encrypt-blog'</span>).html(content);</span><br></pre></td></tr></table></figure></p>
-<p>在后面加上这行代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">createImgEventFullScreen();</span><br></pre></td></tr></table></figure></p>
-<p>如下图:</p>
-<h2 id><a href="#" class="headerlink" title></a><img src="http://qnfile.devzhao.com/blog/2018-10-16-155439.png" alt></h2><p>上面代码还有些问题：</p>
-<blockquote>
-<ol>
-<li>还有点小问题，比如第三个图片，电脑上打开，头顶上和底部有一些显示不全。</li>
-<li>在微信中打开第二个图，向上滑的时候，底下的层会跟着滑动（好像在微信里面，禁用滑动，没生效），手机Safari中也没有生效</li>
-</ol>
-</blockquote>
-<p>参考文献</p>
-<ul>
-<li><a href="http://www.devzhao.com/post/53d80934.html" target="_blank" rel="noopener">hexo文章中图片点击全屏查看</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    <div style="text-align:center;color: #ccc;font-size:14px;">------------------------ The End ------------------------</div>
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -4431,7 +4652,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-count">51</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -4559,7 +4780,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">28</span>
+                      
+                    
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -4640,7 +4863,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">190k</span>
+    <span title="站点总字数">193k</span>
   
 
   
@@ -4649,7 +4872,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:52</span>
+    <span title="站点阅读时长">2:55</span>
   
 </div>
 
