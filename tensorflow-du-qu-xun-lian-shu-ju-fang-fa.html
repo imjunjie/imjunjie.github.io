@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="https://fonts.cat.net/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false,"dimmer":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="tensorflow读取训练数据方法预加载数据 Preloaded data12345678910111213# coding: utf-8import tensorflow as tf # 设计Graphx1 = tf.constant([2, 3, 4])x2 = tf.constant([4, 0, 1])y = tf.add(x1, x2) with tf.Session() as ses">
+<meta name="keywords" content="机器学习; 数据集处理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tensorflow读取训练数据方法">
+<meta property="og:url" content="http://imjunjie.github.io/tensorflow-du-qu-xun-lian-shu-ju-fang-fa.html">
+<meta property="og:site_name" content="Imjunjie">
+<meta property="og:description" content="tensorflow读取训练数据方法预加载数据 Preloaded data12345678910111213# coding: utf-8import tensorflow as tf # 设计Graphx1 = tf.constant([2, 3, 4])x2 = tf.constant([4, 0, 1])y = tf.add(x1, x2) with tf.Session() as ses">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://imjunjie.github.io/images/tensorflow读取训练数据方法/png1-1.png">
+<meta property="og:updated_time" content="2019-05-22T12:08:39.881Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="tensorflow读取训练数据方法">
+<meta name="twitter:description" content="tensorflow读取训练数据方法预加载数据 Preloaded data12345678910111213# coding: utf-8import tensorflow as tf # 设计Graphx1 = tf.constant([2, 3, 4])x2 = tf.constant([4, 0, 1])y = tf.add(x1, x2) with tf.Session() as ses">
+<meta name="twitter:image" content="http://imjunjie.github.io/images/tensorflow读取训练数据方法/png1-1.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Imjunjie" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://imjunjie.github.io/tensorflow-du-qu-xun-lian-shu-ju-fang-fa.html">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>tensorflow读取训练数据方法 | Imjunjie</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Imjunjie</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">蜻蜓雨荷</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://imjunjie.github.io/tensorflow-du-qu-xun-lian-shu-ju-fang-fa.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Junjie Jia">
+      <meta itemprop="description" content="生命中的每一步都必须认真对待，把握今天，成就明天！">
+      <meta itemprop="image" content="http://image.xcar.com.cn/attachments/a/day_130416/2013041610_b3e94dab51a2253bd17dxx64sn6s0q2H.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Imjunjie">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">tensorflow读取训练数据方法
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-22 08:44:00 / 修改时间：20:08:39" itemprop="dateCreated datePublished" datetime="2019-05-22T08:44:00+08:00">2019-05-22</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习/数据集处理/" itemprop="url" rel="index"><span itemprop="name">数据集处理</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">6.9k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">6 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="tensorflow读取训练数据方法"><a href="#tensorflow读取训练数据方法" class="headerlink" title="tensorflow读取训练数据方法"></a>tensorflow读取训练数据方法</h1><h2 id="预加载数据-Preloaded-data"><a href="#预加载数据-Preloaded-data" class="headerlink" title="预加载数据 Preloaded data"></a>预加载数据 Preloaded data</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding: utf-8</span></span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 设计Graph</span></span><br><span class="line">x1 = tf.constant([<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line">x2 = tf.constant([<span class="number">4</span>, <span class="number">0</span>, <span class="number">1</span>])</span><br><span class="line">y = tf.add(x1, x2)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">  <span class="keyword">print</span> sess.run(y)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># output:</span></span><br><span class="line"><span class="comment"># [6 3 5]</span></span><br></pre></td></tr></table></figure>
+<p>预加载数据方式是将训练数据直接内嵌到tf的图中，需要提前将数据加载到内存里，在数据量比较大，或者说在实际训练中，基本不可行。</p>
+<h2 id="声明占位符，运行时Feeding数据"><a href="#声明占位符，运行时Feeding数据" class="headerlink" title="声明占位符，运行时Feeding数据"></a>声明占位符，运行时Feeding数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding: utf-8</span></span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 设计Graph</span></span><br><span class="line">x1 = tf.placeholder(tf.int16)</span><br><span class="line">x2 = tf.placeholder(tf.int16)</span><br><span class="line"> </span><br><span class="line">epoch_num = <span class="number">0</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 用Python产生数据</span></span><br><span class="line">data = [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">label= [<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>]</span><br><span class="line"> </span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">  <span class="keyword">while</span> epoch_num &lt;len(data):</span><br><span class="line">    <span class="keyword">print</span> sess.run((x1,x2), feed_dict=&#123;x1: data[epoch_num], x2: label[epoch_num]&#125;)</span><br><span class="line">    epoch_num+=<span class="number">1</span></span><br><span class="line">    </span><br><span class="line"><span class="comment"># output:</span></span><br><span class="line"><span class="comment"># (array(2, dtype=int16), array(1, dtype=int16))</span></span><br><span class="line"><span class="comment"># (array(3, dtype=int16), array(0, dtype=int16))</span></span><br><span class="line"><span class="comment"># (array(4, dtype=int16), array(1, dtype=int16))</span></span><br></pre></td></tr></table></figure>
+<p>声明占位符是在训练过程中Feeding填充数据，可以选择把所有数据一次性加载到内存，每次取一个batch的数据出来训练，也可以选择把数据通过python建立一个生成器，每次加载一个batch的数据出来训练，加载方式比较灵活但是效率相对比较低。</p>
+<h2 id="从文件直接读取数据"><a href="#从文件直接读取数据" class="headerlink" title="从文件直接读取数据"></a>从文件直接读取数据</h2><p>从文件读取数据的方式是在Graph图中定义好文件读取的方式，在Session会话中启动（一个或多个）线程，把训练数据异步加载到内存（样本）队列中（先加载到文件名队列中，tf自动读取到内存队列中），通过队列管理器进行管理，执行效率较高，工作流程示意图：<br><img src="/images/tensorflow读取训练数据方法/png1-1.png" alt><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 样本个数</span></span><br><span class="line">sample_num = <span class="number">5</span></span><br><span class="line"><span class="comment"># 设置迭代次数</span></span><br><span class="line">epoch_num = <span class="number">2</span></span><br><span class="line"><span class="comment"># 设置一个批次中包含样本个数</span></span><br><span class="line">batch_size = <span class="number">3</span></span><br><span class="line"><span class="comment"># 计算每一轮epoch中含有的batch个数</span></span><br><span class="line">batch_total = int(sample_num / batch_size) + <span class="number">1</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="comment"># 生成4个数据和标签</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_data</span><span class="params">(sample_num=sample_num)</span>:</span></span><br><span class="line">    labels = np.asarray(range(<span class="number">0</span>, sample_num))</span><br><span class="line">    images = np.random.random([sample_num, <span class="number">224</span>, <span class="number">224</span>, <span class="number">3</span>])</span><br><span class="line">    print(<span class="string">'image size &#123;&#125;,label size :&#123;&#125;'</span>.format(images.shape, labels.shape))</span><br><span class="line">    <span class="keyword">return</span> images, labels</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_batch_data</span><span class="params">(batch_size=batch_size)</span>:</span></span><br><span class="line">    images, label = generate_data()</span><br><span class="line">    <span class="comment"># 数据类型转换为tf.float32</span></span><br><span class="line">    images = tf.cast(images, tf.float32)</span><br><span class="line">    label = tf.cast(label, tf.int32)</span><br><span class="line"> </span><br><span class="line">    <span class="comment"># 从tensor列表中按顺序或随机抽取一个tensor准备放入文件名称队列</span></span><br><span class="line">    input_queue = tf.train.slice_input_producer([images, label], num_epochs=epoch_num, shuffle=<span class="literal">False</span>)</span><br><span class="line"> </span><br><span class="line">    <span class="comment"># 从文件名称队列中读取文件准备放入文件队列</span></span><br><span class="line">    image_batch, label_batch = tf.train.batch(input_queue, batch_size=batch_size, num_threads=<span class="number">2</span>, capacity=<span class="number">64</span>,</span><br><span class="line">                                              allow_smaller_final_batch=<span class="literal">False</span>)</span><br><span class="line">    <span class="keyword">return</span> image_batch, label_batch</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">image_batch, label_batch = get_batch_data(batch_size=batch_size)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    <span class="comment"># 先执行初始化工作</span></span><br><span class="line">    sess.run(tf.global_variables_initializer())</span><br><span class="line">    sess.run(tf.local_variables_initializer())</span><br><span class="line"> </span><br><span class="line">    <span class="comment"># 开启一个协调器</span></span><br><span class="line">    coord = tf.train.Coordinator()</span><br><span class="line">    <span class="comment"># 使用start_queue_runners 启动队列填充</span></span><br><span class="line">    threads = tf.train.start_queue_runners(sess, coord)</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">not</span> coord.should_stop():</span><br><span class="line">            <span class="keyword">print</span> <span class="string">'************'</span></span><br><span class="line">            <span class="comment"># 获取每一个batch中batch_size个样本和标签</span></span><br><span class="line">            image_batch_v, label_batch_v = sess.run([image_batch, label_batch])</span><br><span class="line">            print(image_batch_v.shape, label_batch_v)</span><br><span class="line">    <span class="keyword">except</span> tf.errors.OutOfRangeError:  <span class="comment"># 如果读取到文件队列末尾会抛出此异常</span></span><br><span class="line">        print(<span class="string">"done! now lets kill all the threads……"</span>)</span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        <span class="comment"># 协调器coord发出所有线程终止信号</span></span><br><span class="line">        coord.request_stop()</span><br><span class="line">        print(<span class="string">'all threads are asked to stop!'</span>)</span><br><span class="line">    coord.join(threads)  <span class="comment"># 把开启的线程加入主线程，等待threads结束</span></span><br><span class="line">    print(<span class="string">'all threads are stopped!'</span>)  </span><br><span class="line">    </span><br><span class="line"><span class="comment"># output:</span></span><br><span class="line"><span class="comment"># image size (5, 224, 224, 3),label size :(5,)</span></span><br><span class="line"><span class="comment"># ************</span></span><br><span class="line"><span class="comment"># ((3, 224, 224, 3), array([0, 1, 2], dtype=int32))</span></span><br><span class="line"><span class="comment"># ************</span></span><br><span class="line"><span class="comment"># ((3, 224, 224, 3), array([3, 0, 4], dtype=int32))</span></span><br><span class="line"><span class="comment"># ************</span></span><br><span class="line"><span class="comment"># ((3, 224, 224, 3), array([1, 2, 3], dtype=int32))</span></span><br><span class="line"><span class="comment"># ************</span></span><br><span class="line"><span class="comment"># done! now lets kill all the threads……</span></span><br><span class="line"><span class="comment"># all threads are asked to stop!</span></span><br><span class="line"><span class="comment"># all threads are stopped!</span></span><br></pre></td></tr></table></figure></p>
+<p>与从文件直接读取训练数据对应的还有一种方式是<font color="red">先把数据写入TFRecords二进制文件，再从队列中读取</font>。</p>
+<p>TFRecords方式相比直接读取训练文件，效率更高，特别是在训练文件比较多的情况下，缺点是需要额外编码处理TFRecords，不够直观。</p>
+<h2 id="Tensorflow-动态图机制（Eager-Execution）下的Dataset数据读取"><a href="#Tensorflow-动态图机制（Eager-Execution）下的Dataset数据读取" class="headerlink" title="Tensorflow 动态图机制（Eager Execution）下的Dataset数据读取"></a>Tensorflow 动态图机制（Eager Execution）下的Dataset数据读取</h2><p><font color="red">Tensorflow动态图机制支持图上的运算动态执行，更方便网络模型搭建和程序调试</font>，不再需要通过sess.run()才能执行所定义的运算，调试时可以直接查看变量的值，做到了“所见即所得”，动态图运算应该是未来tensorflow发展的方向。<br><strong>动图模式下就必须使用Dataset API来读取数据。</strong><br>tensorflow 1.3 版本中，Dataset API是在contrib包的，1.4以后版本中，Dataset 放到了data中：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tf.contrib.data.Dataset  <span class="comment">#1.3</span></span><br><span class="line">tf.data.Dataset  <span class="comment"># 1.4</span></span><br></pre></td></tr></table></figure></p>
+<p>Dataset 读取数据示例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"> </span><br><span class="line">dataset = tf.contrib.data.Dataset.from_tensor_slices(np.array([<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]))</span><br><span class="line"> </span><br><span class="line">iterator = dataset.make_one_shot_iterator()</span><br><span class="line"> </span><br><span class="line">one_element = iterator.get_next()</span><br><span class="line"> </span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">    print(sess.run(one_element))</span><br><span class="line"> </span><br><span class="line"><span class="comment"># output:</span></span><br><span class="line"><span class="comment"># 0</span></span><br><span class="line"><span class="comment"># 1</span></span><br><span class="line"><span class="comment"># 2</span></span><br><span class="line"><span class="comment"># 3</span></span><br><span class="line"><span class="comment"># 4</span></span><br></pre></td></tr></table></figure></p>
+<p>Dataset 读取训练图片文件示例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将图片文件名列表中的图片文件读入，缩放到指定的size大小</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_parse_function</span><span class="params">(filename, label, size=[<span class="number">128</span>,<span class="number">128</span>])</span>:</span></span><br><span class="line">  image_string = tf.read_file(filename)</span><br><span class="line">  image_decoded = tf.image.decode_image(image_string)</span><br><span class="line">  image_resized = tf.image.resize_images(image_decoded, size)</span><br><span class="line">  <span class="keyword">return</span> image_resized, label</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 图片文件名列表</span></span><br><span class="line">filenames = tf.constant([<span class="string">"/var/data/image1.jpg"</span>, <span class="string">"/var/data/image2.jpg"</span>, ...])</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 图片文件标签</span></span><br><span class="line">labels = tf.constant([<span class="number">0</span>, <span class="number">37</span>, ...])</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 建立一个数据集，它的每一个元素是文件列表的一个切片</span></span><br><span class="line">dataset = tf.data.Dataset.from_tensor_slices((filenames, labels))</span><br><span class="line"><span class="comment"># 对数据集中的图片文件resize</span></span><br><span class="line">dataset = dataset.map(_parse_function)</span><br><span class="line"><span class="comment"># 对数据集中的图片文件组成一个一个batch，并对数据集扩展10次，相当于可以训练10轮</span></span><br><span class="line">dataset = dataset.shuffle(buffersize=<span class="number">1000</span>).batch(<span class="number">32</span>).repeat(<span class="number">10</span>)</span><br></pre></td></tr></table></figure></p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="https://blog.csdn.net/dcrmg/article/details/80041389" target="_blank" rel="noopener">tensorflow读取训练数据方法</a></p>
+<h1 id="TensorFlow-数据读取方法总结"><a href="#TensorFlow-数据读取方法总结" class="headerlink" title="TensorFlow 数据读取方法总结"></a>TensorFlow 数据读取方法总结</h1><h2 id="读取数据（Reading-data）"><a href="#读取数据（Reading-data）" class="headerlink" title="读取数据（Reading data）"></a>读取数据（Reading data）</h2><p>TensorFlow输入数据的方法有四种：</p>
+<ul>
+<li>tf.data API：可以很容易的构建一个复杂的输入通道(pipeline)（首选数据输入方式）（Eager模式必须使用该API来构建输入通道）</li>
+<li>Feeding：使用Python代码提供数据，然后将数据feeding到计算图中。</li>
+<li>QueueRunner：基于队列的输入通道（在计算图计算前从队列中读取数据）</li>
+<li>Preloaded data：用一个constant常量将数据集加载到计算图中（主要用于小数据集） </li>
+</ul>
+<h2 id="文章目录"><a href="#文章目录" class="headerlink" title="文章目录"></a>文章目录</h2><p>&emsp;&emsp;读取数据（Reading data）</p>
+<ol>
+<li>tf.data API</li>
+<li>Feeding</li>
+<li>QueueRunner<br>&emsp;&emsp;3.1 Filenames, shuffling, and epoch limits<br>&emsp;&emsp;3.2 File formats<br>&emsp;&emsp;&emsp;&emsp;3.2.1 CSV file<br>&emsp;&emsp;&emsp;&emsp;3.2.2 Fixed length records<br>&emsp;&emsp;&emsp;&emsp;3.2.3 Standard TensorFlow format<br>&emsp;&emsp;3.3 Preprocessing<br>&emsp;&emsp;3.4 Batching<br>&emsp;&emsp;3.5 Creating threads to prefetch using QueueRunner objects<br>&emsp;&emsp;3.6 Filtering records or producing multiple examples per record<br>&emsp;&emsp;3.7 Sparse input data</li>
+<li>Preloaded data</li>
+<li><p>Multiple input pipelines </p>
+</li>
+<li><p>tf.data API<br>关于tf.data.Dataset的更详尽解释请看《programmer’s guide》。tf.data API能够从不同的输入或文件格式中读取、预处理数据，并且对数据应用一些变换（例如，batching、shuffling、mapping function over the dataset），tf.data API 是旧的 feeding、QueueRunner的升级。 </p>
+</li>
+</ol>
+<p>参考文献<br><a href="https://blog.csdn.net/s2010241013/article/details/79650856" target="_blank" rel="noopener">tensorflow之从文件中读取数据（适用场景：大规模数据集，亲测有效~）</a></p>
+<p><a href="https://blog.csdn.net/u014061630/article/details/80712635" target="_blank" rel="noopener">TensorFlow 数据读取方法总结</a></p>
+<p><a href="http://www.twistedwg.com/2019/01/23/GAN_image_generation.html" target="_blank" rel="noopener">GAN在图像生成应用综述（论文解读）</a></p>
+<p>提示 “Unzip trin-images-idx3-ubyte.gz”，因此考虑安装gzip<br>search target1:<a href="http://www.dlldownloader.com/gzip-dll/" target="_blank" rel="noopener">Download Gzip.dll for Windows 10, 8.1, 8, 7, Vista and XP</a><br>Gzip.dll download. The Gzip.dll file is a dynamic link library for Windows 10, 8.1, 8, 7, Vista and XP. You can fix “The file Gzip.dll is missing.” and “Gzip.dll not found.” errors by downloading and installing this file from our site.</p>
+<p><a href="http://zgserver.com/gzipwindows-cmd.html" target="_blank" rel="noopener">如何将gzip命令添加到Windows CMD？</a></p>
+<p><a href="https://www.cygwin.com/" target="_blank" rel="noopener">Cygwin</a></p>
+<p><a href="https://www.pythonforbeginners.com/os/subprocess-for-system-administrators" target="_blank" rel="noopener">Subprocess and Shell Commands in Python</a></p>
+<p><a href="https://www.lifewire.com/example-uses-of-the-linux-gzip-command-4078675" target="_blank" rel="noopener">Example Uses of the Linux gzip Command</a></p>
+<p><a href="https://blog.csdn.net/yuxisanno139/article/details/83016520" target="_blank" rel="noopener">windows 命令行使用 gzip</a></p>
+<p><a href="https://linux.cn/article-6679-1.html" target="_blank" rel="noopener">基础：tar 命令使用介绍</a></p>
+<p><a href="https://gaianote.github.io/" target="_blank" rel="noopener">李云鹏个人博客</a></p>
+<p><a href="https://www.gnu.org/server/select-language.html?callback=/software/gzip/" target="_blank" rel="noopener">GNU Operating System</a></p>
+<p><a href="https://cygwin.com/install.html" target="_blank" rel="noopener">Cygwin</a></p>
+<p><a href="https://www.cnblogs.com/wangshuyi/p/9679700.html" target="_blank" rel="noopener">Cygwin安装配置</a></p>
+<p><a href="https://www.cnblogs.com/geaozhang/p/6679904.html" target="_blank" rel="noopener">zip-gzip-bzip2_压缩文件</a></p>
+<p><a href="http://www.o-bible.com/gb/gzip.html" target="_blank" rel="noopener">GZIP简介</a></p>
+<p><a href="http://unxutils.sourceforge.net/" target="_blank" rel="noopener">GNU utilities for Win32</a></p>
+<p><a href="http://kb.winzip.com/kb/entry/124/" target="_blank" rel="noopener">如何在命令行中提取gzip和tar文件</a></p>
+<p><a href="https://www.gnu.org/software/gzip/manual/gzip.html" target="_blank" rel="noopener">GNU Gzip</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/56521586" target="_blank" rel="noopener">既香又贵的小飞跃：RTX2060替换了GTX1060</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">------------------------ The End ------------------------</div>
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习-数据集处理/" rel="tag"># 机器学习; 数据集处理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/java-zai-windows-huan-jing-xia-an-zhuang-jdk-bing-she-zhi-huan-jing-bian-liang.html" rel="next" title="Java - 在Windows环境下安装JDK并设置环境变量">
+                <i class="fa fa-chevron-left"></i> Java - 在Windows环境下安装JDK并设置环境变量
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/win10-xi-tong-win-e-zen-yang-gai-hui-da-kai-wo-de-dian-nao.html" rel="prev" title="win10系统Win+E怎样改回打开我的电脑">
+                win10系统Win+E怎样改回打开我的电脑 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://image.xcar.com.cn/attachments/a/day_130416/2013041610_b3e94dab51a2253bd17dxx64sn6s0q2H.gif" alt="Junjie Jia">
+            
+              <p class="site-author-name" itemprop="name">Junjie Jia</p>
+              <p class="site-description motion-element" itemprop="description">生命中的每一步都必须认真对待，把握今天，成就明天！</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">30</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/imjunjie" title="GitHub &rarr; https://github.com/imjunjie" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="mailto:junjie017@gmail.com" title="E-Mail &rarr; mailto:junjie017@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#tensorflow读取训练数据方法"><span class="nav-number">1.</span> <span class="nav-text">tensorflow读取训练数据方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#预加载数据-Preloaded-data"><span class="nav-number">1.1.</span> <span class="nav-text">预加载数据 Preloaded data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#声明占位符，运行时Feeding数据"><span class="nav-number">1.2.</span> <span class="nav-text">声明占位符，运行时Feeding数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从文件直接读取数据"><span class="nav-number">1.3.</span> <span class="nav-text">从文件直接读取数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tensorflow-动态图机制（Eager-Execution）下的Dataset数据读取"><span class="nav-number">1.4.</span> <span class="nav-text">Tensorflow 动态图机制（Eager Execution）下的Dataset数据读取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">1.5.</span> <span class="nav-text">参考文献</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TensorFlow-数据读取方法总结"><span class="nav-number">2.</span> <span class="nav-text">TensorFlow 数据读取方法总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#读取数据（Reading-data）"><span class="nav-number">2.1.</span> <span class="nav-text">读取数据（Reading data）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文章目录"><span class="nav-number">2.2.</span> <span class="nav-text">文章目录</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Junjie Jia</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">458k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">6:57</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.0.0</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+  
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <!-- 代码块复制功能 -->
+<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+
+</body>
+</html>

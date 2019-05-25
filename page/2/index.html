@@ -383,6 +383,1131 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://imjunjie.github.io/ji-qi-xue-xi-chang-jian-chu-li-fang-fa.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Junjie Jia">
+      <meta itemprop="description" content="生命中的每一步都必须认真对待，把握今天，成就明天！">
+      <meta itemprop="image" content="http://image.xcar.com.cn/attachments/a/day_130416/2013041610_b3e94dab51a2253bd17dxx64sn6s0q2H.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Imjunjie">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/ji-qi-xue-xi-chang-jian-chu-li-fang-fa.html" class="post-title-link" itemprop="url">机器学习常见处理方法</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-24 20:14:47 / 修改时间：20:31:55" itemprop="dateCreated datePublished" datetime="2019-04-24T20:14:47+08:00">2019-04-24</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.5k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">1 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="img-size-mnist-train-images-0-shape-0"><a href="#img-size-mnist-train-images-0-shape-0" class="headerlink" title="img_size = mnist.train.images[0].shape[0]"></a>img_size = mnist.train.images[0].shape[0]</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment">#%matplotlib inline</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">"TensorFlow Version: &#123;&#125;"</span>.format(tf.__version__))</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> tensorflow.examples.tutorials.mnist <span class="keyword">import</span> input_data</span><br><span class="line"></span><br><span class="line">mnist = input_data.read_data_sets(<span class="string">'./MNIST_data/'</span>)</span><br><span class="line"></span><br><span class="line">i = <span class="number">10</span></span><br><span class="line">img = mnist.train.images[i]</span><br><span class="line">plt.imshow(img.reshape((<span class="number">28</span>, <span class="number">28</span>)), cmap=<span class="string">'Greys_r'</span>)</span><br><span class="line">print(<span class="string">"Label: &#123;&#125;"</span>.format(mnist.train.labels[i]))</span><br><span class="line">img_size = mnist.train.images[<span class="number">10</span>].shape[<span class="number">0</span>]</span><br><span class="line">print(img_size)</span><br><span class="line">print(img.shape)</span><br></pre></td></tr></table></figure>
+<p>执行上述语句返回的结果为：<br>Label: 0<br>784<br>(784,)<br><img src="/images/机器学习常见处理方法/img1-1.png" alt></p>
+<h1 id="hidden1-tf-layers-dense-noise-img-n-units"><a href="#hidden1-tf-layers-dense-noise-img-n-units" class="headerlink" title="hidden1 = tf.layers.dense(noise_img, n_units)"></a>hidden1 = tf.layers.dense(noise_img, n_units)</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_generator</span><span class="params">(noise_img, n_units, out_dim, reuse=False, alpha=<span class="number">0.01</span>)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    生成器</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    noise_img: 生成器的输入</span></span><br><span class="line"><span class="string">    n_units: 隐层单元个数</span></span><br><span class="line"><span class="string">    out_dim: 生成器输出tensor的size，这里应该为32*32=784</span></span><br><span class="line"><span class="string">    alpha: leaky ReLU系数</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">with</span> tf.variable_scope(<span class="string">"generator"</span>, reuse=reuse):</span><br><span class="line">        <span class="comment"># hidden layer</span></span><br><span class="line">        hidden1 = tf.layers.dense(noise_img, n_units)</span><br><span class="line">        <span class="comment"># leaky ReLU</span></span><br><span class="line">        hidden1 = tf.maximum(alpha * hidden1, hidden1)</span><br><span class="line">        <span class="comment"># dropout</span></span><br><span class="line">        hidden1 = tf.layers.dropout(hidden1, rate=<span class="number">0.2</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># logits &amp; outputs</span></span><br><span class="line">        logits = tf.layers.dense(hidden1, out_dim)</span><br><span class="line">        outputs = tf.tanh(logits)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> logits, outputs</span><br></pre></td></tr></table></figure>
+<p>上述代码中的”<code>hidden1 = tf.layers.dense(noise_img, n_units)</code>“<br>其中：<br>&emsp;noise_img-表示输入层的单元个数，这里使用了占位符表示，但要表明单元大小，个数为None<br>&emsp;n_units-表示第一个隐藏层中神经元个数，<br>这里的函数，表示是全连接，将输入层的神经元全部与第一个隐藏层的神经元，进行全连接。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">------------------------ The End ------------------------</div>
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://imjunjie.github.io/python-pi-liang-xiu-gai-wen-jian-ming.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Junjie Jia">
+      <meta itemprop="description" content="生命中的每一步都必须认真对待，把握今天，成就明天！">
+      <meta itemprop="image" content="http://image.xcar.com.cn/attachments/a/day_130416/2013041610_b3e94dab51a2253bd17dxx64sn6s0q2H.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Imjunjie">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/python-pi-liang-xiu-gai-wen-jian-ming.html" class="post-title-link" itemprop="url">Python 批量修改文件名</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-22 11:09:18" itemprop="dateCreated datePublished" datetime="2019-04-22T11:09:18+08:00">2019-04-22</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-23 14:52:29" itemprop="dateModified" datetime="2019-04-23T14:52:29+08:00">2019-04-23</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习/数据集处理/" itemprop="url" rel="index"><span itemprop="name">数据集处理</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">960</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">1 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Python-批量修改文件名"><a href="#Python-批量修改文件名" class="headerlink" title="Python 批量修改文件名"></a>Python 批量修改文件名</h1><p><a href="http://www.runoob.com/python3/python3-os-file-methods.html" target="_blank" rel="noopener">原文: Python3 OS 文件/目录方法</a><br><strong>批量修改文件名</strong><br>python 对文件进行批量改名用到的是 os 模块中的 listdir 方法和 rename 方法。</p>
+<ul>
+<li>os.listdir(dir) : 获取指定目录下的所有子目录和文件名</li>
+<li>os.rename(原文件名，新文件名）: 对文件或目录改名</li>
+</ul>
+<p>把混乱的文件名改成有序的文件名:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">path=input(<span class="string">'请输入文件路径(结尾加上/)：'</span>)       </span><br><span class="line"></span><br><span class="line"><span class="comment">#获取该目录下所有文件，存入列表中</span></span><br><span class="line">f=os.listdir(path)</span><br><span class="line"></span><br><span class="line">n=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> f:</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#设置旧文件名（就是路径+文件名）</span></span><br><span class="line">    oldname=path+f[n]</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#设置新文件名</span></span><br><span class="line">    newname=path+<span class="string">'a'</span>+str(n+<span class="number">1</span>)+<span class="string">'.JPG'</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">#用os模块中的rename方法对文件改名</span></span><br><span class="line">    os.rename(oldname,newname)</span><br><span class="line">    print(oldname,<span class="string">'======&gt;'</span>,newname)</span><br><span class="line">    </span><br><span class="line">    n+=<span class="number">1</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="/images/Python-批量修改文件名/img1-1.png" alt="img1-1.png"><br><img src="/images/Python-批量修改文件名/img1-2.png" alt="img1-2.png"></p>
+<h1 id="参考地址"><a href="#参考地址" class="headerlink" title="参考地址"></a>参考地址</h1><p><a href="http://www.runoob.com/note/27030" target="_blank" rel="noopener">Python 批量修改文件名</a><br><a href="http://www.runoob.com/python/att-string-endswith.html" target="_blank" rel="noopener">Python endswith()方法</a></p>
+<p>搜索内容：img_rgb = img_bgr[…, ::-1]<br><a href="https://www.jianshu.com/p/bd20afad708c" target="_blank" rel="noopener">opencv-python几何变换</a><br><a href="https://www.cnblogs.com/pakfahome/p/3917143.html" target="_blank" rel="noopener">Python中cv2库和matplotlib库色彩空间排布不一致</a><br><a href="https://www.programcreek.com/python/example/71304/cv2.COLOR_BGR2RGB" target="_blank" rel="noopener">Python cv2.COLOR_BGR2RGB() Examples</a><br><a href="https://blog.csdn.net/yuanlulu/article/details/79982347" target="_blank" rel="noopener">opencv-python的格式转换 RGB与BGR互转</a><br>[opencv-python的格式转换 RGB与BGR互转]</p>
+<p><a href="https://blog.csdn.net/u011961856/article/details/76850335" target="_blank" rel="noopener">tensorflow 加载部分变量</a><br><a href="https://wiki.jikexueyuan.com/project/tensorflow-zh/how_tos/variables.html" target="_blank" rel="noopener">变量:创建、初始化、保存和加载</a><br><a href="https://blog.csdn.net/b876144622/article/details/79962727" target="_blank" rel="noopener">tensorflow 恢复部分参数、加载指定参数</a><br><a href="https://zhuanlan.zhihu.com/p/46128750" target="_blank" rel="noopener">TensorFlow学习笔记(9):模型存储与加载</a>北京大学 软件工程博士在读<br><a href="https://www.jb51.net/article/144581.htm" target="_blank" rel="noopener">tensorflow 加载部分变量的实例讲解</a><br><a href="https://blog.csdn.net/leviopku/article/details/78510977" target="_blank" rel="noopener">TensorFlow中对训练后的神经网络参数（权重、偏置）提取</a><br><a href="https://juejin.im/post/59e43b5b6fb9a0452a3b5f4f" target="_blank" rel="noopener">Keras 中构建神经网络的 5 个步骤</a><br><a href="https://github.com/strivebo/tensorflow-learning/blob/master/Notes/08-%E4%BF%9D%E5%AD%98%E5%92%8C%E8%BD%BD%E5%85%A5%E6%A8%A1%E5%9E%8B%EF%BC%8C%E4%BD%BF%E7%94%A8Google%E7%9A%84%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB%E7%BD%91%E7%BB%9Cinception-v3%E8%BF%9B%E8%A1%8C%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB.md" target="_blank" rel="noopener">08-保存和载入模型，使用Google的图像识别网络inception-v3进行图像识别.md</a></p>
+<p><a href="https://blog.csdn.net/CoderPai/article/details/80302371" target="_blank" rel="noopener">TensorFlow-变量保存和恢复</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">------------------------ The End ------------------------</div>
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://imjunjie.github.io/eclipse-zuo-wei-python-de-kai-fa-gong-ju.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Junjie Jia">
+      <meta itemprop="description" content="生命中的每一步都必须认真对待，把握今天，成就明天！">
+      <meta itemprop="image" content="http://image.xcar.com.cn/attachments/a/day_130416/2013041610_b3e94dab51a2253bd17dxx64sn6s0q2H.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Imjunjie">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/eclipse-zuo-wei-python-de-kai-fa-gong-ju.html" class="post-title-link" itemprop="url">eclipse作为Python的开发工具</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-21 18:34:54" itemprop="dateCreated datePublished" datetime="2019-04-21T18:34:54+08:00">2019-04-21</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-21 23:01:54" itemprop="dateModified" datetime="2019-05-21T23:01:54+08:00">2019-05-21</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Machine-Learning/Eclipse/" itemprop="url" rel="index"><span itemprop="name">Eclipse</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">3.1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">3 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Eclipse是一款基于Java的可扩展开发平台。其官方下载中包括J2EE方向版本、Java方向版本、C/C++方向版本、移动应用方向版本等诸多版本。除此之外，Eclipse还可以通过安装插件的方式进行诸如Python、Android、PHP等语言的开发。</p>
+<p>其中PyDev是一个功能强大的 Eclipse插件，使用户可用 Eclipse 来进行 Python 应用程序的开发和调试。PyDev 插件的出现方便了众多的 Python 开发人员，它提供了一些很好的功能，如：语法错误提示、源代码编辑助手、Quick Outline、Globals Browser、Hierarchy View、运行和调试等等。</p>
+<p>本文将介绍eclipse的pydev插件的安装与配置。 </p>
+<h1 id="myeclipse和eclipse的区别"><a href="#myeclipse和eclipse的区别" class="headerlink" title="myeclipse和eclipse的区别"></a>myeclipse和eclipse的区别</h1><p>myeclipse与eclipse的共同点：都是用来开发java项目，且软件用法几乎完全相同<br>myeclipse与eclipse的区别：</p>
+<ul>
+<li>第一点：软件图标</li>
+<li>第二点：myeclipse是收费软件，里面既可以开发java又可以开发web项目，eclipse只可以开发java项目，如果想开发web项目，还需要额外添加eclipse web插件（当然可以去开源网站或公司官网下载，这是免费的）</li>
+<li>第三点：高手一般都用eclipse，主要是因为eclipse比myeclipse稳定，新手用myeclipse比较好上手。</li>
+</ul>
+<h1 id="安装准备"><a href="#安装准备" class="headerlink" title="安装准备"></a>安装准备</h1><p>配置Python的系统环境变量PATH=D:\Python34（即python的安装目录）<br>显示python的版本，用来测试python的环境是否配置好 , 命令：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Python</span><br></pre></td></tr></table></figure></p>
+<p>安装python的第三方库<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install pandas</span><br><span class="line">pip install PyMySql</span><br></pre></td></tr></table></figure></p>
+<p><img src="/images/eclipse作为Python的开发工具/img1-4.png" alt><br>用来测试python运行时会不会出错，没报错就说明程序可以运行。</p>
+<h1 id="安装教程"><a href="#安装教程" class="headerlink" title="安装教程"></a>安装教程</h1><pre><code>1. 首先下载jdk，安装，配置环境变量；
+2. 再下载eclipse，配置编译器；
+3. 写一个helloworld；（具体过程请专门看教程。）
+</code></pre><p>这样，基础环境就搭好了。下面安装PyDev，有两种安装方法，分别介绍之：</p>
+<h2 id="简易在线安装"><a href="#简易在线安装" class="headerlink" title="简易在线安装"></a>简易在线安装</h2><p>这是官网安装，下载安装很方便，但可能由于网络原因用时过长或失败。</p>
+<p>官网安装过程如下：</p>
+<h3 id="安装Pydev"><a href="#安装Pydev" class="headerlink" title="安装Pydev"></a>安装Pydev</h3><ul>
+<li>Help - Install New Software<br><img src="/images/eclipse作为Python的开发工具/img1-1.png" alt><br>(1)点击 - Add<br>(2)输入 Name 和 Location，Name 随意，Location 为 <a href="http://pydev.org/updates" target="_blank" rel="noopener">http://pydev.org/updates</a> ； 点击OK<br>把【connect all update sites during install to find required software】的勾选去掉，否则在安装新插件时会联网寻找所有可能的更新站点搜索，导致安装时间不可预估，并可能导致安装失败。</li>
+</ul>
+<p>确定后可以看到一个Pending过程，然后得到如下图所示的插件：<br><img src="/images/eclipse作为Python的开发工具/img1-2.png" alt><br>勾选后，点击Next进行安装。</p>
+<p>不过，由于网络的原因，这种方法安装PyDev极有可能失败，提示网络连接错误等。需要vpn。</p>
+<h3 id="eclipse和python关联："><a href="#eclipse和python关联：" class="headerlink" title="eclipse和python关联："></a>eclipse和python关联：</h3><p>eclipse菜单 -&gt; Windows -&gt;Preferences -&gt; PyDev-&gt; Interpreters - Python Interpreter.<br>点击New按钮,选择python.exe的路径(第1步安装Python的路径),打开后显示出一个包含很多复选框的窗口,点OK结束！<br><img src="/images/eclipse作为Python的开发工具/img1-5.png" alt></p>
+<h2 id="离线安装"><a href="#离线安装" class="headerlink" title="离线安装"></a>离线安装</h2><p>通常官网安装并不如人意，你懂的… 推荐离线安装，步骤如下</p>
+<ol>
+<li>下载PyDev离线安装包，我的云盘地址： <a href="http://pan.baidu.com/s/1pJ1HQKb" target="_blank" rel="noopener">http://pan.baidu.com/s/1pJ1HQKb</a></li>
+<li>将解压后的features和plugins两个文件夹分别拷贝到Eclipse安装目录下的features和plugins目录中</li>
+</ol>
+<h1 id="PyDev的配置"><a href="#PyDev的配置" class="headerlink" title="PyDev的配置"></a>PyDev的配置</h1><p>不论官网安装还是离线安装，都需要配置PyDev，步骤如下</p>
+<ol>
+<li><p>启动Eclipse，打开window-&gt;Preferences</p>
+</li>
+<li><p>选择Interpreter-Python，然后选择New</p>
+</li>
+<li><p>点击【New】，添加一个系统里已有的Python解释器的位置。确定后会经过短暂的处理，得到它的Libraries、Buildins等。<br>(我写的地址是提前安装好的annaconda。)</p>
+</li>
+<li><p>最后，单击Reference界面下的 OK ; 等待后即可在Eclipse中写Python了。　</p>
+</li>
+</ol>
+<h1 id="例子-实战"><a href="#例子-实战" class="headerlink" title="例子 实战"></a>例子 实战</h1><p>前面就已经配置好了Python的开发环境，下面新建一个项目，来测试一下，确实可以运行。</p>
+<p>点击【File】-【New】-【Other】，找到【PyDev】，选择【PyDev Project】，点击Next。取一个项目名称，比如helloPython，如下图所示：<br><img src="/images/eclipse作为Python的开发工具/img1-3.png" alt></p>
+<p>点击【Finish】，完成项目创建。然后你会进入PyDev视图，进行Python开发。</p>
+<p>右键项目的src目录，选择【New】-【PyDev Package】，创建一个Python包，此处也命名为helloPython。</p>
+<p>再右键该package，【New】-【PyDev Module】（python的module 就是java的calss），此处也命名为helloPython。 （pydev提供了一些模板，这边暂选 Empty）</p>
+<p>双击打开 helloPython .py，添加如下代码。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span><span class="string">'hello python!'</span></span><br></pre></td></tr></table></figure></p>
+<p>右键项目，选择【Run As】-【Python Run】，或Ctrl+F11运行项目。</p>
+<p>此时，可以在下方的console窗口，看到项目的运行结果。</p>
+<h1 id="PyDev的注释快捷键"><a href="#PyDev的注释快捷键" class="headerlink" title="PyDev的注释快捷键"></a>PyDev的注释快捷键</h1><p>个人认为，PyDev是很好用的python编辑器。使用起来的确得心应手，建议初学者多尝试用用。</p>
+<p>下面从网上整理了一些PyDev的快捷键，和大家分享分享：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+3 行注释</span><br><span class="line"></span><br><span class="line">Ctr+\ 去行注释</span><br><span class="line">Ctrl+Shift+3 去行注释</span><br><span class="line"></span><br><span class="line">Ctrl+4 块注释</span><br><span class="line">Ctrl+5 去块注释</span><br><span class="line"></span><br><span class="line">Ctrl+9 折叠全部</span><br><span class="line">Ctrl+0 展开全部</span><br><span class="line"></span><br><span class="line">Ctrl+- 折叠</span><br><span class="line">Ctrl+= 展开</span><br><span class="line"></span><br><span class="line">Ctrl+Shift+Up 上一函数</span><br><span class="line">Ctrl+Shift+Down 下一函数</span><br><span class="line"></span><br><span class="line">Ctrl+Shift+O 整理导入顺序</span><br></pre></td></tr></table></figure></p>
+<h1 id="tensorflow中所安装的模块"><a href="#tensorflow中所安装的模块" class="headerlink" title="tensorflow中所安装的模块"></a>tensorflow中所安装的模块</h1><ol>
+<li><p>Python安装cv2模块</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install opencv-python</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装 captcha</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install captcha</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h1><p><a href="https://www.python.org/dev/peps/pep-0263/" target="_blank" rel="noopener">PEP 263 — Defining Python Source Code Encodings</a></p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><ul>
+<li><a href="https://www.52pojie.cn/thread-866403-1-1.html" target="_blank" rel="noopener">Eclipse环境安装Python插件PyDev</a></li>
+<li><a href="https://blog.csdn.net/wscdylzjy/article/details/44066977" target="_blank" rel="noopener">Eclipse+PyDev的详细的安装和使用过程</a></li>
+<li><a href="https://blog.csdn.net/zhubao124/article/details/79183320" target="_blank" rel="noopener">利用Eclipse + PyDev 开发第一个Python程序</a></li>
+<li><a href="https://blog.csdn.net/Jkwwwwwwwwww/article/details/51338909" target="_blank" rel="noopener">【Eclipse+PyDev】字体、颜色和背景的个性化设置</a></li>
+</ul>
+<h1 id="其他网址"><a href="#其他网址" class="headerlink" title="其他网址"></a>其他网址</h1><p><a href="http://www.spiderpy.cn/blog/detail/32" target="_blank" rel="noopener">使用captcha模块生成图形验证码</a><br><a href="http://blog.ku-cat.com/2018/04/23/python-captcha/" target="_blank" rel="noopener">python使用captcha模块生成图形验证码</a></p>
+<p><a href="https://www.jianshu.com/p/47f0319028f2" target="_blank" rel="noopener">【简书】1.CNN图片单标签分类（基于TensorFlow实现基础VGG16网络）</a><br><a href="https://www.jianshu.com/p/596db72a7e00" target="_blank" rel="noopener">【简书】2.CNN图片多标签分类（基于TensorFlow实现验证码识别OCR）</a><br><a href="https://blog.csdn.net/javastart/article/details/88087966" target="_blank" rel="noopener">【CSDN】2.CNN图片多标签分类（基于TensorFlow实现验证码识别OCR）</a></p>
+<p><a href="https://blog.csdn.net/xijuezhu8128/article/details/79556878" target="_blank" rel="noopener">Tensorflow制作并用CNN训练自己的数据集</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">------------------------ The End ------------------------</div>
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://imjunjie.github.io/tensorflow-xue-xi-zhi-shi-dian-zong-jie.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Junjie Jia">
+      <meta itemprop="description" content="生命中的每一步都必须认真对待，把握今天，成就明天！">
+      <meta itemprop="image" content="http://image.xcar.com.cn/attachments/a/day_130416/2013041610_b3e94dab51a2253bd17dxx64sn6s0q2H.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Imjunjie">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/tensorflow-xue-xi-zhi-shi-dian-zong-jie.html" class="post-title-link" itemprop="url">TensorFlow学习知识点总结</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-19 09:06:42" itemprop="dateCreated datePublished" datetime="2019-04-19T09:06:42+08:00">2019-04-19</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-20 09:13:21" itemprop="dateModified" datetime="2019-04-20T09:13:21+08:00">2019-04-20</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习/TensorFlow/" itemprop="url" rel="index"><span itemprop="name">TensorFlow</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">11k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">10 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="tf-equal-函数"><a href="#tf-equal-函数" class="headerlink" title="tf.equal()函数"></a>tf.equal()函数</h1><p>tensorflow 中tf.equal()用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.equal(A, B，name=None)</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>对于单个变量，如果A==B,则返回true,否则返回false;</li>
+<li>对于数组，会迭代的比较A[i]和B[i]，对应相等的则返回true,否则返回false<br>&emsp;&emsp;是对比这两个矩阵或者向量的相等的元素，如果是相等的那就返回True，否则返回False，返回的值的矩阵维度和A是一样的<br>&emsp;&emsp;equal，相等的意思。顾名思义，就是判断，A, B 是不是相等，它的判断方法不是整体判断，<br>&emsp;&emsp;而是逐个元素进行判断，如果相等就是True，不相等，就是False。<br>&emsp;&emsp;由于是逐个元素判断，所以A，B 的维度要一致。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"> </span><br><span class="line">A = [[<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]]</span><br><span class="line">B = [[<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>]]</span><br><span class="line"> </span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    print(sess.run(tf.equal(A, B)))</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>输出：<br>&emsp;&emsp;[[ True  True  True False False]]</p>
+<h1 id="tf-cast-函数"><a href="#tf-cast-函数" class="headerlink" title="tf.cast()函数"></a>tf.cast()函数</h1><p>tf.cast(a, dtype=tf.float32)<br><strong>将a的类型转换成tf.float32 </strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">b = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">3</span>]</span><br><span class="line">sess = tf.Session()</span><br><span class="line"><span class="keyword">with</span> sess.as_default():</span><br><span class="line">    acc = sess.run(tf.equal(a, b))</span><br><span class="line">    print(acc)　　</span><br><span class="line">    print(sess.run(tf.reduce_mean(tf.cast(acc, dtype=tf.float32))))</span><br></pre></td></tr></table></figure></p>
+<p>运行结果如下图所示：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="literal">True</span>, <span class="literal">False</span>, <span class="literal">True</span>]</span><br><span class="line"><span class="number">0.6666667</span></span><br></pre></td></tr></table></figure></p>
+<p>代码解释：<br>假设a是输入的y_hat, b是预测的y<br>&emsp;&emsp;tf.equal(a, b)会比较每一个y和y_hat 是否相等<br>&emsp;&emsp;tf.cast(acc, dtype=tf.float32)将比较的结果转换成tf.float32类型<br>&emsp;&emsp;tf.reduce_mean()求所有tf.float32类型结果的均值 </p>
+<h1 id="tf-argmax-函数"><a href="#tf-argmax-函数" class="headerlink" title="tf.argmax()函数"></a>tf.argmax()函数</h1><h2 id="tf-argmax-vector-1"><a href="#tf-argmax-vector-1" class="headerlink" title="tf.argmax(vector, 1)"></a>tf.argmax(vector, 1)</h2><p>&emsp;&emsp;返回的是vector中的最大值的索引号，如果vector是一个向量，那就返回一个值，如果是一个矩阵，那就返回一个向量，这个向量的每一个维度都是相对应矩阵行的最大值元素的索引号。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"> </span><br><span class="line">A = [[<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]]</span><br><span class="line">B = [[<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>], [<span class="number">2</span>,<span class="number">4</span>,<span class="number">1</span>]]</span><br><span class="line"> </span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    print(sess.run(tf.argmax(A, <span class="number">1</span>)))</span><br><span class="line">    print(sess.run(tf.argmax(B, <span class="number">1</span>)))</span><br></pre></td></tr></table></figure></p>
+<p>运行结果：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(tf14) zhangkf@Ubuntu2:~/lenet5$ python one.py </span><br><span class="line">[<span class="number">4</span>]</span><br><span class="line">[<span class="number">2</span> <span class="number">1</span>]</span><br></pre></td></tr></table></figure></p>
+<h2 id="tf-equal"><a href="#tf-equal" class="headerlink" title="tf.equal()"></a>tf.equal()</h2><p>tf.equal(A, B)是对比这两个矩阵或者向量的相等的元素，如果是相等的那就返回True，否则返回False，返回的值的矩阵维度和A是一样的<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"> </span><br><span class="line">A = [[<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]]</span><br><span class="line">B = [[<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>]]</span><br><span class="line"> </span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    print(sess.run(tf.equal(A, B)))</span><br></pre></td></tr></table></figure></p>
+<p>运行结果：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(tf14) zhangkf@Ubuntu2:~/lenet5$ python one.py </span><br><span class="line">[[ <span class="literal">True</span>  <span class="literal">True</span>  <span class="literal">True</span> <span class="literal">False</span> <span class="literal">False</span>]]</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"> </span><br><span class="line">A = [[<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]]</span><br><span class="line">B = [[<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>],[<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">3</span>]]</span><br><span class="line"> </span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    print(sess.run(tf.equal(A, B)))</span><br></pre></td></tr></table></figure>
+<p>运行结果：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(tf14) zhangkf@Ubuntu2:~/lenet5$ python one.py </span><br><span class="line">[[ <span class="literal">True</span>  <span class="literal">True</span>  <span class="literal">True</span> <span class="literal">False</span> <span class="literal">False</span>]</span><br><span class="line"> [<span class="literal">False</span>  <span class="literal">True</span>  <span class="literal">True</span>  <span class="literal">True</span> <span class="literal">False</span>]]</span><br></pre></td></tr></table></figure></p>
+<h2 id="二者结合起来"><a href="#二者结合起来" class="headerlink" title="二者结合起来"></a>二者结合起来</h2><p>在测试模型的准确率的时候，通常二者结合在一起。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">correct_prediction=tf.equal(tf.getmax(y,<span class="number">1</span>),tf.getmax(y_,<span class="number">1</span>))</span><br><span class="line">accuracy=tf.reduce_mean(tf.cast(corrcet_prediction,tf.float32))<span class="comment">#求平均获取准确率</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="tf-argmax-与-tf-arg-max"><a href="#tf-argmax-与-tf-arg-max" class="headerlink" title="tf.argmax 与 tf.arg_max"></a>tf.argmax 与 tf.arg_max</h1><p>tf.argmax 与 tf.arg_max 用法相同，下面介绍 tf.argmax 用法 </p>
+<h2 id="tf-argmax"><a href="#tf-argmax" class="headerlink" title="tf.argmax"></a>tf.argmax</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">argmax</span><span class="params">(input,</span></span></span><br><span class="line"><span class="function"><span class="params">           axis=None,</span></span></span><br><span class="line"><span class="function"><span class="params">           name=None,</span></span></span><br><span class="line"><span class="function"><span class="params">           dimension=None,</span></span></span><br><span class="line"><span class="function"><span class="params">           output_type=dtypes.int64)</span></span></span><br><span class="line"><span class="function"><span class="title">numpy</span>.<span class="title">argmax</span><span class="params">(a, axis=None, out=None)</span> </span></span><br><span class="line"><span class="function">返回沿轴<span class="title">axis</span>最大值的索引。</span></span><br><span class="line"><span class="function"> </span></span><br><span class="line"><span class="function"><span class="title">Parameters</span>:</span> </span><br><span class="line">input: array_like，数组</span><br><span class="line">axis : int, 可选，默认情况下，索引的是平铺的数组，否则沿指定的轴。 </span><br><span class="line">out : array, 可选 如果提供，结果以合适的形状和类型被插入到此数组中。 </span><br><span class="line"> </span><br><span class="line">Returns: </span><br><span class="line">index_array : ndarray of ints </span><br><span class="line">索引数组。它具有与a.shape相同的形状，其中axis被移除。</span><br></pre></td></tr></table></figure>
+<p>tf.argmax() 与 numpy.argmax() 方法的用法是一致的</p>
+<p>axis = 0 的时候返回每一列最大值的位置索引<br>axis = 1 的时候返回每一行最大值的位置索引<br>axis = 2、3、4 …，即为多维张量时，同理推断</p>
+<p><strong>例子</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = np.arange(<span class="number">6</span>).reshape(<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a</span><br><span class="line">array([[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>],</span><br><span class="line">       [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>np.argmax(a)</span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>np.argmax(a, axis=<span class="number">0</span>)  <span class="comment">#0代表列</span></span><br><span class="line">array([<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>np.argmax(a, axis=<span class="number">1</span>)  <span class="comment">#1代表行</span></span><br><span class="line">array([<span class="number">2</span>, <span class="number">2</span>])</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = np.arange(<span class="number">6</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b[<span class="number">1</span>] = <span class="number">5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b</span><br><span class="line">array([<span class="number">0</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>np.argmax(b)  <span class="comment">#只返回第一次出现的最大值的索引</span></span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="tf-arg-max"><a href="#tf-arg-max" class="headerlink" title="tf.arg_max()"></a>tf.arg_max()</h2><p>&emsp;&emsp;The following is the source code of argmax<br>&emsp;&emsp;(from <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/ops/math_ops.py" target="_blank" rel="noopener">https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/ops/math_ops.py</a>).<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pylint: disable=redefined-builtin</span></span><br><span class="line"><span class="comment"># TODO(aselle): deprecate arg_max</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">argmax</span><span class="params">(input, axis=None, name=None, dimension=None)</span>:</span></span><br><span class="line">  <span class="keyword">if</span> dimension <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">    <span class="keyword">if</span> axis <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">      <span class="keyword">raise</span> ValueError(<span class="string">"Cannot specify both 'axis' and 'dimension'"</span>)</span><br><span class="line">    axis = dimension</span><br><span class="line">  <span class="keyword">elif</span> axis <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">    axis = <span class="number">0</span></span><br><span class="line">  <span class="keyword">return</span> gen_math_ops.arg_max(input, axis, name)</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;As you can see, argmax is using arg_max inside. Also from the code, I recommend using argmax because arg_max could be deprecated soon.  </p>
+<p>Python获取文件夹下的文件和子文件夹<br>笔者小白在写代码的时候遇到的这样的问题，就是说需要根据文件夹的路径获取该文件夹下面的所有的文件和子文件夹。这里就介绍python的os模块中的两个函数：os.walk() 、os.listdir()。</p>
+<h1 id="os-walk"><a href="#os-walk" class="headerlink" title="os.walk()"></a>os.walk()</h1><p>该函数的原型是：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.walk(top, topdown=Ture, onerror=<span class="literal">None</span>, followlinks=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure></p>
+<p>该函数没有返回值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">参数</span><br><span class="line"> 1. top -- 根目录下的每一个文件夹(包含它自己), 产生3-元组 (dirpath, dirnames, filenames)【文件夹路径, 文件夹名字, 文件名】。</span><br><span class="line"> 2. topdown --可选，为True或者没有指定, 一个目录的的3-元组将比它的任何子文件夹的3-元组先产生 (目录自上而下)。如果topdown为 False, 一个目录的3-元组将比它的任何子文件夹的3-元组后产生 (目录自下而上)。</span><br><span class="line"> 3. onerror -- 可选，是一个函数; 它调用时有一个参数, 一个OSError实例。报告这错误后，继续walk,或者抛出exception终止walk。</span><br><span class="line"> 4. followlinks -- 设置为 true，则通过软链接访问目录。</span><br></pre></td></tr></table></figure></p>
+<p> 函数执行之后得到一个三元tupple（dirpath， dirnames， filenams。</p>
+<ul>
+<li>dirpath：string，是当前目录的路径；</li>
+<li>dirnames：list， 是当前路径下所有的子文件夹名字；</li>
+<li>filenames：list， 是当前路径下所有的非目录子文件的名字。<br>要获取完整的路径，dirnames和filenames是不包含路径信息的，可以使用<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.path.join(dirpath, dirnames)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>获得文件的完整路径。<br>代码示例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">for</span> root, dirs, files <span class="keyword">in</span> os.walk(<span class="string">"."</span>, topdown=<span class="literal">False</span>):</span><br><span class="line">    <span class="keyword">for</span> name <span class="keyword">in</span> files:</span><br><span class="line">        print(os.path.join(root, name))</span><br><span class="line">    <span class="keyword">for</span> name <span class="keyword">in</span> dirs:</span><br><span class="line">        print(os.path.join(root, name))</span><br></pre></td></tr></table></figure></p>
+<p>当需要特定类型的文件时，代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-   </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os  </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">file_name</span><span class="params">(file_dir)</span>:</span>   </span><br><span class="line">    L=[]   </span><br><span class="line">    <span class="keyword">for</span> dirpath, dirnames, filenames <span class="keyword">in</span> os.walk(file_dir):  </span><br><span class="line">        <span class="keyword">for</span> file <span class="keyword">in</span> filenames :  </span><br><span class="line">            <span class="keyword">if</span> os.path.splitext(file)[<span class="number">1</span>] == <span class="string">'.jpg'</span>:  </span><br><span class="line">                L.append(os.path.join(dirpath, file))  </span><br><span class="line">    <span class="keyword">return</span> L</span><br></pre></td></tr></table></figure></p>
+<p>其中os.path.splitext()函数将路径拆分为文件名+扩展名，例如os.path.splitext(“E:/lena.jpg”)将得到”E:/lena“+”.jpg”。</p>
+<h1 id="os-listdir"><a href="#os-listdir" class="headerlink" title="os.listdir()"></a>os.listdir()</h1><p>os.listdir()函数返回指定路径下的文件和文件夹列表。<br>代码示例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os, sys</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打开文件</span></span><br><span class="line">path = <span class="string">"/var/www/html/"</span></span><br><span class="line">dirs = os.listdir( path )</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出所有文件和文件夹</span></span><br><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> dirs:</span><br><span class="line">   <span class="keyword">print</span> file</span><br></pre></td></tr></table></figure></p>
+<p>python 遍历文件夹及子文件夹<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">EnumPathFiles</span><span class="params">(path, callback)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.isdir(path):</span><br><span class="line">        print(<span class="string">'Error:"'</span>,path,<span class="string">'" is not a directory or does not exist.'</span>)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    list_dirs = os.walk(path)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> root, dirs, files <span class="keyword">in</span> list_dirs:</span><br><span class="line">        <span class="keyword">for</span> d <span class="keyword">in</span> dirs:</span><br><span class="line">            EnumPathFiles(os.path.join(root, d), callback)</span><br><span class="line">        <span class="keyword">for</span> f <span class="keyword">in</span> files:</span><br><span class="line">            callback(root, f)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">callbakc1</span><span class="params">(path, filename)</span>:</span></span><br><span class="line">    print(path+<span class="string">'\\'</span>+filename)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    EnumPathFiles(<span class="string">r'D:\Projects\python'</span>, callbakc1)</span><br></pre></td></tr></table></figure></p>
+<p>python 遍历目录(包括子目录)下所有文件<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">list_all_files</span><span class="params">(rootdir)</span>:</span></span><br><span class="line">    <span class="keyword">import</span> os</span><br><span class="line">    _files = []</span><br><span class="line">    list = os.listdir(rootdir) <span class="comment">#列出文件夹下所有的目录与文件</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(list)):</span><br><span class="line">           path = os.path.join(rootdir,list[i])</span><br><span class="line">           <span class="keyword">if</span> os.path.isdir(path):</span><br><span class="line">              _files.extend(list_all_files(path))</span><br><span class="line">           <span class="keyword">if</span> os.path.isfile(path):</span><br><span class="line">              _files.append(path)</span><br><span class="line">    <span class="keyword">return</span> _files</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">_fs = list_all_files(<span class="string">'./资料'</span>)</span><br><span class="line"><span class="comment">#将第一阶段的文件遍历出来</span></span><br><span class="line">_k = filter(<span class="keyword">lambda</span> x:re.compile(<span class="string">r'stage2.txt'</span>).search(x),_fs)</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line">python 便利文件夹，返回所有文件夹及其子文件夹</span><br><span class="line">``` python </span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># File Name:aa.py</span></span><br><span class="line"><span class="comment"># Author: biolxy</span></span><br><span class="line"><span class="comment"># E-mail:biolxy@aliyun.com</span></span><br><span class="line"><span class="comment"># Created Time:Wed 14 Mar 2018 07:06:03 PM PDT</span></span><br><span class="line"><span class="comment"># python getDir.py /home/user/soft   返回/home/user/soft 下所有文件夹及子文件夹名字</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"> </span><br><span class="line">fistr_dir = os.path.abspath(sys.argv[<span class="number">1</span>])</span><br><span class="line"><span class="comment">#print("fistr_dir is:\t&#123;&#125;".format(fistr_dir))</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_all_dir_from_dir</span><span class="params">(dir)</span>:</span></span><br><span class="line">    <span class="comment"># 遍历文件夹，输出文件夹及子文件夹</span></span><br><span class="line">    <span class="keyword">if</span> os.path.exists(dir):</span><br><span class="line">        path_dir = os.path.abspath(dir)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> os.listdir(path_dir):</span><br><span class="line">            path_i = os.path.join(path_dir, i)</span><br><span class="line">            <span class="keyword">if</span> os.path.isdir(path_i):</span><br><span class="line">                print(path_i)</span><br><span class="line">                get_all_dir_from_dir(path_i)</span><br><span class="line"> </span><br><span class="line">get_all_dir_from_dir(fistr_dir)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python getDir.py /home/user/soft</span><br></pre></td></tr></table></figure>
+<p>注意，如果你没有改文件夹的访问权限，改脚本无法显示该文件夹</p>
+<p>来源：<br>从网上下载了一个听书课程，里边是按照时间顺序放在文件夹中，一级目录嵌套一级目录，具体的mp3文件放在三级目录中，通过编写py函数，实现对目录中文件的遍历并拷贝出指定的文件，此处是mp3文件。</p>
+<p>编程思路：<br>人都是惰性了，刚想到这个问题，第一时间是简单的一层一层的遍历，但是问题是不知道多少层，同时希望程序有一定的健壮性。就想到了递归思想。</p>
+<p>具体编程实现<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> shutil</span><br><span class="line"> </span><br><span class="line">file = <span class="string">"D:/BaiduNetdiskDownload/2017-10"</span></span><br><span class="line">todir = <span class="string">"C:/mp3File"</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">searchMp3</span><span class="params">(path)</span>:</span></span><br><span class="line">  <span class="keyword">for</span> item <span class="keyword">in</span> os.listdir(path):</span><br><span class="line">    subFile = path+<span class="string">"/"</span>+item</span><br><span class="line">    <span class="keyword">if</span> os.path.isdir(subFile):</span><br><span class="line">      searchMp3(subFile)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">      <span class="keyword">if</span> os.path.splitext(subFile)[<span class="number">1</span>] ==<span class="string">".mp3"</span>:</span><br><span class="line">        shutil.copy(subFile ,todir)</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:  </span><br><span class="line">  searchMp3(file)</span><br></pre></td></tr></table></figure></p>
+<p>假设FILE文件夹中有三个文件夹分别是file1,file2。file1中有文件夹sf1和sf2.file2中有sf3和sf4。sf1-4中分别各有一个MP3文件，分别是m1.mp3—-m4.mp3。</p>
+<p>path是FILE路径。开始循环：</p>
+<p>subFile = path/file1 因为subFile也是文件，此时把 subFile作为path传递给searchFile函数，记住，此时第一次循环还没有结束。此时path路径下面也有两个子文件，此时，subFile = path/file1/sf1。当然sf1也是文件，把此时的subFile当做参数传给searchMp3函数，记住，此时path/file下面还没有遍历完成。把path/file1/sf1当做path，此时，文件中有一个m1.mp3文件。不是文件夹，执行else语句，判断文件后缀是mp3则移动都指定目录。此时开始执行subFile = path/file1/sf2。同样的执行else语句。此时开始执行 subFile = path/file2同样的遍历过程。最后把所有的指定文件都遍历出来。如果还不理解，可以自己画图，更好的理解整个过程。 </p>
+<h1 id="tf-one-hot"><a href="#tf-one-hot" class="headerlink" title="tf.one_hot()"></a>tf.one_hot()</h1><p>tensorflow中tf.one_hot()函数的作用是将一个值化为一个概率分布的向量，一般用于分类问题。(<a href="https://blog.csdn.net/wenqiwenqi123/article/details/78055740" target="_blank" rel="noopener">参考地址</a>)<br>具体用法以及作用见以下代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"> </span><br><span class="line">SIZE=<span class="number">6</span></span><br><span class="line">CLASS=<span class="number">8</span></span><br><span class="line">label1=tf.constant([<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>])</span><br><span class="line">sess1=tf.Session()</span><br><span class="line">print(<span class="string">'label1:'</span>,sess1.run(label1))</span><br><span class="line">b = tf.one_hot(label1,CLASS,<span class="number">1</span>,<span class="number">0</span>)</span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    sess.run(tf.global_variables_initializer())</span><br><span class="line">    sess.run(b)</span><br><span class="line">    print(<span class="string">'after one_hot'</span>,sess.run(b))</span><br></pre></td></tr></table></figure></p>
+<p>最后的输出为：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">label1: [<span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span>]</span><br><span class="line">after one_hot:</span><br><span class="line"></span><br><span class="line"> [[<span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span>]]</span><br></pre></td></tr></table></figure></p>
+<p><strong>tf.one_hot（）使用</strong><br>(<a href="https://blog.csdn.net/m0_37561765/article/details/78207508" target="_blank" rel="noopener">参考地址</a>)tf.one_hot在看conditionGAN的时候注意到label的输入要把它转换成one-hot形式，再与噪声z进行tf.concat输入，之前看的时候忽略了，现在再看才算明白为什么。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">tf.one_hot(</span><br><span class="line">    indices,<span class="comment">#输入，这里是一维的</span></span><br><span class="line">    depth,<span class="comment"># one hot dimension.</span></span><br><span class="line">    on_value=<span class="literal">None</span>,<span class="comment">#output 默认1</span></span><br><span class="line">    off_value=<span class="literal">None</span>,<span class="comment">#output 默认0</span></span><br><span class="line">    axis=<span class="literal">None</span>,<span class="comment">#根据我的实验，默认为1</span></span><br><span class="line">    dtype=<span class="literal">None</span>,</span><br><span class="line">    name=<span class="literal">None</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<p>代码示例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">z=np.random.randint(<span class="number">0</span>,<span class="number">10</span>,size=[<span class="number">10</span>])</span><br><span class="line">y=tf.one_hot(z,<span class="number">10</span>,on_value=<span class="number">1</span>,off_value=<span class="literal">None</span>,axis=<span class="number">0</span>)</span><br><span class="line"><span class="keyword">with</span> tf.Session()<span class="keyword">as</span> sess:</span><br><span class="line">    print(z)</span><br><span class="line">    print(sess.run(y))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[<span class="number">5</span> <span class="number">7</span> <span class="number">7</span> <span class="number">0</span> <span class="number">5</span> <span class="number">5</span> <span class="number">2</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line">[[<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">1</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]]</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.environ[<span class="string">"CUDA_VISIBLE_DEVICES"</span>] = <span class="string">"2"</span></span><br><span class="line">z=np.random.randint(<span class="number">0</span>,<span class="number">10</span>,size=[<span class="number">10</span>])</span><br><span class="line">y=tf.one_hot(z,<span class="number">10</span>,on_value=<span class="number">1</span>,off_value=<span class="literal">None</span>)</span><br><span class="line">y1=tf.one_hot(z,<span class="number">10</span>,on_value=<span class="number">1</span>,off_value=<span class="literal">None</span>,axis=<span class="number">1</span>)</span><br><span class="line"><span class="keyword">with</span> tf.Session()<span class="keyword">as</span> sess:</span><br><span class="line">    print(z)</span><br><span class="line">    print(sess.run(y))</span><br><span class="line">    print(<span class="string">"axis=1按行排"</span>, sess.run(y1))</span><br><span class="line"></span><br><span class="line">    [<span class="number">6</span> <span class="number">3</span> <span class="number">4</span> <span class="number">9</span> <span class="number">6</span> <span class="number">5</span> <span class="number">5</span> <span class="number">1</span> <span class="number">2</span> <span class="number">1</span>]</span><br><span class="line">[[<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]]</span><br><span class="line">axis=<span class="number">1</span>按行排 [[<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]]</span><br></pre></td></tr></table></figure>
+<p> 感觉实际用的时候可以不传入axis值。可以看到经过one-hot的处理，输入的维度变成了10×depth，值也变成了0和1.</p>
+<p>下面说在condition GAN中要输入标签信息y，怎样处理的。<br>y是mnist的标签值，0和10之间的整数，尺寸为[BATCH],经过one-hot处理后维度变成了[BATCH，10]值也是0和1，此时再与噪声z按列（axis=1）连接，变成条件GAN的输入。因此one-hot操作是必须的，这个处理在infoGAN中将z，categorical latent code、continuous latent code连接在一起输入也要用到。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">y = tf.one_hot(y, <span class="number">10</span>, name=<span class="string">'label_onehot'</span>)</span><br><span class="line">z = tf.random_uniform([BATCH, <span class="number">100</span>], <span class="number">-1</span>, <span class="number">1</span>, name=<span class="string">'z_train'</span>)</span><br><span class="line">tf.concat([z, y], <span class="number">1</span>)</span><br></pre></td></tr></table></figure></p>
+<p>【<a href="https://blog.csdn.net/qq_35203425/article/details/79997271" target="_blank" rel="noopener">参考3</a>】tensorflow中将label索引转换成one-hot形式<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">index=[<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">one_hot=tf.one_hot(index,<span class="number">5</span>)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    sess.run(tf.global_variables_initializer())</span><br><span class="line"> </span><br><span class="line">    print(sess.run(one_hot))</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[[<span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span>]</span><br><span class="line"> [<span class="number">0.</span> <span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span>]</span><br><span class="line"> [<span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span>]</span><br><span class="line"> [<span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">1.</span>]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">------------------------ The End ------------------------</div>
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://imjunjie.github.io/ji-yu-python-de-xiao-yuan-wang-zi-dong-deng-lu.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Junjie Jia">
+      <meta itemprop="description" content="生命中的每一步都必须认真对待，把握今天，成就明天！">
+      <meta itemprop="image" content="http://image.xcar.com.cn/attachments/a/day_130416/2013041610_b3e94dab51a2253bd17dxx64sn6s0q2H.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Imjunjie">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/ji-yu-python-de-xiao-yuan-wang-zi-dong-deng-lu.html" class="post-title-link" itemprop="url">基于Python的校园网自动登录</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-09 12:25:57 / 修改时间：13:39:59" itemprop="dateCreated datePublished" datetime="2019-04-09T12:25:57+08:00">2019-04-09</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">3.4k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">3 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>搞了几天终于把这个搞出来了，代码不到50行，要是别的网站很好模拟，但是这个稍微有点麻烦，抓包工具用了很多，httpfox没有抓全，wireshark抓的又太多不好分析，最后还是使用神器fiddle才把它搞出来。</p>
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><ul>
+<li>火狐浏览器+firedebug插件，debug插件可在浏览器附加组件中添加，其他浏览器也可以，只要有可以监控浏览器的网络行为插件即可。（<font color="red">notes:这里没有使用到firedebug，而是使用火狐浏览器自带的审查工具</font>）</li>
+<li>Python+requests包</li>
+</ul>
+<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><p>打开火狐浏览器，输入网址”<code>http://211.85.192.115/srun_portal_pc.php?ac_id=1&amp;</code>“，打开校园网登录页面，如下：<br><img src="/images/基于Python的校园网自动登录/img1-1.png" alt><br>登录账号和密码，显示登录成功<br><img src="/images/基于Python的校园网自动登录/img1-2.png" alt><br>右键单击【审查元素】-【网络】<br><img src="/images/基于Python的校园网自动登录/img1-3.png" alt><br>构造请求头<br><img src="/images/基于Python的校园网自动登录/img1-4.png" alt><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"># 构造头部信息 注意Cookie可能十分重要，而且Cookie会有过期时间（我们学校过期时间是1个月），过期之后，可能需要复制新的Cookie替换。</span><br><span class="line">post_header = &#123;</span><br><span class="line">   #'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',</span><br><span class="line">   'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:66.0) Gecko/20100101 Firefox/66.0',</span><br><span class="line">   'Accept': '*/*',</span><br><span class="line">   #'Accept-Language': 'zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3',</span><br><span class="line">   'Accept-Language': 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',</span><br><span class="line">   'Accept-Encoding': 'gzip, deflate',</span><br><span class="line">   #'Content-Type': 'application/x-www-form-urlencoded',</span><br><span class="line">   'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',</span><br><span class="line">   'X-Requested-With': 'XMLHttpRequest',</span><br><span class="line"></span><br><span class="line">   #'Origin': 'http://wlrz.fudan.edu.cn',</span><br><span class="line">   'Referer': 'http://211.85.192.115/srun_portal_pc.php?ac_id=1&amp;',</span><br><span class="line">   #'Content-Length': '112',</span><br><span class="line">   'Content-Length': '104',</span><br><span class="line">   #'Cookie': 'login=YUtl4F5w2GWDfWUA8O0nj3eCm7TrrFp%252FtbchCKzbO84IQczKx%252Fyc5mYGG7s6FQxsyiZbjwUIcJ2ECcqXWO%252BzwX85KrsMq0MDW7tX1eoOzS00eusx19E0245ORqeeZHVwBzEd1DGI%253D',</span><br><span class="line">   'Cookie': 'login=请自己获得，这里不提供',</span><br><span class="line">   #'Host': 'wlrz.fudan.edu.cn',</span><br><span class="line">   'Host': '211.85.192.115',</span><br><span class="line">   'Connection': 'keep-alive',</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>构造发送数据<br><img src="/images/基于Python的校园网自动登录/img1-5.png" alt><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#此处根据自己校园网Form Data中发送的数据进行更改</span><br><span class="line">action = 'login'</span><br><span class="line">username = '学号'</span><br><span class="line">#password = '加密的密码'</span><br><span class="line">password = '密码xxx'</span><br><span class="line">ac_id = '1'</span><br><span class="line">save_me = '0'</span><br><span class="line">ajax = '1'</span><br><span class="line">#user_ip = '127.131.1.1'</span><br><span class="line"></span><br><span class="line">post_data = &#123;</span><br><span class="line">   'action': action,</span><br><span class="line">   'username': username,</span><br><span class="line">   'password': password,</span><br><span class="line">#   'password': base64.b64encode(password.encode()).decode(),</span><br><span class="line">#   'password': base64.b64encode(password.encode()),</span><br><span class="line">   'ac_id': ac_id,</span><br><span class="line">#   'user_ip': user_ip,</span><br><span class="line">   'save_me': save_me,</span><br><span class="line">   'ajax': ajax</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>内容有方式、学号、密码还有其他，其中密码不是明文，这密码应该是加密的，在所有js文件中搜索password，发现有一处函数，验证了是base64加密方式。（<font color="red">注意：以下操作是在在Chrome浏览器中进行的</font>）<br>在chrome浏览器中，输入账号登录网址”<code>http://211.85.192.115/srun_portal_pc.php?ac_id=1&amp;</code>“，右键【审查元素】-【网络】，然后刷新<br><img src="/images/基于Python的校园网自动登录/img1-6.png" alt><br><img src="/images/基于Python的校园网自动登录/img1-7.png" alt><br>于是开始着手写代码了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">def login_request():</span><br><span class="line">    if not is_net_ok():</span><br><span class="line">        print(&quot;[03]&#123;&#125; whpu-wlan is offline, request now...&quot;.format(datetime.datetime.now().strftime(&apos;%Y-%m-%d %H:%M:%S&apos;)))</span><br><span class="line">#        password = base64.b64encode(password.encode()).decode()    #加密</span><br><span class="line">        try:</span><br><span class="line">            # 发送post请求登录网页</span><br><span class="line">            result = requests.post(post_addr, data=post_data, headers=post_header)</span><br><span class="line"></span><br><span class="line">            # z.text为str类型的json数据因此先编码成byte类型再解码成unicode类型这样就可以正常输出中文</span><br><span class="line">            s = result.text.encode(&apos;utf-8&apos;).decode(&apos;unicode-escape&apos;)</span><br><span class="line">            print(s)</span><br><span class="line">            print(&quot;login success!&quot;)</span><br><span class="line">        except:</span><br><span class="line">            print(&quot;[00]&#123;&#125; request error, whpu-wlan isnto connected to WIFI...&quot;.format(datetime.datetime.now().strftime(&apos;%Y-%m-%d %H:%M:%S&apos;)))</span><br><span class="line">    else:</span><br><span class="line">        print(&quot;[02]&#123;&#125; whpu-wlan is online, login sucesss...&quot;.format(datetime.datetime.now().strftime(&apos;%Y-%m-%d %H:%M:%S&apos;)))</span><br><span class="line"></span><br><span class="line">login_request()</span><br></pre></td></tr></table></figure></p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><ul>
+<li><p><a href="https://blog.csdn.net/abitch/article/details/51939879" target="_blank" rel="noopener">(2016.7.18)python脚本实现自动登录校园网</a></p>
+</li>
+<li><p><a href="http://blog.csdn.net/shenhuaifeng/article/details/78333851" target="_blank" rel="noopener">(2017.10.24)python实现校园网自动登录</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/u012328159/article/details/81034763" target="_blank" rel="noopener">(2018.7.13)用python写服务器校园网上网认证脚本</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/kaspar1992/article/details/84172543" target="_blank" rel="noopener"><font color="red">(2018.11.24)基于python实现校园网自动登录</font></a></p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">------------------------ The End ------------------------</div>
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://imjunjie.github.io/zheng-jian-zhi-xing-ruan-jian-ge-ren-jia-mi-gou-wan-mei-po-jie-xin-de.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -3526,1089 +4651,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://imjunjie.github.io/zi-ji-zuo-teng-xun-shi-pin-zhen-shi-di-zhi-jie-xi-fen-xi.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Junjie Jia">
-      <meta itemprop="description" content="生命中的每一步都必须认真对待，把握今天，成就明天！">
-      <meta itemprop="image" content="http://image.xcar.com.cn/attachments/a/day_130416/2013041610_b3e94dab51a2253bd17dxx64sn6s0q2H.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Imjunjie">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/zi-ji-zuo-teng-xun-shi-pin-zhen-shi-di-zhi-jie-xi-fen-xi.html" class="post-title-link" itemprop="url">自己做腾讯视频真实地址解析分析</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-03-03 19:39:40 / 修改时间：20:57:43" itemprop="dateCreated datePublished" datetime="2019-03-03T19:39:40+08:00">2019-03-03</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/电脑/" itemprop="url" rel="index"><span itemprop="name">电脑</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/电脑/视频解析/" itemprop="url" rel="index"><span itemprop="name">视频解析</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">9.3k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">8 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>  我觉得网上的一些资料大多是直接给出处理的结果,而不注重分析过程,对我们程序员来说,其过程更重要,工作中碰到的问题是多种多样的,不可能每个碰到的问题都能从网上直接找到答案,我也觉得作为程序员直接去找答案的做法本身有问题.应该提高主动去分析解决问题的能力.下面是对这类问题的一个相对通用的分析方法.</p>
-<h1 id="URL分析"><a href="#URL分析" class="headerlink" title="URL分析"></a>URL分析</h1><p><a href="http://v.qq.com/cover/g/g9jgclyhpp5sp7p.html?vid=g00118pmaso" target="_blank" rel="noopener">http://v.qq.com/cover/g/g9jgclyhpp5sp7p.html?vid=g00118pmaso</a></p>
-<p>打开这个url的页面源码,找到下面这些内容:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var COVER_INFO = &#123;</span><br><span class="line">title :<span class="string">"独家首发"</span>,</span><br><span class="line">id :<span class="string">"g9jgclyhpp5sp7p"</span>,</span><br><span class="line">isPrev :<span class="literal">false</span>,</span><br><span class="line">pic :<span class="string">"http://i.gtimg.cn/qqlive/img/jpgcache/files/qqvideo/g/g9jgclyhpp5sp7p_h.jpg"</span>,</span><br><span class="line">typeid:22,</span><br><span class="line">videoReName :<span class="literal">false</span>,</span><br><span class="line">sourceid:0,</span><br><span class="line">isEurope:<span class="literal">false</span>,</span><br><span class="line">useTextVideoList:<span class="literal">false</span>,</span><br><span class="line">columnid:0,</span><br><span class="line">hasRecommend:<span class="literal">true</span>,</span><br><span class="line">specialTemp:<span class="literal">false</span>,</span><br><span class="line">varietyDate:<span class="string">""</span>,</span><br><span class="line">copyright:5</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>在源码中搜索<code>g9jgclyhpp5sp7p</code>字符串，从其出现的位置基本可以判断这个字符串唯一代表了一个合集(或者叫专辑). 不管它有没有用,先大概看一下,把URL中觉得有用的东西过一遍.</p>
-<p>腾讯视频播放地址的url有几种模式,上面是其中一种,其它的几种模式对解析其地址没什么太大关系,这里就以这种为例了.这个url中最关键的就是最后面接的一个参数<font color="red">vid(videoID)=g00118pmaso</font>.</p>
-<h1 id="抓包"><a href="#抓包" class="headerlink" title="抓包"></a>抓包</h1><p>这里首先要说一点,平时做web应用或者后台接口,要有习惯去抓包,并且对抓到的包进行一些简单的分析,这是一个很好的习惯,有时候会学到一些意想不到的东西.</p>
-<p>最简单的抓包方式就是直接用浏览器自带的工具了,我平时用的<font color="blue">chrome</font>,<code>F12</code> - <code>Network</code>中就有当前页面发送出去的<code>http报文</code>,另外还有个小技巧,因为浏览器会有缓存,按<code>Ctrl+F5</code>刷新页面,<font color="red">就会强制从服务端获取内容而不用缓存</font>,有时候需要这样做,具体的原理可以去看看http协议中的Cache-Control头部. 用浏览器抓包还有个不太方便的地方,当页面跳转时,前面抓的包就没有了,抓的永远是当前页面相关的报文.所以我平时用的比较多的是<font color="blue">fiddler</font>,一个免费的抓包工具,非常方便.</p>
-<p>回到正题, 我们从浏览器输入链接<a href="http://v.qq.com/cover/g/g9jgclyhpp5sp7p.html?vid=g00118pmaso" target="_blank" rel="noopener">http://v.qq.com/cover/g/g9jgclyhpp5sp7p.html?vid=g00118pmaso</a>, 抓到了很多http包,我这里给出一部分的截图<br><img src="/images/自己做腾讯视频真实地址解析分析/抓包.jpg" alt></p>
-<p>标出来的部分请求是关键请求, 我自己在分析的时候,是从下往上分析的,</p>
-<p>1)首先找到视频的下载地址<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">http://101.71.72.2/music.qqvideo.tc.qq.com/g00118pmaso.p309.1.mp4?sdtfrom=v10&amp;type=mp4</span><br><span class="line"></span><br><span class="line">&amp;vkey=95C006D54AA7217B859B15732EE04FB88B3986D36E53116ECAF1CFD43EE6615BA6AD5DDDF8CC3D7B</span><br><span class="line"></span><br><span class="line">&amp;level=3&amp;platform=1&amp;br=351&amp;fmt=fhd&amp;sp=0</span><br></pre></td></tr></table></figure></p>
-<p>这里继续分析url,g00118pmaso上面讲到了,是vid,但是后面多出了.p309.1. 继续往下看sdtfrom=v10(未知),type=mp4,这个好理解，<code>vkey=95C006D54AA7217B859B15732EE04FB88B3986D36E53116ECAF1CFD43EE6615BA6AD5DDDF8CC3D7B</code>,这个看起来又像是一个比较关键的参数,</p>
-<ul>
-<li>level=3(后面xml中对应的level),</li>
-<li>platform=1(平台，web、client、iphone…?暂时也是未知),</li>
-<li>br=351(bitrate=351?大概是码率的意思，后面xml中的br=351),</li>
-<li>fmt=fhd(大概意思是format=flvHD?实际上这里是后面id为10309对应的format name),</li>
-<li>sp=0(后面xml中对应的sp).</li>
-</ul>
-<p>这里有一大堆的参数，有很多都是未知，这个时候别慌，整个链接直接下载肯定是可以下载到视频的，现在要做的是，去掉其中一些参数，看是否能下载.<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://101.71.72.2/music.qqvideo.tc.qq.com/g00118pmaso.p309.1.mp4?type=mp4&amp;vkey=95C006D54AA7217B859B15732EE04FB88B3986D36E53116ECAF1CFD43EE6615BA6AD5DDDF8CC3D7B&amp;br=351&amp;fmt=fhd</span><br></pre></td></tr></table></figure></p>
-<p>最后发现，保留这些参数，能正常下载到视频。所以其它参数暂时先别管。这里有几个关键的地方，vkey从哪里来的？br和fmt从那里获取？vid后面的p309.1哪里来的？还有就是ip地址来源未知。分析到这里，继续往上找到另一个比较关键的请求。</p>
-<p><a href="http://vv.video.qq.com/getkey" target="_blank" rel="noopener">http://vv.video.qq.com/getkey</a></p>
-<p>分析玩上面的视频地址链接的组成，很容易就找到了这个请求，getkey。它是一个post请求，查看其发送的参数format=10309&amp;otype=xml&amp;vt=210&amp;vid=g00118pmaso&amp;ran=0%2E9477521511726081&amp;charge=0&amp;filename=g00118pmaso%2Ep309%2E1%2Emp4&amp;platform=11</p>
-<p>http response中的内容如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"  standalone="no" ?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">root</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>360602.1875<span class="tag">&lt;/<span class="name">br</span>&gt;</span><span class="tag">&lt;<span class="name">ct</span>&gt;</span>604800<span class="tag">&lt;/<span class="name">ct</span>&gt;</span><span class="tag">&lt;<span class="name">key</span>&gt;</span>95C006D54AA7217B859B15732EE04FB88B3986D36E53116ECAF1CFD43EE6615BA6AD5DDDF8CC3D7B<span class="tag">&lt;/<span class="name">key</span>&gt;</span><span class="tag">&lt;<span class="name">level</span>&gt;</span>3<span class="tag">&lt;/<span class="name">level</span>&gt;</span><span class="tag">&lt;<span class="name">levelvalid</span>&gt;</span>1<span class="tag">&lt;/<span class="name">levelvalid</span>&gt;</span><span class="tag">&lt;<span class="name">s</span>&gt;</span>o<span class="tag">&lt;/<span class="name">s</span>&gt;</span><span class="tag">&lt;<span class="name">sp</span>&gt;</span>0<span class="tag">&lt;/<span class="name">sp</span>&gt;</span><span class="tag">&lt;<span class="name">sr</span>&gt;</span>0<span class="tag">&lt;/<span class="name">sr</span>&gt;</span><span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>在这里我们找到了key，同时还发现了和上面链接对应的level和sp两个参数，上面一个链接中的一个参数，不过这个参数也非必要，暂时不管。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">URLDecode后为：</span><br><span class="line"></span><br><span class="line">format=10309（这里实际上是后面的format id）&amp;otype=xml&amp;vt=210&amp;vid=g00118pmaso</span><br><span class="line"></span><br><span class="line">&amp;ran=0.9477521511726081&amp;charge=0&amp;filename=g00118pmaso.p309.1.mp4&amp;platform=11</span><br></pre></td></tr></table></figure></p>
-<p>同样，在代码中试，看那几个参数是必要的，经试验，发现<code>format</code>,<code>type</code>,<code>vid</code>,<code>filename</code>是必要的。</p>
-<p>继续网上分析第三个url，<font color="red"><a href="http://vv.video.qq.com/getinfo" target="_blank" rel="noopener">http://vv.video.qq.com/getinfo</a></font></p>
-<p>也是一个POST请求，参数是：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">otype=xml&amp;pid=2FAF2F6427123207101EBDA3F1523310A76216BD&amp;</span><br><span class="line">platform=11&amp;vids=g00118pmaso&amp;charge=0&amp;speed=1246&amp;ran=0.8439321480691433</span><br></pre></td></tr></table></figure></p>
-<p>返回的结果如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"  standalone="no" ?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">root</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">fl</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">cnt</span>&gt;</span>5<span class="tag">&lt;/<span class="name">cnt</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">fi</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">br</span>&gt;</span>64<span class="tag">&lt;/<span class="name">br</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>1<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">name</span>&gt;</span>flv<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">sl</span>&gt;</span>0<span class="tag">&lt;/<span class="name">sl</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">fi</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">fi</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">br</span>&gt;</span>550<span class="tag">&lt;/<span class="name">br</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>10301<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">name</span>&gt;</span>shd<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">sl</span>&gt;</span>0<span class="tag">&lt;/<span class="name">sl</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">fi</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">fi</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">br</span>&gt;</span>230<span class="tag">&lt;/<span class="name">br</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>10302<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">name</span>&gt;</span>hd<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">sl</span>&gt;</span>0<span class="tag">&lt;/<span class="name">sl</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">fi</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">fi</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">br</span>&gt;</span>64<span class="tag">&lt;/<span class="name">br</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>10303<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">name</span>&gt;</span>sd<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">sl</span>&gt;</span>0<span class="tag">&lt;/<span class="name">sl</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">fi</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">fi</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">br</span>&gt;</span>900<span class="tag">&lt;/<span class="name">br</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>10309<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">name</span>&gt;</span>fhd<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">sl</span>&gt;</span>1<span class="tag">&lt;/<span class="name">sl</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">fi</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">fl</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">hs</span>&gt;</span>0<span class="tag">&lt;/<span class="name">hs</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ls</span>&gt;</span>0<span class="tag">&lt;/<span class="name">ls</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">preview</span>&gt;</span>276<span class="tag">&lt;/<span class="name">preview</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">s</span>&gt;</span>o<span class="tag">&lt;/<span class="name">s</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tm</span>&gt;</span>1361366724<span class="tag">&lt;/<span class="name">tm</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">vl</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">cnt</span>&gt;</span>1<span class="tag">&lt;/<span class="name">cnt</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">vi</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">br</span>&gt;</span>351<span class="tag">&lt;/<span class="name">br</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">ch</span>&gt;</span>0<span class="tag">&lt;/<span class="name">ch</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">cl</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">ci</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">cd</span>&gt;</span>276.480011<span class="tag">&lt;/<span class="name">cd</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">cmd5</span>&gt;</span>beace783957b52f460006604229b57cf<span class="tag">&lt;/<span class="name">cmd5</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">cs</span>&gt;</span>99699295<span class="tag">&lt;/<span class="name">cs</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">idx</span>&gt;</span>1<span class="tag">&lt;/<span class="name">idx</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">keyid</span>&gt;</span>g00118pmaso.10309.1<span class="tag">&lt;/<span class="name">keyid</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">ci</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">fc</span>&gt;</span>1<span class="tag">&lt;/<span class="name">fc</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">cl</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">fmd5</span>&gt;</span>4ebecd94d64f46666d4e43826c120b5f<span class="tag">&lt;/<span class="name">fmd5</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">fn</span>&gt;</span>g00118pmaso.p309.mp4<span class="tag">&lt;/<span class="name">fn</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">fs</span>&gt;</span>99699378<span class="tag">&lt;/<span class="name">fs</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">fst</span>&gt;</span>5<span class="tag">&lt;/<span class="name">fst</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">lnk</span>&gt;</span>g00118pmaso<span class="tag">&lt;/<span class="name">lnk</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">logo</span>&gt;</span>1<span class="tag">&lt;/<span class="name">logo</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">pl</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">cnt</span>&gt;</span>2<span class="tag">&lt;/<span class="name">cnt</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">pd</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">c</span>&gt;</span>10<span class="tag">&lt;/<span class="name">c</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">cd</span>&gt;</span>2<span class="tag">&lt;/<span class="name">cd</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">fmt</span>&gt;</span>40001<span class="tag">&lt;/<span class="name">fmt</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">fn</span>&gt;</span>q1<span class="tag">&lt;/<span class="name">fn</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">h</span>&gt;</span>45<span class="tag">&lt;/<span class="name">h</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">r</span>&gt;</span>10<span class="tag">&lt;/<span class="name">r</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://video.qpic.cn/video_caps/0/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">w</span>&gt;</span>80<span class="tag">&lt;/<span class="name">w</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">pd</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">pd</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">c</span>&gt;</span>5<span class="tag">&lt;/<span class="name">c</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">cd</span>&gt;</span>2<span class="tag">&lt;/<span class="name">cd</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">fmt</span>&gt;</span>40002<span class="tag">&lt;/<span class="name">fmt</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">fn</span>&gt;</span>q2<span class="tag">&lt;/<span class="name">fn</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">h</span>&gt;</span>90<span class="tag">&lt;/<span class="name">h</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">r</span>&gt;</span>5<span class="tag">&lt;/<span class="name">r</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://video.qpic.cn/video_caps/0/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">w</span>&gt;</span>160<span class="tag">&lt;/<span class="name">w</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">pd</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">pl</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">share</span>&gt;</span>1<span class="tag">&lt;/<span class="name">share</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">st</span>&gt;</span>2<span class="tag">&lt;/<span class="name">st</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>276.48<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">ti</span>&gt;</span>因你而在<span class="tag">&lt;/<span class="name">ti</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">type</span>&gt;</span>3585<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">ui</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">dt</span>&gt;</span>2<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">dtc</span>&gt;</span>10<span class="tag">&lt;/<span class="name">dtc</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://101.71.72.2/music.qqvideo.tc.qq.com/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">vt</span>&gt;</span>210<span class="tag">&lt;/<span class="name">vt</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">ui</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">ui</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">dt</span>&gt;</span>2<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">dtc</span>&gt;</span>10<span class="tag">&lt;/<span class="name">dtc</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://113.207.98.27/music.qqvideo.tc.qq.com/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">vt</span>&gt;</span>210<span class="tag">&lt;/<span class="name">vt</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">ui</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">ui</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">dt</span>&gt;</span>2<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">dtc</span>&gt;</span>10<span class="tag">&lt;/<span class="name">dtc</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://video.store.qq.com/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">vt</span>&gt;</span>0<span class="tag">&lt;/<span class="name">vt</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">ui</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">vh</span>&gt;</span>1080<span class="tag">&lt;/<span class="name">vh</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">vid</span>&gt;</span>g00118pmaso<span class="tag">&lt;/<span class="name">vid</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">videotype</span>&gt;</span>0<span class="tag">&lt;/<span class="name">videotype</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">vw</span>&gt;</span>1920<span class="tag">&lt;/<span class="name">vw</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">vi</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">vl</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>看到这个后，比较兴奋，想要的东西基本上在这里可以找到了。再回过来分析一下这个请求所带的参数<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">otype=xml&amp;pid=2FAF2F6427123207101EBDA3F1523310A76216BD</span><br><span class="line"></span><br><span class="line">&amp;platform=11&amp;vids=g00118pmaso&amp;charge=0&amp;speed=1246&amp;ran=0.8439321480691433</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>otype返回格式，</li>
-<li>pid看起来又像是个比较重要的参数(未知)，</li>
-<li>platform(上面是1，这里又来了个11，不明白),</li>
-<li>vid和上面一样，charge(应该是付费信息，0表示不付费，来源未知),speed(未知),ran和上面一样应该是个0-1之间的随机数。<br>用httpclient模仿这个请求，令人兴奋的是只需要vids和otype就能返回该xml（不需要再去找pid了）。</li>
-</ul>
-<p>再整理一下：</p>
-<p>1.先通过<a href="http://vv.video.qq.com/getinfo" target="_blank" rel="noopener">http://vv.video.qq.com/getinfo</a> POST请求添加参数otype，vid就能获得上面的xml。</p>
-<p>2.根据这个xml中的内容发送<a href="http://vv.video.qq.com/getkey" target="_blank" rel="noopener">http://vv.video.qq.com/getkey</a> POST请求，参数列表为format,type,vid,filename。</p>
-<p>其中format的id和name有个对应关系，10309-fhd、10303-sd、10302-hd。这里填写的为id。例如：format=10309</p>
-<p>filename由几部分组成g00118pmaso.p309.1.mp4 最前面一部分是vid，如果格式id为10309，则后面加上p309.1，最后是格式mp4。例如我我要下载格式id为10303的视频，那拼出来应该是g00118pmaso.p303.1.mp4。</p>
-<p>type为xml，vid为每个视频唯一的id，这里是g00118pmaso。</p>
-<p>3.根据以上信息拼接视频的真实地址</p>
-<p>首先是xml中的地址<a href="http://101.71.72.2/music.qqvideo.tc.qq.com" target="_blank" rel="noopener">http://101.71.72.2/music.qqvideo.tc.qq.com</a></p>
-<p>紧跟着拼上filename，这里例如<code>g00118pmaso.p309.1.mp4、g00118pmaso.p303.1.mp4、g00118pmaso.p302.1.mp4、g00118pmaso.p301.1.mp4</code>。注意filename要和vkey一一对应，不能用p309的key和g00118pmaso.p303.1.mp4拼接。</p>
-<p>然后就是vkey，根据filename获得的vkey进行拼接。</p>
-<p>接着type=mp4，fmt和format id对应，例如10309对应的是fhd。</p>
-<p>对于format id为10309的视频，最后拼出来的结果是<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://101.71.72.2/music.qqvideo.tc.qq.com/g00118pmaso.p309.1.mp4?type=mp4&amp;vkey=95C006D54AA7217B859B15732EE04FB88B3986D36E53116ECAF1CFD43EE6615BA6AD5DDDF8CC3D7B&amp;fmt=fhd</span><br></pre></td></tr></table></figure></p>
-<p>注意这里把一些不必要的参数去掉了。</p>
-<p>4.若通过抓包的方式无法分析出来真实地址，则需要反编译swf，找到拼接视频地址的代码，还原其过程。</p>
-<p>腾讯的视频地址分析还算顺利，因为不需要反编译swf</p>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><ul>
-<li><a href="https://blog.csdn.net/th362cn/article/details/8610044" target="_blank" rel="noopener">自己做腾讯视频真实地址解析分析_20130225</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    <div style="text-align:center;color: #ccc;font-size:14px;">------------------------ The End ------------------------</div>
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://imjunjie.github.io/an-zhuo-ni-xiang-fen-xi-bi-ji-001.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Junjie Jia">
-      <meta itemprop="description" content="生命中的每一步都必须认真对待，把握今天，成就明天！">
-      <meta itemprop="image" content="http://image.xcar.com.cn/attachments/a/day_130416/2013041610_b3e94dab51a2253bd17dxx64sn6s0q2H.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Imjunjie">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/an-zhuo-ni-xiang-fen-xi-bi-ji-001.html" class="post-title-link" itemprop="url">安卓逆向分析笔记---001</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-03-03 00:39:34 / 修改时间：00:59:55" itemprop="dateCreated datePublished" datetime="2019-03-03T00:39:34+08:00">2019-03-03</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/安卓逆向分析/" itemprop="url" rel="index"><span itemprop="name">安卓逆向分析</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">1.2k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">1 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>第一次使用电脑修改APK，新人上路，很基础，不要喷我~</p>
-<p>【所需工具】Androidkiller</p>
-<p>【用例下载链接】链接：<a href="https://pan.baidu.com/s/1E9W77vA3wn-u8zqsTeRW4g" target="_blank" rel="noopener">https://pan.baidu.com/s/1E9W77vA3wn-u8zqsTeRW4g</a> 提取码：zfw4 </p>
-<p>【开始操作】</p>
-<p>先将APK拖到AndroidKiller里面进行反编译，过一会儿之后，反编译成功，点击左侧“工程管理器”，如下图<br><img src="/images/安卓逆向分析笔记-001/image1.jpg" alt></p>
-<p>用手机打开APP，看到直接进入登录页面，根据以往修改经验说明，登录页在第一启动类里，所以我双击打开AndroidManifest.xml，查看包名还有“application”下面的第一个“activity”，如下图<br><img src="/images/安卓逆向分析笔记-001/image2.jpg" alt></p>
-<p>看到“package=”com.mycompany.myapp””和第一个“activity”的“android:name=”.RD””，通过分析就可以知道第一启动类的路径为“smali/com/mycompany/myapp/RD.smali”，打开smali文件夹，根据上述路径找到RD.smali，双击打开，如下图<br><img src="/images/安卓逆向分析笔记-001/image3.jpg" alt></p>
-<p>直接看smali代码头疼，点击上方工具栏里面的查看Java源码，出现Java查看页面，如下图<br><img src="/images/安卓逆向分析笔记-001/image4.jpg" alt></p>
-<p>我放大页面看，如图<br><img src="/images/安卓逆向分析笔记-001/image5.jpg" alt></p>
-<p>可以看到“onBtButtonClick”的方法，if判断后弹出提示“失败”和“成功”，我打开smali页面找到同样的位置，如下图<br><img src="/images/安卓逆向分析笔记-001/image6.jpg" alt><br><img src="/images/安卓逆向分析笔记-001/image7.jpg" alt></p>
-<p>一张图截不下</p>
-<ul>
-<li>【修改方法一】</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">.line 80</span><br><span class="line">const-string v0, <span class="string">"1"</span></span><br><span class="line"></span><br><span class="line">const-string v1, <span class="string">"1"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span><span class="_">-ne</span> v0, v1, :cond_0</span><br><span class="line">````	</span><br><span class="line"></span><br><span class="line">修改为：</span><br><span class="line">```` bash </span><br><span class="line">.line 80</span><br><span class="line">    const-string v0, <span class="string">"0"</span></span><br><span class="line"></span><br><span class="line">    const-string v1, <span class="string">"1"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span><span class="_">-ne</span> v0, v1, :cond_0</span><br></pre></td></tr></table></figure>
-<ul>
-<li>【修改方法二】<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.line 80</span><br><span class="line">    const-string v0, &quot;1&quot;</span><br><span class="line"></span><br><span class="line">    const-string v1, &quot;1&quot;</span><br><span class="line"></span><br><span class="line">if-ne v0, v1, :cond_0</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>修改为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.line 80</span><br><span class="line">    const-string v0, &quot;1&quot;</span><br><span class="line"></span><br><span class="line">    const-string v1, &quot;1&quot;</span><br><span class="line"></span><br><span class="line">    if-eq v0, v1, :cond_0</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>【修改方法三】（需要Unicode工具）<br>修改文字显示，不推荐使用这种修改方法，治标不治本。</li>
-</ul>
-<p>改完后闪退，可能是手机安卓版本太高吧！<br>没有测试成，很遗憾！</p>
-<p>疑问：你的方法一改的和没改的一样啊<br>回答：是那个上面两个1，改成一个1和一个0，当时写草稿纸上复制粘贴也没看清楚</p>
-<hr>
-<p>安卓逆向分析笔记—-001<br><a href="https://www.52pojie.cn/thread-884957-1-1.html" target="_blank" rel="noopener">https://www.52pojie.cn/thread-884957-1-1.html</a><br>(出处: 吾爱破解论坛)</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    <div style="text-align:center;color: #ccc;font-size:14px;">------------------------ The End ------------------------</div>
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://imjunjie.github.io/windows-10-wen-jian-zi-yuan-guan-li-qi-zhong-shan-chu-kuai-su-fang-wen.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Junjie Jia">
-      <meta itemprop="description" content="生命中的每一步都必须认真对待，把握今天，成就明天！">
-      <meta itemprop="image" content="http://image.xcar.com.cn/attachments/a/day_130416/2013041610_b3e94dab51a2253bd17dxx64sn6s0q2H.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Imjunjie">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/windows-10-wen-jian-zi-yuan-guan-li-qi-zhong-shan-chu-kuai-su-fang-wen.html" class="post-title-link" itemprop="url">Windows 10文件资源管理器中删除快速访问</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-03-03 00:24:57 / 修改时间：00:28:09" itemprop="dateCreated datePublished" datetime="2019-03-03T00:24:57+08:00">2019-03-03</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/电脑/" itemprop="url" rel="index"><span itemprop="name">电脑</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/电脑/常见故障/" itemprop="url" rel="index"><span itemprop="name">常见故障</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">337</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">1 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>建议备份好您的注册表。要在Windows 10文件资源管理器中删除快速访问，</p>
-<p>[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]<br>“HubMode”=dword:00000001</p>
-<p>万一又想折腾回去，请打开注册表编辑器，然后将HKEY_LOCAL_MACHINE  SOFTWARE  Microsoft  Windows  CurrentVersion  Explorer \</p>
-<p>右键单击HubMode并选择“删除”。</p>
-<hr>
-<p>Windows 10文件资源管理器中删除快速访问<br><a href="https://www.52pojie.cn/thread-884830-1-1.html" target="_blank" rel="noopener">https://www.52pojie.cn/thread-884830-1-1.html</a><br>(出处: 吾爱破解论坛)</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    <div style="text-align:center;color: #ccc;font-size:14px;">------------------------ The End ------------------------</div>
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://imjunjie.github.io/pc-jian-kong-xiao-gong-ju.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Junjie Jia">
-      <meta itemprop="description" content="生命中的每一步都必须认真对待，把握今天，成就明天！">
-      <meta itemprop="image" content="http://image.xcar.com.cn/attachments/a/day_130416/2013041610_b3e94dab51a2253bd17dxx64sn6s0q2H.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Imjunjie">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/pc-jian-kong-xiao-gong-ju.html" class="post-title-link" itemprop="url">PC监控小工具</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-03-03 00:17:38 / 修改时间：00:29:14" itemprop="dateCreated datePublished" datetime="2019-03-03T00:17:38+08:00">2019-03-03</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/电脑/" itemprop="url" rel="index"><span itemprop="name">电脑</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/电脑/软件/" itemprop="url" rel="index"><span itemprop="name">软件</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">245</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">1 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>我一直喜欢用的监控软件分享<br><img src="https://attach.52pojie.cn/forum/201903/02/180121inxllhaxanhlnnnb.png" alt></p>
-<p>先下载用来加载工具的应用<br>Gadgets Revived: <a href="https://gadgetsrevived.com/download-sidebar/" target="_blank" rel="noopener">https://gadgetsrevived.com/download-sidebar/</a></p>
-<p>小工具官网: <a href="http://addgadgets.com" target="_blank" rel="noopener">http://addgadgets.com</a></p>
-<p>链接: <a href="https://pan.baidu.com/s/1AjmHPJPzQmBgdcx7HSSGRA" target="_blank" rel="noopener">https://pan.baidu.com/s/1AjmHPJPzQmBgdcx7HSSGRA</a> 提取码: 1kss</p>
-<hr>
-<p>PC监控小工具<br><a href="https://www.52pojie.cn/thread-884752-1-1.html" target="_blank" rel="noopener">https://www.52pojie.cn/thread-884752-1-1.html</a><br>(出处: 吾爱破解论坛)</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    <div style="text-align:center;color: #ccc;font-size:14px;">------------------------ The End ------------------------</div>
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://imjunjie.github.io/idm-ke-yi-zhi-jie-bu-zhuo-xia-zai-ge-chong-ge-shi-de-wang-ye-zai-xian-shi-pin.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Junjie Jia">
-      <meta itemprop="description" content="生命中的每一步都必须认真对待，把握今天，成就明天！">
-      <meta itemprop="image" content="http://image.xcar.com.cn/attachments/a/day_130416/2013041610_b3e94dab51a2253bd17dxx64sn6s0q2H.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Imjunjie">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/idm-ke-yi-zhi-jie-bu-zhuo-xia-zai-ge-chong-ge-shi-de-wang-ye-zai-xian-shi-pin.html" class="post-title-link" itemprop="url">IDM可以直接捕捉、下载各种格式的网页在线视频</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-03-03 00:08:02 / 修改时间：00:14:56" itemprop="dateCreated datePublished" datetime="2019-03-03T00:08:02+08:00">2019-03-03</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Idm/" itemprop="url" rel="index"><span itemprop="name">Idm</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">1.3k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">1 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>本人亲测、实力见证！新版 IDM不仅可以全速、无死角下载百度云里的一切资源，还可以下载网络上各种敏感、限制级的资源，最重要的是可以直接嗅探、捕捉、下载各种格式的网页在线视频！包括 m3u8 代码形式的在线视频，而不需要使用下载速度比较慢且不能批量下载的<code>m3u8 downloader</code>了。</p>
-<p>完全可以代替迅雷、百度网盘实现满速、全速下载。真正做到所见即所得！（划重点）</p>
-<h1 id="STEP-1→如何安装？"><a href="#STEP-1→如何安装？" class="headerlink" title="STEP 1→如何安装？"></a>STEP 1→如何安装？</h1><p>1.下载新版IDM文件夹,先运行软件安装程序:IDM v6.xx.x.exe,安装完成后关闭注册提醒对话框。（新版IDM下载链接在文末）</p>
-<p>2.运行压缩包 Crack.zip 中的 IDM_6.2x_Crack.exe 进行破解，破解完成。</p>
-<p>3.全部过程完成，您需要重启一下电脑，再打开  IDM.，点击菜单—&gt;关于 IDM，确认一下是否破解成功。</p>
-<h1 id="STEP-2→必要插件？"><a href="#STEP-2→必要插件？" class="headerlink" title="STEP 2→必要插件？"></a>STEP 2→必要插件？</h1><p>1.在浏览器装tampermonkey（油猴）插件，本人用360浏览器，浏览器收藏栏右上角有个：扩展—&gt;扩展中心—&gt;直接在搜索应用名称中输入tampermonkey，点击安装即可。</p>
-<p>2.在浏览器中安装脚本，打开<code>https://greasyfork.org/zh-CN/scripts</code>，安装<code>“百度网盘直接下载助手 直链加速版”</code>脚本。</p>
-<p>3.在浏览器装IDM插件:扩展—&gt;扩展中心—&gt;直接在搜索应用名称中输入IDM，点击安装即可。</p>
-<p>4.安装完成后重启浏览器。</p>
-<h1 id="STEP-3→如何使用？"><a href="#STEP-3→如何使用？" class="headerlink" title="STEP 3→如何使用？"></a>STEP 3→如何使用？</h1><p>1.下载百度云资源：打开IDM，打开一个需要下载的文件，在页面的上部就会出现一个“下载助手”的按钮，点击按钮会出现：下载、显示链接、批量链接等选项，点击下载，IDM会自动嗅探到资源，弹出一个下载文件信息框，点击开始下载，享受全速下载的乐趣吧！</p>
-<p>2.下载网页在线视频：打开一个需要下载的在线视频，点击播放，IDM会自动嗅探到资源，同时在播放框的右上角会出现如下按钮：，点击下载该视频，弹出一个下载文件信息框，点击开始下载，享受全速下载的乐趣吧！</p>
-<h1 id="STEP-4→什么是IDM？"><a href="#STEP-4→什么是IDM？" class="headerlink" title="STEP 4→什么是IDM？"></a>STEP 4→什么是IDM？</h1><p>IDM 全名Internet Download Manager 是一款国外的多线程下载神器（简称IDM）Internet Download Manager 支持多媒体下载、自动捕获链接、自动识别文件名、静默下载、批量下载、计划下载任务、站点抓取、队列等等是一款国外的老牌下载工具。<br>互联网下载管理器 （IDM）是一种提高下载速度5倍，恢复和下载时间表的工具。全面的错误恢复和恢复功能将重新启动由于连接丢失，网络问题，计算机关机或意外断电而导致的下载或中断下载。简单的图形用户界面，使IDM用户友好，易于使用。下载管理器有一个智能下载逻辑加速器，具有智能动态文件分割和安全的多部分下载技术，加快您的下载。与其他下载管理器和加速器不同，Internet Download Manager在下载过程中动态地分段下载文件，并重复使用可用的连接，无需额外的连接和登录阶段即可实现最佳加速性能。</p>
-<h1 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h1><p>链接: <a href="https://pan.baidu.com/s/1m89whBLzvYoc7uZS6l9ZBQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1m89whBLzvYoc7uZS6l9ZBQ</a> 提取码: qcjp</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    <div style="text-align:center;color: #ccc;font-size:14px;">------------------------ The End ------------------------</div>
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -4652,7 +4699,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">51</span>
+                    <span class="site-state-item-count">56</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -4782,7 +4829,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">29</span>
+                      
+                    
+                    <span class="site-state-item-count">30</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -4863,7 +4912,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">193k</span>
+    <span title="站点总字数">458k</span>
   
 
   
@@ -4872,7 +4921,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:55</span>
+    <span title="站点阅读时长">6:57</span>
   
 </div>
 

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://imjunjie.github.io/"/>
-  <updated>2019-05-21T13:45:40.556Z</updated>
+  <updated>2019-05-25T06:46:31.283Z</updated>
   <id>http://imjunjie.github.io/</id>
   
   <author>
@@ -15,6 +15,122 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>win10+ubuntu双系统安装</title>
+    <link href="http://imjunjie.github.io/win10-ubuntu-shuang-xi-tong-an-zhuang.html"/>
+    <id>http://imjunjie.github.io/win10-ubuntu-shuang-xi-tong-an-zhuang.html</id>
+    <published>2019-05-24T10:14:15.000Z</published>
+    <updated>2019-05-25T06:46:31.283Z</updated>
+    
+    <summary type="html">
+    
+      The article has been encrypted, please enter your password to view.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="机器学习" scheme="http://imjunjie.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="TensorFlow" scheme="http://imjunjie.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/TensorFlow/"/>
+    
+    
+      <category term="机器学习; TensorFlow" scheme="http://imjunjie.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-TensorFlow/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>UltraISO软碟通制作U盘启动盘</title>
+    <link href="http://imjunjie.github.io/ultraiso-ruan-die-tong-zhi-zuo-u-pan-qi-dong-pan.html"/>
+    <id>http://imjunjie.github.io/ultraiso-ruan-die-tong-zhi-zuo-u-pan-qi-dong-pan.html</id>
+    <published>2019-05-22T15:32:18.000Z</published>
+    <updated>2019-05-22T15:53:25.973Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Windows下类似Linux下的命令</title>
+    <link href="http://imjunjie.github.io/windows-xia-lei-si-linux-xia-de-ming-ling.html"/>
+    <id>http://imjunjie.github.io/windows-xia-lei-si-linux-xia-de-ming-ling.html</id>
+    <published>2019-05-22T11:12:46.000Z</published>
+    <updated>2019-05-22T15:32:37.160Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>win10系统Win+E怎样改回打开我的电脑</title>
+    <link href="http://imjunjie.github.io/win10-xi-tong-win-e-zen-yang-gai-hui-da-kai-wo-de-dian-nao.html"/>
+    <id>http://imjunjie.github.io/win10-xi-tong-win-e-zen-yang-gai-hui-da-kai-wo-de-dian-nao.html</id>
+    <published>2019-05-22T10:38:49.000Z</published>
+    <updated>2019-05-22T10:49:18.191Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>tensorflow读取训练数据方法</title>
+    <link href="http://imjunjie.github.io/tensorflow-du-qu-xun-lian-shu-ju-fang-fa.html"/>
+    <id>http://imjunjie.github.io/tensorflow-du-qu-xun-lian-shu-ju-fang-fa.html</id>
+    <published>2019-05-22T00:44:00.000Z</published>
+    <updated>2019-05-22T12:08:39.881Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="机器学习" scheme="http://imjunjie.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="数据集处理" scheme="http://imjunjie.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%95%B0%E6%8D%AE%E9%9B%86%E5%A4%84%E7%90%86/"/>
+    
+    
+      <category term="机器学习; 数据集处理" scheme="http://imjunjie.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E6%95%B0%E6%8D%AE%E9%9B%86%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
   
   <entry>
     <title>Java - 在Windows环境下安装JDK并设置环境变量</title>
@@ -71,7 +187,7 @@
     <link href="http://imjunjie.github.io/gan-xue-xi-xi-lie-jiao-cheng.html"/>
     <id>http://imjunjie.github.io/gan-xue-xi-xi-lie-jiao-cheng.html</id>
     <published>2019-05-21T06:15:06.000Z</published>
-    <updated>2019-05-21T07:05:34.844Z</updated>
+    <updated>2019-05-22T15:55:23.201Z</updated>
     
     <summary type="html">
     
@@ -379,140 +495,6 @@
     
     
       <category term="机器学习，数据集处理" scheme="http://imjunjie.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%8C%E6%95%B0%E6%8D%AE%E9%9B%86%E5%A4%84%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>eclipse作为Python的开发工具</title>
-    <link href="http://imjunjie.github.io/eclipse-zuo-wei-python-de-kai-fa-gong-ju.html"/>
-    <id>http://imjunjie.github.io/eclipse-zuo-wei-python-de-kai-fa-gong-ju.html</id>
-    <published>2019-04-21T10:34:54.000Z</published>
-    <updated>2019-05-21T15:01:54.703Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Machine Learning" scheme="http://imjunjie.github.io/categories/Machine-Learning/"/>
-    
-      <category term="Eclipse" scheme="http://imjunjie.github.io/categories/Machine-Learning/Eclipse/"/>
-    
-    
-      <category term="Marchine Learning；Eclipse" scheme="http://imjunjie.github.io/tags/Marchine-Learning%EF%BC%9BEclipse/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>TensorFlow学习知识点总结</title>
-    <link href="http://imjunjie.github.io/tensorflow-xue-xi-zhi-shi-dian-zong-jie.html"/>
-    <id>http://imjunjie.github.io/tensorflow-xue-xi-zhi-shi-dian-zong-jie.html</id>
-    <published>2019-04-19T01:06:42.000Z</published>
-    <updated>2019-04-20T01:13:21.085Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="机器学习" scheme="http://imjunjie.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-      <category term="TensorFlow" scheme="http://imjunjie.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/TensorFlow/"/>
-    
-    
-      <category term="TensorFlow" scheme="http://imjunjie.github.io/tags/TensorFlow/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>基于Python的校园网自动登录</title>
-    <link href="http://imjunjie.github.io/ji-yu-python-de-xiao-yuan-wang-zi-dong-deng-lu.html"/>
-    <id>http://imjunjie.github.io/ji-yu-python-de-xiao-yuan-wang-zi-dong-deng-lu.html</id>
-    <published>2019-04-09T04:25:57.000Z</published>
-    <updated>2019-04-09T05:39:59.829Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>证件之星软件个人加密狗完美破解心得</title>
-    <link href="http://imjunjie.github.io/zheng-jian-zhi-xing-ruan-jian-ge-ren-jia-mi-gou-wan-mei-po-jie-xin-de.html"/>
-    <id>http://imjunjie.github.io/zheng-jian-zhi-xing-ruan-jian-ge-ren-jia-mi-gou-wan-mei-po-jie-xin-de.html</id>
-    <published>2019-03-20T10:49:08.000Z</published>
-    <updated>2019-03-20T11:41:54.239Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="电脑" scheme="http://imjunjie.github.io/categories/%E7%94%B5%E8%84%91/"/>
-    
-      <category term="破解心得" scheme="http://imjunjie.github.io/categories/%E7%94%B5%E8%84%91/%E7%A0%B4%E8%A7%A3%E5%BF%83%E5%BE%97/"/>
-    
-    
-      <category term="电脑; 破解心得" scheme="http://imjunjie.github.io/tags/%E7%94%B5%E8%84%91-%E7%A0%B4%E8%A7%A3%E5%BF%83%E5%BE%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>win10卸载或更改程序中不显示修改日期和类型</title>
-    <link href="http://imjunjie.github.io/win10-xie-zai-huo-geng-gai-cheng-xu-zhong-bu-xian-shi-xiu-gai-ri-qi-he-lei-xing.html"/>
-    <id>http://imjunjie.github.io/win10-xie-zai-huo-geng-gai-cheng-xu-zhong-bu-xian-shi-xiu-gai-ri-qi-he-lei-xing.html</id>
-    <published>2019-03-19T13:50:06.000Z</published>
-    <updated>2019-03-19T14:14:52.080Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="电脑" scheme="http://imjunjie.github.io/categories/%E7%94%B5%E8%84%91/"/>
-    
-      <category term="常见故障" scheme="http://imjunjie.github.io/categories/%E7%94%B5%E8%84%91/%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C/"/>
-    
-    
-      <category term="Win10" scheme="http://imjunjie.github.io/tags/Win10/"/>
     
   </entry>
   
